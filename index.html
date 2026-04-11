@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>RB Cloud AI Hackathon</title>
+
+<!-- Fonts: RB Cloud Branding + Neon Cyber -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================
+   VIEWPORT FITTING: MANDATORY BASE STYLES
+   ============================================ */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+.slide {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.slide-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 100%;
+    overflow: hidden;
+    padding: var(--slide-padding);
+}
+:root {
+    --title-size: clamp(3rem, 8vw, 5.5rem);
+    --h2-size: clamp(2.5rem, 7vw, 4.5rem);
+    --h3-size: clamp(1.8rem, 4vw, 2.5rem);
+    --body-size: clamp(1.2rem, 3vw, 1.6rem);
+    --small-size: clamp(1rem, 2vw, 1.3rem);
+    --slide-padding: clamp(1rem, 4vw, 4rem);
+    --content-gap: clamp(0.5rem, 2vw, 2rem);
+    --element-gap: clamp(0.25rem, 1vw, 1rem);
+}
+@media (max-height: 700px) {
+    :root {
+        --slide-padding: clamp(0.75rem, 3vw, 2rem);
+        --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+        --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+        --h2-size: clamp(1rem, 3vw, 1.75rem);
+    }
+}
+@media (max-height: 600px) {
+    :root {
+        --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+        --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+        --title-size: clamp(1.1rem, 4vw, 2rem);
+        --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+    }
+    .nav-dots, .keyboard-hint, .decorative { display: none; }
+}
+@media (max-height: 500px) {
+    :root {
+        --slide-padding: clamp(0.4rem, 2vw, 1rem);
+        --title-size: clamp(1rem, 3.5vw, 1.5rem);
+        --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+        --body-size: clamp(0.65rem, 1vw, 0.85rem);
+    }
+}
+@media (max-width: 768px) {
+    :root {
+        --title-size: clamp(1.5rem, 7vw, 2.5rem);
+        --h2-size: clamp(1.4rem, 6vw, 2.2rem);
+        --h3-size: clamp(1.2rem, 4vw, 1.6rem);
+        --body-size: clamp(0.85rem, 3.5vw, 1.1rem);
+        --small-size: clamp(0.75rem, 2.5vw, 0.95rem);
+        --slide-padding: clamp(0.8rem, 4vw, 1.5rem);
+        --content-gap: clamp(0.4rem, 2vw, 1rem);
+    }
+    /* Neon Cyber 모바일 오버라이드 */
+    .neon-cyber h2 { font-size: clamp(1.1rem, 4.5vw, 1.5rem) !important; }
+    .neon-cyber .big-question { font-size: clamp(1rem, 4.5vw, 1.5rem) !important; }
+    .neon-cyber p { font-size: clamp(0.75rem, 3vw, 0.95rem) !important; }
+    .neon-cyber .timeline-row p { font-size: clamp(0.7rem, 2.5vw, 0.85rem) !important; }
+
+    /* 슬라이드 콘텐츠 세로 중앙 정렬 개선 */
+    .slide-content {
+        justify-content: center !important;
+        padding-top: 0 !important;
+    }
+
+    /* 타임라인 모바일: nowrap 해제, 세로 레이아웃 */
+    .ai-timeline > div {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.2rem !important;
+        padding: 0.4rem 0.6rem !important;
+    }
+    .ai-timeline > div > span {
+        font-size: 0.7rem !important;
+        min-width: auto !important;
+    }
+    .ai-timeline > div > p,
+    .ai-timeline > div p {
+        white-space: normal !important;
+        font-size: 0.75rem !important;
+        line-height: 1.3 !important;
+    }
+    .ai-timeline {
+        gap: 0.4rem !important;
+    }
+
+    /* 비교표 모바일 */
+    .comparison-table {
+        width: 92vw !important;
+        margin-top: 0.5rem !important;
+    }
+    .comparison-table .row,
+    .comparison-table .col-header {
+        white-space: normal !important;
+        font-size: clamp(0.6rem, 2.5vw, 0.8rem) !important;
+        line-height: 1.3 !important;
+        padding: 0.2rem 0 !important;
+    }
+
+    /* 슬라이드 13 카드 모바일 */
+    .timeline-row {
+        flex-direction: column !important;
+        gap: 0.8rem !important;
+        align-items: center !important;
+    }
+
+    /* Hero title 모바일 */
+    .hero-title {
+        font-size: clamp(1.3rem, 7vw, 2rem) !important;
+    }
+    .quote-text {
+        font-size: clamp(0.9rem, 3.5vw, 1.3rem) !important;
+    }
+
+    /* 슬라이드 14/15 카드 모바일 */
+    .neon-cyber [style*="max-width: 650px"],
+    .neon-cyber [style*="max-width: 900px"] {
+        max-width: 95vw !important;
+        width: 95vw !important;
+    }
+
+    /* nav dots 숨김 (모바일 스와이프 사용) */
+    .nav-dots {
+        display: none;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+    html { scroll-behavior: auto; }
+}
+
+/* ============================================
+   THEME: PAPER & INK → NEON CYBER TRANSITION
+   ============================================ */
+
+/* Paper & Ink + Montserrat (slides 1-4) */
+.paper-ink {
+    background: #faf6f0;
+    color: #2a2520;
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+}
+.paper-ink .quote-text {
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
+    font-weight: 500;
+    line-height: 1.5;
+    color: #2a2520;
+    max-width: 800px;
+}
+.paper-ink .quote-author {
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    font-size: var(--body-size);
+    color: #8b7355;
+    margin-top: var(--element-gap);
+    letter-spacing: 0.05em;
+}
+.paper-ink .accent { color: #c0392b; }
+.paper-ink .rule {
+    width: 60px;
+    height: 2px;
+    background: #c0392b;
+    margin: var(--content-gap) 0;
+}
+.paper-ink .slide-number {
+    position: absolute;
+    bottom: clamp(1rem, 3vw, 2rem);
+    right: clamp(1rem, 3vw, 2rem);
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--small-size);
+    color: #c4b5a0;
+    font-weight: 600;
+}
+
+/* Transition slide */
+.transition-slide {
+    background: linear-gradient(135deg, #faf6f0 0%, #0a0e27 100%);
+    color: #ffffff;
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+}
+
+/* Neon Cyber (slides 5+) */
+.neon-cyber {
+    background: #0a0e27;
+    color: #e0e8ff;
+    font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif;
+}
+.neon-cyber::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(0, 200, 255, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(200, 0, 255, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+}
+.neon-cyber .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 200, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 200, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+}
+.neon-cyber h2 { font-size: clamp(2.5rem, 7vw, 5.5rem) !important; }
+.neon-cyber .big-question { font-size: clamp(1.8rem, 4.5vw, 3.5rem) !important; }
+.neon-cyber p { font-size: clamp(1.2rem, 3vw, 1.8rem) !important; }
+.neon-cyber .timeline-row p { font-size: clamp(1rem, 2vw, 1.4rem) !important; }
+.neon-cyber .glow-cyan { color: #00c8ff; text-shadow: 0 0 20px rgba(0, 200, 255, 0.3); }
+.neon-cyber .glow-magenta { color: #c800ff; text-shadow: 0 0 20px rgba(200, 0, 255, 0.3); }
+.neon-cyber .slide-number {
+    position: absolute;
+    bottom: clamp(1rem, 3vw, 2rem);
+    right: clamp(1rem, 3vw, 2rem);
+    font-size: var(--small-size);
+    color: rgba(0, 200, 255, 0.3);
+    font-family: 'Space Grotesk', monospace;
+}
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
+
+.hero-title {
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+.hero-subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.4rem);
+    margin-top: var(--content-gap);
+    opacity: 0.7;
+    font-weight: 300;
+}
+
+.slide-content.centered {
+    align-items: center;
+    text-align: center;
+}
+
+.comparison-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(0.3rem, 1vw, 0.8rem);
+    width: min(95vw, 1200px);
+    margin-top: var(--content-gap);
+}
+.comparison-table .row,
+.comparison-table .col-header {
+    white-space: nowrap;
+}
+.comparison-table .col-header {
+    font-size: var(--small-size);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding-bottom: var(--element-gap);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.comparison-table .col-header.past { color: #8b7355; }
+.comparison-table .col-header.future { color: #00c8ff; }
+.comparison-table .row {
+    font-size: var(--body-size);
+    padding: clamp(0.3rem, 0.8vw, 0.6rem) 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    line-height: 1.4;
+}
+.comparison-table .row.past { color: rgba(255,255,255,0.5); }
+.comparison-table .row.future { color: #e0e8ff; }
+
+.big-question {
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    font-size: var(--h2-size);
+    font-weight: 700;
+    line-height: 1.4;
+    max-width: 900px;
+    text-align: center;
+}
+
+.tag {
+    display: inline-block;
+    font-size: var(--small-size);
+    padding: clamp(0.2rem, 0.5vw, 0.4rem) clamp(0.5rem, 1vw, 1rem);
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+.tag.cyber {
+    background: rgba(0, 200, 255, 0.1);
+    border: 1px solid rgba(0, 200, 255, 0.3);
+    color: #00c8ff;
+}
+
+/* ============================================
+   REVEAL ANIMATIONS
+   ============================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.3s; }
+.reveal-delay-2 { transition-delay: 0.6s; }
+.reveal-delay-3 { transition-delay: 0.9s; }
+.reveal-delay-4 { transition-delay: 1.2s; }
+.reveal-delay-5 { transition-delay: 1.5s; }
+.reveal-delay-6 { transition-delay: 1.8s; }
+.reveal-delay-7 { transition-delay: 2.1s; }
+
+/* Glitch effect for transition */
+@keyframes glitch {
+    0%, 90%, 100% { transform: translate(0); }
+    92% { transform: translate(-2px, 1px); }
+    94% { transform: translate(2px, -1px); }
+    96% { transform: translate(-1px, -1px); }
+    98% { transform: translate(1px, 1px); }
+}
+.glitch-text {
+    animation: glitch 3s infinite;
+}
+
+/* Typing cursor for transition */
+@keyframes blink-cursor {
+    0%, 100% { border-right-color: #00c8ff; }
+    50% { border-right-color: transparent; }
+}
+.cursor {
+    border-right: 2px solid #00c8ff;
+    padding-right: 4px;
+    animation: blink-cursor 1s infinite;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.nav-dots {
+    position: fixed;
+    right: clamp(0.5rem, 1.5vw, 1.5rem);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+}
+.nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+.nav-dot.active {
+    background: #00c8ff;
+    box-shadow: 0 0 8px rgba(0, 200, 255, 0.4);
+    transform: scale(1.3);
+}
+.nav-dot.paper { background: rgba(42, 37, 32, 0.2); }
+.nav-dot.paper.active { background: #c0392b; box-shadow: 0 0 8px rgba(192, 57, 43, 0.4); }
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #c0392b, #00c8ff);
+    z-index: 200;
+    transition: width 0.3s ease;
+}
+
+.keyboard-hint {
+    position: fixed;
+    bottom: clamp(0.5rem, 1.5vw, 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(0.55rem, 0.8vw, 0.7rem);
+    color: rgba(255,255,255,0.2);
+    font-family: 'Space Grotesk', monospace;
+    letter-spacing: 0.1em;
+    z-index: 100;
+}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Navigation Dots -->
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- ============================
+     SLIDE 1: TITLE (Paper & Ink)
+     ============================ -->
+<section class="slide paper-ink" data-theme="paper">
+    <div class="slide-content centered">
+        <div class="rule reveal"></div>
+        <h1 class="hero-title reveal reveal-delay-1" style="font-family: 'Montserrat', 'Noto Sans KR', sans-serif; font-weight: 800; letter-spacing: -0.03em;">
+            RB Cloud<br><span class="accent">AI Hackathon</span>
+        </h1>
+        <div class="rule reveal reveal-delay-2"></div>
+    </div>
+    <span class="slide-number">01</span>
+</section>
+
+<!-- ============================
+     SLIDE 2: 경험의 시대에서 AI의 시대로
+     ============================ -->
+<section class="slide paper-ink" data-theme="paper">
+    <div class="slide-content centered">
+        <h1 class="hero-title reveal" style="font-family: 'Montserrat', 'Noto Sans KR', sans-serif; font-weight: 800; letter-spacing: -0.03em; color: #2a2520; margin: 0;">
+            경험의 시대에서<br><span class="accent">AI</span>의 시대로
+        </h1>
+    </div>
+    <span class="slide-number">02</span>
+</section>
+
+<!-- ============================
+     SLIDE 3: DEWEY QUOTE
+     ============================ -->
+<section class="slide paper-ink" data-theme="paper">
+    <div class="slide-content centered">
+        <p class="quote-text reveal">
+            "우리는 경험을 통해 배우는 것이 아니라,<br>
+            경험에 대한 <span class="accent">반성</span>을 통해 배운다"
+        </p>
+        <div class="rule reveal reveal-delay-1"></div>
+        <p class="quote-author reveal reveal-delay-2">— 존 듀이 (John Dewey)</p>
+    </div>
+    <span class="slide-number">03</span>
+</section>
+
+<!-- ============================
+     SLIDE 4: KANT
+     ============================ -->
+<section class="slide paper-ink" data-theme="paper">
+    <div class="slide-content centered">
+        <p class="quote-text reveal">
+            "지식은 <span class="accent">경험</span>에서 시작된다"
+        </p>
+        <div class="rule reveal reveal-delay-1"></div>
+        <p class="quote-author reveal reveal-delay-2">— 임마누엘 칸트, 『순수이성비판』</p>
+    </div>
+    <span class="slide-number">04</span>
+</section>
+
+<!-- ============================
+     SLIDE 5: DESCARTES
+     ============================ -->
+<section class="slide paper-ink" data-theme="paper">
+    <div class="slide-content centered">
+        <p class="quote-text reveal">
+            "나는 <span class="accent">생각한다</span>, 고로 존재한다"
+        </p>
+        <div class="rule reveal reveal-delay-1"></div>
+        <p class="quote-author reveal reveal-delay-2">— 르네 데카르트 (Cogito, ergo sum)</p>
+    </div>
+    <span class="slide-number">05</span>
+</section>
+
+<!-- ============================
+     SLIDE 6: 10,000 HOURS
+     ============================ -->
+<section class="slide paper-ink" data-theme="paper">
+    <div class="slide-content centered">
+        <p class="quote-text reveal" style="font-size: clamp(1.5rem, 4vw, 3rem); font-weight: 700; font-style: normal;">
+            <span class="accent">10,000</span>시간의 법칙
+        </p>
+        <p class="quote-author reveal reveal-delay-1" style="font-size: var(--body-size); max-width: 500px; text-align: center; line-height: 1.6;">
+            전문성은 반복된 경험의 축적이다.<br>
+            인류는 2,500년간 이것을 믿어왔다.
+        </p>
+        <div class="rule reveal reveal-delay-2"></div>
+        <p class="quote-author reveal reveal-delay-3">— 말콤 글래드웰</p>
+    </div>
+    <span class="slide-number">06</span>
+</section>
+
+<!-- ============================
+     SLIDE 7: TRANSITION
+     ============================ -->
+<section class="slide transition-slide" data-theme="transition">
+    <div class="slide-content centered">
+        <p class="reveal" style="font-size: clamp(1.5rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em;">
+            <span style="color: rgba(255, 255, 255, 0.4);">그런데,</span>
+            <span style="color: #ffffff;" class="glitch-text"> ChatGPT가 등장하면서</span>
+        </p>
+        <p class="reveal reveal-delay-1" style="font-size: clamp(1.2rem, 3vw, 2.5rem); font-weight: 700; color: #00c8ff; margin-top: var(--element-gap);">
+            AI가 경험 없이 전문가를 넘어섰다<span class="cursor"></span>
+        </p>
+    </div>
+</section>
+
+<!-- ============================
+     SLIDE 8: AI의 진화
+     ============================ -->
+<section class="slide neon-cyber" data-theme="cyber">
+    <div class="grid-bg"></div>
+    <div class="slide-content centered" style="z-index: 1;">
+        <h2 class="reveal" style="font-weight: 700;">
+            <span class="glow-cyan">AI의 진화</span>, 그 속도
+        </h2>
+        <div class="ai-timeline" style="margin-top: var(--content-gap); display: flex; flex-direction: column; gap: clamp(0.8rem, 2vw, 1.5rem); max-width: 1200px; width: 95%;">
+            <div class="reveal reveal-delay-1" style="display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.5rem); background: rgba(0,200,255,0.06); border-left: 3px solid rgba(0,200,255,0.4); border-radius: 0 8px 8px 0;">
+                <span style="font-size: clamp(1rem, 1.8vw, 1.3rem); color: rgba(0,200,255,0.6); font-weight: 700; white-space: nowrap; min-width: 90px;">2022.11</span>
+                <p style="margin: 0; font-weight: 600; white-space: nowrap;">
+                    <span style="color: #00c8ff;">ChatGPT</span> 등장 — 소수 전문가의 AI, 대중에게 열리다
+                </p>
+            </div>
+            <div class="reveal reveal-delay-2" style="display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.5rem); background: rgba(200,0,255,0.06); border-left: 3px solid rgba(200,0,255,0.4); border-radius: 0 8px 8px 0;">
+                <span style="font-size: clamp(1rem, 1.8vw, 1.3rem); color: rgba(200,0,255,0.6); font-weight: 700; white-space: nowrap; min-width: 90px;">2023.03</span>
+                <p style="margin: 0; font-weight: 600; white-space: nowrap;">
+                    <span style="color: #c800ff;">Claude</span> 출시 — 추론과 안전성의 새 기준
+                </p>
+            </div>
+            <div class="reveal reveal-delay-3" style="display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.5rem); background: rgba(200,0,255,0.04); border-left: 3px solid rgba(200,0,255,0.5); border-radius: 0 8px 8px 0;">
+                <span style="font-size: clamp(1rem, 1.8vw, 1.3rem); color: rgba(200,0,255,0.7); font-weight: 700; white-space: nowrap; min-width: 90px;">2025.02</span>
+                <p style="margin: 0; font-weight: 600; white-space: nowrap;">
+                    <span style="color: #c800ff;">Claude Opus 4.1</span> — 코딩 특화, 에이전트 시대의 개막
+                </p>
+            </div>
+            <div class="reveal reveal-delay-4" style="display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.5rem); background: rgba(200,0,255,0.04); border-left: 3px solid rgba(200,0,255,0.6); border-radius: 0 8px 8px 0;">
+                <span style="font-size: clamp(1rem, 1.8vw, 1.3rem); color: rgba(200,0,255,0.8); font-weight: 700; white-space: nowrap; min-width: 90px;">2025.11</span>
+                <p style="margin: 0; font-weight: 600; white-space: nowrap;">
+                    <span style="color: #c800ff;">Claude Opus 4.5</span> — 가장 깊은 추론, 코딩의 새 지평
+                </p>
+            </div>
+            <div class="reveal reveal-delay-5" style="display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1rem, 2vw, 1.5rem); background: linear-gradient(135deg, rgba(200,0,255,0.25), rgba(0,200,255,0.2), rgba(200,0,255,0.15)); border-left: 4px solid #c800ff; border-radius: 0 8px 8px 0; box-shadow: 0 0 20px rgba(200,0,255,0.2), inset 0 0 30px rgba(0,200,255,0.08); border: 1px solid rgba(200,0,255,0.3); border-left: 4px solid #c800ff;">
+                <span style="font-size: clamp(1.1rem, 2vw, 1.5rem); color: #c800ff; font-weight: 700; white-space: nowrap; min-width: 90px; text-shadow: 0 0 10px rgba(200,0,255,0.5);">2026.02</span>
+                <p style="margin: 0; font-weight: 700; white-space: nowrap; font-size: clamp(1.1rem, 2.2vw, 1.5rem);">
+                    <span style="color: #c800ff; text-shadow: 0 0 8px rgba(200,0,255,0.4);">Claude Opus 4.6</span> + <span style="color: #00c8ff; text-shadow: 0 0 8px rgba(0,200,255,0.4);">OpenClaw</span> — 누구나 AI를 쓰는 시대
+                </p>
+            </div>
+            <div class="reveal reveal-delay-6" style="display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.5rem); background: linear-gradient(90deg, rgba(255,50,50,0.08), rgba(200,0,255,0.08)); border-left: 3px solid #ff3232; border-radius: 0 8px 8px 0;">
+                <span style="font-size: clamp(1rem, 1.8vw, 1.3rem); color: #ff3232; font-weight: 700; white-space: nowrap; min-width: 90px;">2026.04</span>
+                <p style="margin: 0; font-weight: 600; white-space: nowrap;">
+                    <span style="color: #ff3232;">Claude Mythos</span> — AI가 제로데이 취약점을 스스로 찾아내는 시대
+                </p>
+            </div>
+        </div>
+        <p class="reveal reveal-delay-7" style="color: rgba(224,232,255,0.5); margin-top: var(--content-gap);">
+            고도화 주기는 짧아지고, <span class="glow-cyan">AI는 모두의 도구</span>가 되었다
+        </p>
+    </div>
+    <span class="slide-number">08</span>
+</section>
+
+<!-- ============================
+     SLIDE 9: 10,000 HOURS BROKEN
+     ============================ -->
+<section class="slide neon-cyber" data-theme="cyber">
+    <div class="grid-bg"></div>
+    <div class="slide-content centered" style="z-index: 1;">
+        <span class="tag cyber reveal">PARADIGM SHIFT</span>
+        <h2 class="reveal reveal-delay-1" style="font-size: var(--h2-size); font-weight: 700; margin-top: var(--element-gap);">
+            <span class="glow-cyan">10,000</span>시간이<br>
+            필요 없는 세상
+        </h2>
+        <p class="reveal reveal-delay-2" style="font-size: var(--body-size); color: rgba(224, 232, 255, 0.5); margin-top: var(--content-gap);">
+            경험의 법칙이 깨졌다
+        </p>
+    </div>
+    <span class="slide-number">09</span>
+</section>
+
+<!-- ============================
+     SLIDE 10: COMPARISON TABLE
+     ============================ -->
+<section class="slide neon-cyber" data-theme="cyber">
+    <div class="grid-bg"></div>
+    <div class="slide-content centered" style="z-index: 1;">
+        <h2 class="reveal" style="margin-bottom: var(--content-gap);">
+            <span style="color: rgba(255, 255, 255, 0.4);">경험의 시대</span>
+            <span style="color: rgba(255,255,255,0.3);"> vs </span>
+            <span class="glow-cyan">AI의 시대</span>
+        </h2>
+        <div class="comparison-table reveal reveal-delay-1">
+            <div class="col-header past">과거</div>
+            <div class="col-header future">현재</div>
+
+            <div class="row past">의사 10년 수련 → 진단 능력</div>
+            <div class="row future">AI가 논문 수백만 편 학습 → <span class="glow-cyan">즉시 진단</span></div>
+
+            <div class="row past">보안전문가 20년 경력 → 취약점 발견</div>
+            <div class="row future">Mythos가 수천 개 제로데이를 <span class="glow-magenta">며칠 만에</span> 발견</div>
+
+            <div class="row past">트레이더 10년 감각 → 시장 판단</div>
+            <div class="row future">AI가 수십 년 데이터를 <span class="glow-cyan">초 단위로</span> 분석</div>
+
+            <div class="row past">프로그래머 10년 코딩 → 숙련</div>
+            <div class="row future">AI가 수십억 줄 코드를 학습하고 <span class="glow-cyan">즉시 생성</span></div>
+        </div>
+    </div>
+    <span class="slide-number">10</span>
+</section>
+
+<!-- ============================
+     SLIDE 11: THE QUESTION
+     ============================ -->
+<section class="slide neon-cyber" data-theme="cyber">
+    <div class="grid-bg"></div>
+    <div class="slide-content centered" style="z-index: 1;">
+        <p class="big-question reveal" style="color: #e0e8ff; font-weight: 700; line-height: 1.5; text-align: center;">
+            경험이 더 이상 무기가 아닌 세상에서,<br>
+            <span class="glow-cyan">인간의 가치는 어디에 있는가?</span>
+        </p>
+    </div>
+    <span class="slide-number">11</span>
+</section>
+
+<!-- ============================
+     SLIDE 12: 인간의 가치 (답변)
+     ============================ -->
+<section class="slide neon-cyber" data-theme="cyber">
+    <div class="grid-bg"></div>
+    <div class="slide-content centered" style="z-index: 1;">
+        <h2 class="reveal" style="font-size: var(--h2-size); font-weight: 700;">
+            인간의 가치는<br><span class="glow-cyan">AI를 쓰는 능력</span>에 있다
+        </h2>
+        <div style="margin-top: var(--content-gap); display: flex; flex-direction: column; gap: clamp(0.6rem, 1.5vw, 1rem); max-width: 800px;">
+            <div class="reveal reveal-delay-1" style="display: flex; align-items: center; gap: clamp(0.8rem, 1.5vw, 1.2rem); padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.5rem); background: rgba(0,200,255,0.06); border-left: 3px solid rgba(0,200,255,0.4); border-radius: 0 8px 8px 0;">
+                <span style="font-size: clamp(1.5rem, 3vw, 2rem);">🎯</span>
+                <p style="margin: 0; font-size: var(--body-size); color: #e0e8ff;">
+                    <span class="glow-cyan" style="font-weight: 700;">문제를 정의</span>하는 것은 여전히 인간의 몫
+                </p>
+            </div>
+            <div class="reveal reveal-delay-2" style="display: flex; align-items: center; gap: clamp(0.8rem, 1.5vw, 1.2rem); padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.5rem); background: rgba(200,0,255,0.06); border-left: 3px solid rgba(200,0,255,0.4); border-radius: 0 8px 8px 0;">
+                <span style="font-size: clamp(1.5rem, 3vw, 2rem);">🤝</span>
+                <p style="margin: 0; font-size: var(--body-size); color: #e0e8ff;">
+                    AI와 <span class="glow-magenta" style="font-weight: 700;">협업하는 방법</span>을 아는 사람이 이긴다
+                </p>
+            </div>
+            <div class="reveal reveal-delay-3" style="display: flex; align-items: center; gap: clamp(0.8rem, 1.5vw, 1.2rem); padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.5rem); background: rgba(0,200,255,0.06); border-left: 3px solid rgba(0,200,255,0.4); border-radius: 0 8px 8px 0;">
+                <span style="font-size: clamp(1.5rem, 3vw, 2rem);">⚡</span>
+                <p style="margin: 0; font-size: var(--body-size); color: #e0e8ff;">
+                    경험 10년 vs <span class="glow-cyan" style="font-weight: 700;">AI + 실행력</span> — 후자가 빠르다
+                </p>
+            </div>
+        </div>
+        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: rgba(224,232,255,0.5); margin-top: var(--content-gap);">
+            AI 시대의 경쟁력은 <span class="glow-cyan">도구를 쓰는 인간</span>에게 있다
+        </p>
+    </div>
+    <span class="slide-number">12</span>
+</section>
+
+<!-- ============================
+     SLIDE 13: AI는 아직 미완성
+     ============================ -->
+<section class="slide neon-cyber" data-theme="cyber">
+    <div class="grid-bg"></div>
+    <div class="slide-content centered" style="z-index: 1;">
+        <span class="tag cyber reveal">2026 — NOW</span>
+        <h2 class="reveal reveal-delay-1" style="font-size: var(--h2-size); font-weight: 700; margin-top: var(--element-gap);">
+            하지만, AI는 아직<br><span class="glow-magenta">미완성</span>이다
+        </h2>
+        <div style="margin-top: var(--content-gap); max-width: 700px; text-align: center;" class="reveal reveal-delay-2">
+            <p style="font-size: var(--body-size); color: rgba(224,232,255,0.7); line-height: 2; margin: 0;">
+                환각(Hallucination)은 여전하고<br>
+                판단의 책임은 인간에게 있으며<br>
+                AI는 아직 <span class="glow-cyan">인간의 도구</span>로 작동한다
+            </p>
+        </div>
+    </div>
+    <span class="slide-number">13</span>
+</section>
+
+<!-- ============================
+     SLIDE 14: 생태계 전환기
+     ============================ -->
+<section class="slide neon-cyber" data-theme="cyber">
+    <div class="grid-bg"></div>
+    <div class="slide-content centered" style="z-index: 1;">
+        <h2 class="reveal" style="font-size: var(--h2-size); font-weight: 700;">
+            지금은 <span class="glow-cyan">생태계가 전환</span>되는 순간
+        </h2>
+        <div class="timeline-row" style="display: flex; gap: clamp(2rem, 5vw, 5rem); margin-top: var(--content-gap); justify-content: center;">
+            <div class="reveal reveal-delay-1" style="text-align: center;">
+                <div style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem;">🌊</div>
+                <p style="color: rgba(224,232,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.4rem;">과거</p>
+                <p style="color: #e0e8ff; margin: 0; font-weight: 600; white-space: nowrap;">경험 = 경쟁력</p>
+            </div>
+            <div class="reveal reveal-delay-2" style="text-align: center;">
+                <div style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem;">⚡</div>
+                <p style="color: #00c8ff; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.4rem;">현재</p>
+                <p style="color: #e0e8ff; margin: 0; font-weight: 600; white-space: nowrap;">AI + 인간 = 기회</p>
+            </div>
+            <div class="reveal reveal-delay-3" style="text-align: center;">
+                <div style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem;">🔮</div>
+                <p style="color: rgba(200,0,255,0.7); text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.4rem;">미래</p>
+                <p style="color: #e0e8ff; margin: 0; font-weight: 600; white-space: nowrap;">AI = 자율 에이전트</p>
+            </div>
+        </div>
+        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: rgba(224,232,255,0.5); margin-top: var(--content-gap);">
+            도구로서의 AI를 활용할 수 있는 <span class="glow-cyan">지금이 기회</span>다
+        </p>
+    </div>
+    <span class="slide-number">14</span>
+</section>
+
+<!-- ============================
+     SLIDE 15: 1차 해커톤
+     ============================ -->
+<section class="slide neon-cyber" data-theme="cyber">
+    <div class="grid-bg"></div>
+    <div class="slide-content centered" style="z-index: 1;">
+        <span class="tag cyber reveal">PHASE 1</span>
+        <h2 class="reveal reveal-delay-1" style="font-size: var(--h2-size); font-weight: 700; margin-top: var(--element-gap);">
+            1차 AI Hackathon
+        </h2>
+        <p class="reveal reveal-delay-1" style="font-size: var(--body-size); color: rgba(224,232,255,0.5); margin-top: 0.3rem;">
+            AI를 도구로 활용하여 실무에 즉시 적용 가능한 아이템 발굴
+        </p>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: clamp(0.5rem, 1.2vw, 1rem); margin-top: var(--content-gap); max-width: 650px; width: 100%;">
+            <div class="reveal reveal-delay-2" style="display: flex; align-items: center; justify-content: center; gap: clamp(0.5rem, 1.5vw, 1rem); padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem); background: rgba(0,200,255,0.06); border: 1px solid rgba(0,200,255,0.15); border-radius: 8px; width: 100%;">
+                <span style="font-size: clamp(1.2rem, 2vw, 1.6rem);">💼</span>
+                <div style="text-align: center;">
+                    <p style="font-size: var(--body-size); font-weight: 600; color: #e0e8ff; margin: 0;">현재 업무 관련 아이템</p>
+                    <p style="font-size: var(--small-size); color: rgba(224,232,255,0.5); margin: 0.2rem 0 0;">기존 워크플로우를 AI로 혁신</p>
+                </div>
+            </div>
+            <div class="reveal reveal-delay-3" style="display: flex; align-items: center; justify-content: center; gap: clamp(0.5rem, 1.5vw, 1rem); padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem); background: rgba(0,200,255,0.06); border: 1px solid rgba(0,200,255,0.15); border-radius: 8px; width: 100%;">
+                <span style="font-size: clamp(1.2rem, 2vw, 1.6rem);">🔧</span>
+                <div style="text-align: center;">
+                    <p style="font-size: var(--body-size); font-weight: 600; color: #e0e8ff; margin: 0;">솔루션 연관 아이템</p>
+                    <p style="font-size: var(--small-size); color: rgba(224,232,255,0.5); margin: 0.2rem 0 0;">자사 솔루션과 AI의 결합</p>
+                </div>
+            </div>
+            <div class="reveal reveal-delay-4" style="display: flex; align-items: center; justify-content: center; gap: clamp(0.5rem, 1.5vw, 1rem); padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem); background: rgba(200,0,255,0.06); border: 1px solid rgba(200,0,255,0.15); border-radius: 8px; width: 100%;">
+                <span style="font-size: clamp(1.2rem, 2vw, 1.6rem);">📺</span>
+                <div style="text-align: center;">
+                    <p style="font-size: var(--body-size); font-weight: 600; color: #e0e8ff; margin: 0;">IPTV 활용 아이템</p>
+                    <p style="font-size: var(--small-size); color: rgba(224,232,255,0.5); margin: 0.2rem 0 0;">IPTV 서비스에 AI를 접목</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">15</span>
+</section>
+
+<!-- ============================
+     SLIDE 16: 2차 해커톤
+     ============================ -->
+<section class="slide neon-cyber" data-theme="cyber">
+    <div class="grid-bg"></div>
+    <div class="slide-content centered" style="z-index: 1;">
+        <span class="tag cyber reveal" style="background: rgba(200,0,255,0.1); border-color: rgba(200,0,255,0.3); color: #c800ff;">PHASE 2</span>
+        <h2 class="reveal reveal-delay-1" style="font-size: var(--h2-size); font-weight: 700; margin-top: var(--element-gap);">
+            2차 AI Hackathon
+        </h2>
+        <p class="reveal reveal-delay-1" style="font-size: var(--body-size); color: rgba(224,232,255,0.5); margin-top: 0.3rem;">
+            1차의 성과를 바탕으로, 더 발전된 AI와 함께
+        </p>
+        <div style="margin-top: var(--content-gap); max-width: 900px; width: 90%;" class="reveal reveal-delay-2">
+            <div style="display: flex; align-items: center; justify-content: center; gap: clamp(0.5rem, 1.5vw, 1rem); padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(2rem, 4vw, 3rem); background: linear-gradient(135deg, rgba(0,200,255,0.08), rgba(200,0,255,0.08)); border: 1px solid rgba(200,0,255,0.2); border-radius: 12px;">
+                <span style="font-size: clamp(1.5rem, 2.5vw, 2rem);">🚀</span>
+                <div style="text-align: center;">
+                    <p style="font-size: var(--body-size); font-weight: 600; color: #e0e8ff; margin: 0;">
+                        <span class="glow-magenta">신규 사업 아이템</span> 발굴
+                    </p>
+                    <p style="font-size: var(--small-size); color: rgba(224,232,255,0.5); margin: 0.3rem 0 0; line-height: 1.6; white-space: nowrap;">
+                        AI의 진화에 맞춰 기존 경계를 넘는 새로운 비즈니스 모델 창출
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; gap: clamp(1rem, 3vw, 2rem); margin-top: var(--content-gap); align-items: center;" class="reveal reveal-delay-3">
+            <div style="text-align: center;">
+                <p style="font-size: var(--small-size); color: rgba(224,232,255,0.4); margin: 0;">1차</p>
+                <p style="font-size: var(--body-size); color: #00c8ff; margin: 0.2rem 0 0;">실무 적용</p>
+            </div>
+            <span style="color: rgba(224,232,255,0.3); font-size: var(--body-size);">→</span>
+            <div style="text-align: center;">
+                <p style="font-size: var(--small-size); color: rgba(224,232,255,0.4); margin: 0;">2차</p>
+                <p style="font-size: var(--body-size); color: #c800ff; margin: 0.2rem 0 0;">사업 확장</p>
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">16</span>
+</section>
+
+<!-- Keyboard Hint -->
+<div class="keyboard-hint">↑↓ / SCROLL / SWIPE TO NAVIGATE</div>
+
+<script>
+/* ============================================
+   PRESENTATION CONTROLLER
+   ============================================ */
+class PresentationController {
+    constructor() {
+        this.slides = document.querySelectorAll('.slide');
+        this.currentSlide = 0;
+        this.isScrolling = false;
+        this.touchStartY = 0;
+
+        this.buildNavDots();
+        this.setupObservers();
+        this.setupKeyboard();
+        this.setupWheel();
+        this.setupTouch();
+        this.updateProgress();
+    }
+
+    buildNavDots() {
+        const nav = document.getElementById('navDots');
+        this.slides.forEach((slide, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'nav-dot' + (slide.dataset.theme === 'paper' ? ' paper' : '');
+            dot.setAttribute('aria-label', `Slide ${i + 1}`);
+            dot.addEventListener('click', () => this.goTo(i));
+            nav.appendChild(dot);
+        });
+        this.dots = nav.querySelectorAll('.nav-dot');
+        this.dots[0]?.classList.add('active');
+    }
+
+    setupObservers() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const idx = [...this.slides].indexOf(entry.target);
+                    this.currentSlide = idx;
+                    this.updateDots();
+                    this.updateProgress();
+
+                    /* Reveal animations */
+                    entry.target.querySelectorAll('.reveal').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        this.slides.forEach(slide => observer.observe(slide));
+    }
+
+    setupKeyboard() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+                e.preventDefault();
+                this.next();
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                e.preventDefault();
+                this.prev();
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                this.goTo(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                this.goTo(this.slides.length - 1);
+            }
+        });
+    }
+
+    setupWheel() {
+        let lastWheel = 0;
+        document.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const now = Date.now();
+            if (now - lastWheel < 800) return;
+            lastWheel = now;
+            if (e.deltaY > 0) this.next();
+            else this.prev();
+        }, { passive: false });
+    }
+
+    setupTouch() {
+        document.addEventListener('touchstart', (e) => {
+            this.touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (e) => {
+            const diff = this.touchStartY - e.changedTouches[0].clientY;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) this.next();
+                else this.prev();
+            }
+        }, { passive: true });
+    }
+
+    goTo(idx) {
+        if (idx >= 0 && idx < this.slides.length) {
+            this.slides[idx].scrollIntoView({ behavior: 'smooth' });
+            this.currentSlide = idx;
+            this.updateDots();
+            this.updateProgress();
+        }
+    }
+
+    next() { this.goTo(this.currentSlide + 1); }
+    prev() { this.goTo(this.currentSlide - 1); }
+
+    updateDots() {
+        this.dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === this.currentSlide);
+        });
+    }
+
+    updateProgress() {
+        const progress = ((this.currentSlide + 1) / this.slides.length) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+    }
+}
+
+/* Init */
+document.addEventListener('DOMContentLoaded', () => {
+    new PresentationController();
+});
+</script>
+
+</body>
+</html>
