@@ -257,16 +257,32 @@ html {
 
 /* Transition slide */
 .transition-slide {
-    background: linear-gradient(135deg, #faf6f0 0%, #0a0e27 100%);
+    background: linear-gradient(135deg, #faf6f0 0%, #2a2a3a 100%);
     color: #ffffff;
     font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
 }
 
-/* Neon Cyber (slides 5+) */
+/* Neon Cyber - Gradual transition */
 .neon-cyber {
     background: #0a0e27;
     color: #e0e8ff;
     font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif;
+}
+.neon-cyber.phase-1 {
+    background: #2a2a3a;
+}
+.neon-cyber.phase-1::before {
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(0, 200, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(200, 0, 255, 0.02) 0%, transparent 50%) !important;
+}
+.neon-cyber.phase-2 {
+    background: #1a1e35;
+}
+.neon-cyber.phase-2::before {
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(0, 200, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(200, 0, 255, 0.03) 0%, transparent 50%) !important;
 }
 .neon-cyber::before {
     content: '';
@@ -589,7 +605,7 @@ html {
 <!-- ============================
      SLIDE 8: AI의 진화
      ============================ -->
-<section class="slide neon-cyber" data-theme="cyber">
+<section class="slide neon-cyber phase-1" data-theme="cyber">
     <div class="grid-bg"></div>
     <div class="slide-content centered" style="z-index: 1;">
         <h2 class="reveal" style="font-weight: 700;">
@@ -649,7 +665,7 @@ html {
 <!-- ============================
      SLIDE 9: 10,000 HOURS BROKEN
      ============================ -->
-<section class="slide neon-cyber" data-theme="cyber">
+<section class="slide neon-cyber phase-1" data-theme="cyber">
     <div class="grid-bg"></div>
     <div class="slide-content centered" style="z-index: 1;">
         <span class="tag cyber reveal">PARADIGM SHIFT</span>
@@ -667,7 +683,7 @@ html {
 <!-- ============================
      SLIDE 10: COMPARISON TABLE
      ============================ -->
-<section class="slide neon-cyber" data-theme="cyber">
+<section class="slide neon-cyber phase-2" data-theme="cyber">
     <div class="grid-bg"></div>
     <div class="slide-content centered" style="z-index: 1;">
         <h2 class="reveal" style="margin-bottom: var(--content-gap);">
@@ -698,7 +714,7 @@ html {
 <!-- ============================
      SLIDE 11: THE QUESTION
      ============================ -->
-<section class="slide neon-cyber" data-theme="cyber">
+<section class="slide neon-cyber phase-2" data-theme="cyber">
     <div class="grid-bg"></div>
     <div class="slide-content centered" style="z-index: 1;">
         <p class="big-question reveal" style="color: #e0e8ff; font-weight: 700; line-height: 1.5; text-align: center;">
