@@ -1000,6 +1000,60 @@ html {
     <span class="slide-number">18</span>
 </section>
 
+<!-- ============================
+     SLIDE 19: 하네스 셋팅 예시
+     ============================ -->
+<section class="slide neon-cyber" data-theme="cyber">
+    <div class="grid-bg"></div>
+    <div class="slide-content centered" style="z-index: 1;">
+        <span class="tag cyber reveal">SETUP EXAMPLE</span>
+        <h2 class="reveal reveal-delay-1" style="font-weight: 700; margin-top: var(--element-gap);">
+            실제 셋팅은 이렇게
+        </h2>
+        <div style="margin-top: var(--content-gap); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.6rem, 1.5vw, 1rem); max-width: 1100px; width: 95%;">
+            <!-- CLAUDE.md -->
+            <div class="reveal reveal-delay-2" style="background: rgba(0,200,255,0.04); border: 1px solid rgba(0,200,255,0.15); border-radius: 8px; padding: clamp(0.8rem, 1.5vw, 1.2rem); overflow: hidden;">
+                <p style="margin: 0 0 0.4rem; font-weight: 700; font-size: clamp(0.8rem, 1.5vw, 1.1rem); color: #00c8ff;">📄 CLAUDE.md</p>
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.6rem, 1.1vw, 0.85rem); color: rgba(224,232,255,0.7); line-height: 1.5; background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 4px; overflow-x: auto;"><code># 프로젝트 규칙
+- 언어: TypeScript
+- 테스트: 80% 커버리지 필수
+- 커밋: conventional commits
+- 보안: API키 하드코딩 금지</code></pre>
+            </div>
+            <!-- Hooks -->
+            <div class="reveal reveal-delay-3" style="background: rgba(200,0,255,0.04); border: 1px solid rgba(200,0,255,0.15); border-radius: 8px; padding: clamp(0.8rem, 1.5vw, 1.2rem); overflow: hidden;">
+                <p style="margin: 0 0 0.4rem; font-weight: 700; font-size: clamp(0.8rem, 1.5vw, 1.1rem); color: #c800ff;">⚡ Hooks (settings.json)</p>
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.6rem, 1.1vw, 0.85rem); color: rgba(224,232,255,0.7); line-height: 1.5; background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 4px; overflow-x: auto;"><code>"PostToolUse": [{
+  "matcher": "Write|Edit",
+  "command": "eslint --fix $FILE"
+}]
+→ 코드 수정마다 자동 린트</code></pre>
+            </div>
+            <!-- Agents -->
+            <div class="reveal reveal-delay-4" style="background: rgba(0,200,255,0.04); border: 1px solid rgba(0,200,255,0.15); border-radius: 8px; padding: clamp(0.8rem, 1.5vw, 1.2rem); overflow: hidden;">
+                <p style="margin: 0 0 0.4rem; font-weight: 700; font-size: clamp(0.8rem, 1.5vw, 1.1rem); color: #00c8ff;">🤖 Agents (병렬 실행)</p>
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.6rem, 1.1vw, 0.85rem); color: rgba(224,232,255,0.7); line-height: 1.5; background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 4px; overflow-x: auto;"><code>Agent 1: code-reviewer
+Agent 2: security-reviewer
+Agent 3: tdd-guide
+→ 3개가 동시에 코드 검증</code></pre>
+            </div>
+            <!-- Memory -->
+            <div class="reveal reveal-delay-5" style="background: rgba(200,0,255,0.04); border: 1px solid rgba(200,0,255,0.15); border-radius: 8px; padding: clamp(0.8rem, 1.5vw, 1.2rem); overflow: hidden;">
+                <p style="margin: 0 0 0.4rem; font-weight: 700; font-size: clamp(0.8rem, 1.5vw, 1.1rem); color: #c800ff;">🧠 Memory</p>
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.6rem, 1.1vw, 0.85rem); color: rgba(224,232,255,0.7); line-height: 1.5; background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 4px; overflow-x: auto;"><code>memory/
+├── user_role.md
+├── feedback_testing.md
+└── project_goals.md
+→ 세션이 바뀌어도 기억 유지</code></pre>
+            </div>
+        </div>
+        <p class="reveal reveal-delay-6" style="font-size: var(--body-size); color: rgba(224,232,255,0.5); margin-top: var(--content-gap);">
+            이 4가지만 셋팅하면, AI가 <span class="glow-cyan">팀원처럼</span> 일한다
+        </p>
+    </div>
+    <span class="slide-number">19</span>
+</section>
+
 <!-- Keyboard Hint -->
 <div class="keyboard-hint">↑↓ / SCROLL / SWIPE TO NAVIGATE</div>
 
