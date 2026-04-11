@@ -152,11 +152,19 @@ html {
         font-size: clamp(0.9rem, 3.5vw, 1.3rem) !important;
     }
 
-    /* 슬라이드 14/15 카드 모바일 */
+    /* 슬라이드 카드 모바일: nowrap 해제 + 폭 조정 */
     .neon-cyber [style*="max-width: 650px"],
     .neon-cyber [style*="max-width: 900px"] {
-        max-width: 95vw !important;
-        width: 95vw !important;
+        max-width: 92vw !important;
+        width: 92vw !important;
+    }
+    .neon-cyber [style*="white-space: nowrap"] {
+        white-space: normal !important;
+    }
+    .neon-cyber [style*="max-width: 900px"] p,
+    .neon-cyber [style*="max-width: 650px"] p {
+        white-space: normal !important;
+        word-break: keep-all !important;
     }
 
     /* nav dots 숨김 (모바일 스와이프 사용) */
