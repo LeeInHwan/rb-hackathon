@@ -1157,6 +1157,61 @@ Agent 3: tdd-guide
     <span class="slide-number">21</span>
 </section>
 
+<!-- ============================
+     SLIDE 22: ECC 실제 사용 예시
+     ============================ -->
+<section class="slide neon-cyber" data-theme="cyber">
+    <div class="grid-bg"></div>
+    <div class="slide-content centered" style="z-index: 1;">
+        <span class="tag cyber reveal">LIVE DEMO</span>
+        <h2 class="reveal reveal-delay-1" style="font-weight: 700; margin-top: var(--element-gap);">
+            ECC 실제 사용 예시
+        </h2>
+        <div style="margin-top: var(--content-gap); display: flex; flex-direction: column; gap: clamp(0.5rem, 1.2vw, 0.8rem); max-width: 1000px; width: 95%;">
+            <!-- /plan -->
+            <div class="reveal reveal-delay-2" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(0,200,255,0.15); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);">
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.3rem;">
+                    <span style="font-size: var(--small-size); color: #00c8ff; font-weight: 700; font-family: 'Space Grotesk', monospace;">/plan</span>
+                    <span style="font-size: clamp(0.6rem, 1vw, 0.75rem); color: rgba(224,232,255,0.35);">기능 구현 전 설계</span>
+                </div>
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.65rem, 1.1vw, 0.85rem); color: rgba(224,232,255,0.7); line-height: 1.5; background: none;"><code><span style="color: rgba(224,232,255,0.4);">you:</span> /plan 로그인 기능에 OAuth 소셜 로그인 추가
+<span style="color: #00c8ff;">AI:</span>  → PRD 작성 → 아키텍처 설계 → 태스크 분해 → 구현 순서 제안</code></pre>
+            </div>
+            <!-- /tdd -->
+            <div class="reveal reveal-delay-3" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(200,0,255,0.15); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);">
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.3rem;">
+                    <span style="font-size: var(--small-size); color: #c800ff; font-weight: 700; font-family: 'Space Grotesk', monospace;">/tdd</span>
+                    <span style="font-size: clamp(0.6rem, 1vw, 0.75rem); color: rgba(224,232,255,0.35);">테스트 먼저 작성</span>
+                </div>
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.65rem, 1.1vw, 0.85rem); color: rgba(224,232,255,0.7); line-height: 1.5; background: none;"><code><span style="color: rgba(224,232,255,0.4);">you:</span> /tdd 결제 금액 계산 함수
+<span style="color: #c800ff;">AI:</span>  → 테스트 작성(RED) → 구현(GREEN) → 리팩토링 → 커버리지 80%+ 확인</code></pre>
+            </div>
+            <!-- /security-scan -->
+            <div class="reveal reveal-delay-4" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(0,200,255,0.15); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);">
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.3rem;">
+                    <span style="font-size: var(--small-size); color: #00c8ff; font-weight: 700; font-family: 'Space Grotesk', monospace;">/security-scan</span>
+                    <span style="font-size: clamp(0.6rem, 1vw, 0.75rem); color: rgba(224,232,255,0.35);">보안 취약점 점검</span>
+                </div>
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.65rem, 1.1vw, 0.85rem); color: rgba(224,232,255,0.7); line-height: 1.5; background: none;"><code><span style="color: rgba(224,232,255,0.4);">you:</span> /security-scan
+<span style="color: #00c8ff;">AI:</span>  → OWASP Top 10 점검 → SQL 인젝션 탐지 → API키 노출 확인 → 리포트</code></pre>
+            </div>
+            <!-- /code-review -->
+            <div class="reveal reveal-delay-5" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(200,0,255,0.15); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);">
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.3rem;">
+                    <span style="font-size: var(--small-size); color: #c800ff; font-weight: 700; font-family: 'Space Grotesk', monospace;">/review-pr</span>
+                    <span style="font-size: clamp(0.6rem, 1vw, 0.75rem); color: rgba(224,232,255,0.35);">PR 코드 리뷰</span>
+                </div>
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.65rem, 1.1vw, 0.85rem); color: rgba(224,232,255,0.7); line-height: 1.5; background: none;"><code><span style="color: rgba(224,232,255,0.4);">you:</span> /review-pr 42
+<span style="color: #c800ff;">AI:</span>  → diff 분석 → 버그 탐지 → 성능 이슈 → 개선안 제시 → 승인/반려</code></pre>
+            </div>
+        </div>
+        <p class="reveal reveal-delay-6" style="font-size: var(--body-size); color: rgba(224,232,255,0.4); margin-top: var(--content-gap);">
+            슬래시 명령 하나로, <span class="glow-cyan">시니어 개발자 수준</span>의 워크플로우 실행
+        </p>
+    </div>
+    <span class="slide-number">22</span>
+</section>
+
 <!-- Keyboard Hint -->
 <div class="keyboard-hint">↑↓ / SCROLL / SWIPE TO NAVIGATE</div>
 
