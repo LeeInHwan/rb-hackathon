@@ -178,6 +178,7 @@ p, li {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
+  align-items: stretch;
   align-items: start;
 }
 .grid-3 {
@@ -1307,8 +1308,8 @@ p, li {
       </p>
 
       <div class="grid-2">
-        <div>
-          <div class="card" style="padding:1.8rem;">
+        <div style="display:flex;">
+          <div class="card" style="padding:1.8rem; flex:1;">
             <h3 style="color:var(--gold); margin-bottom:1rem;">&#9201; 시간이 곧 실력</h3>
             <ul style="list-style:none; padding:0; line-height:2;">
               <li><strong>10,000시간의 법칙</strong> &mdash; 말콤 글래드웰</li>
@@ -1318,8 +1319,8 @@ p, li {
             </ul>
           </div>
         </div>
-        <div>
-          <div class="card" style="padding:1.8rem;">
+        <div style="display:flex;">
+          <div class="card" style="padding:1.8rem; flex:1;">
             <h3 style="color:var(--gold); margin-bottom:1rem;">&#128202; 경험 경제의 공식</h3>
             <div class="kpi-card gold" style="margin-bottom:1rem;">
               <p class="kpi-label">전문가 양성 기간</p>
