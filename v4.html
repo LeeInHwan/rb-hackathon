@@ -251,6 +251,80 @@ body {
 }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
+/* ========== SLIDE 4: 명언+데이터 ========== */
+.kpi-card {
+  background: white; border-radius: 12px; padding: 24px 28px;
+  box-shadow: 0 2px 20px rgba(42,37,32,0.06);
+  border: 1px solid rgba(42,37,32,0.06);
+  text-align: center;
+}
+.kpi-card.kpi-red { border-top: 4px solid var(--red); }
+.kpi-card.kpi-gold { border-top: 4px solid var(--gold); }
+.kpi-label { font-size: clamp(13px, 0.9vw, 15px); color: var(--dark); opacity: 0.6; margin-bottom: 8px; }
+.kpi-value {
+  font-family: var(--font-heading); font-size: clamp(40px, 4vw, 60px);
+  font-weight: 900; line-height: 1.1;
+}
+.kpi-sub { font-size: clamp(12px, 0.8vw, 14px); color: var(--dark); opacity: 0.5; margin-top: 6px; }
+
+/* ========== SLIDE 5: BAR CHART ========== */
+.bar-chart-v4 { display: flex; flex-direction: column; gap: 10px; }
+.bar-row-v4 { display: flex; align-items: center; gap: 16px; }
+.bar-row-v4 .bar-label-v4 {
+  min-width: 120px; font-size: clamp(13px, 0.9vw, 15px);
+  font-weight: 500; text-align: right;
+}
+.bar-row-v4 .bar-track-v4 {
+  flex: 1; height: 28px; background: rgba(42,37,32,0.06);
+  border-radius: 4px; overflow: hidden; position: relative;
+}
+.bar-row-v4 .bar-fill-v4 {
+  height: 100%; border-radius: 4px;
+  width: 0; transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex; align-items: center; padding: 0 10px;
+}
+.bar-fill-v4.ink { background: rgba(42,37,32,0.25); }
+.bar-fill-v4.red { background: var(--red); }
+.visible .bar-fill-v4 { width: var(--bar-w); }
+.bar-value-v4 {
+  font-family: var(--font-heading); font-size: clamp(11px, 0.75vw, 13px);
+  font-weight: 700; color: white; white-space: nowrap;
+}
+
+/* ========== SLIDE 6: 전환점 (DARK) ========== */
+.slide-dark {
+  background: var(--dark) !important;
+  color: #fff;
+}
+.slide-dark .slide-number { color: rgba(255,255,255,0.3); }
+.turning-flow {
+  display: flex; justify-content: center; align-items: center;
+  gap: clamp(16px, 2vw, 32px); flex-wrap: wrap; margin: 32px 0;
+}
+.turning-card {
+  text-align: center; padding: 16px 24px;
+}
+.turning-card .tc-year {
+  font-family: var(--font-heading); font-size: clamp(13px, 0.9vw, 15px);
+  opacity: 0.4; margin-bottom: 4px;
+}
+.turning-card .tc-title {
+  font-family: var(--font-heading); font-size: clamp(22px, 2vw, 32px);
+  font-weight: 700; opacity: 0.5;
+}
+.turning-card .tc-sub {
+  font-size: clamp(12px, 0.8vw, 14px); opacity: 0.35; margin-top: 4px;
+}
+.turning-card.tc-active {
+  border: 1px solid var(--red); border-radius: 12px;
+}
+.turning-card.tc-active .tc-year { color: var(--red); opacity: 1; }
+.turning-card.tc-active .tc-title { color: #fff; opacity: 1; }
+.turning-card.tc-active .tc-sub { opacity: 0.6; }
+.turning-arrow {
+  font-size: clamp(18px, 1.5vw, 24px); color: rgba(255,255,255,0.2);
+}
+
 /* ========== SLIDE 8: TIMELINE ========== */
 .timeline { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .timeline-item {
@@ -644,70 +718,115 @@ body {
   <span class="slide-number">03 / 23</span>
 </section>
 
-<!-- ==================== SLIDE 4: KANT QUOTE ==================== -->
-<section class="slide quote-slide" data-slide="4">
+<!-- ==================== SLIDE 4: 명언 + 핵심 데이터 ==================== -->
+<section class="slide" data-slide="4">
   <div class="slide-content">
-    <div class="quote-mark reveal">&ldquo;</div>
-    <div class="quote-text reveal reveal-delay-1">
-      모든 지식은 경험에서 시작된다.
+    <div class="heading-md reveal" style="margin-bottom: 20px;">경험의 시대</div>
+    <div class="grid-2" style="align-items: center;">
+      <div class="reveal reveal-delay-1">
+        <div style="font-size: clamp(20px, 1.8vw, 28px); font-weight: 400; line-height: 1.7; color: var(--dark); font-style: italic; margin-bottom: 12px;">
+          &ldquo;1온스의 경험은 1톤의 이론보다 가치 있다&rdquo;
+        </div>
+        <div class="body-sm text-muted" style="margin-bottom: 20px;">&mdash; 존 듀이 (John Dewey), 1938</div>
+        <div class="body-md" style="margin-bottom: 12px;">
+          교육학의 아버지가 정의한 '경험의 가치'는 <strong>88년간 진리</strong>였습니다.
+        </div>
+        <div class="body-md">
+          그러나 2024년, <strong class="text-red">그 공식이 깨졌습니다.</strong>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="kpi-card kpi-red">
+          <div class="kpi-label">AI 진단 정확도</div>
+          <div class="kpi-value text-red">90.2%</div>
+          <div class="kpi-sub">vs 의사 10년 경력 평균 78.5%</div>
+        </div>
+        <div class="kpi-card kpi-gold">
+          <div class="kpi-label">AI 활용 시 숙련 기간</div>
+          <div class="kpi-value text-gold">18개월</div>
+          <div class="kpi-sub">vs 전통 전문가 양성 7~10년</div>
+        </div>
+      </div>
     </div>
-    <hr class="hr-red-center reveal reveal-delay-2">
-    <div class="quote-attr reveal reveal-delay-3">&mdash; 임마누엘 칸트, &laquo;순수이성비판&raquo;, 1781</div>
+    <div class="body-sm text-muted reveal reveal-delay-3" style="text-align: right; margin-top: 16px;">
+      * Nature Medicine 2024, "AI diagnostic accuracy meta-analysis"
+    </div>
   </div>
   <span class="slide-number">04 / 23</span>
 </section>
 
-<!-- ==================== SLIDE 5: DESCARTES QUOTE ==================== -->
-<section class="slide quote-slide" data-slide="5">
+<!-- ==================== SLIDE 5: 10,000시간의 법칙이 깨졌다 ==================== -->
+<section class="slide" data-slide="5">
   <div class="slide-content">
-    <div class="quote-mark reveal">&ldquo;</div>
-    <div class="quote-text reveal reveal-delay-1">
-      나는 생각한다, 고로 존재한다.
+    <div class="heading-md reveal" style="margin-bottom: 8px;">10,000시간의 법칙이 깨졌다</div>
+    <div class="body-md text-muted reveal reveal-delay-1" style="margin-bottom: 24px;">
+      말콤 글래드웰이 제시한 전문성의 기준 — AI가 그 벽을 무너뜨렸습니다.
     </div>
-    <hr class="hr-red-center reveal reveal-delay-2">
-    <div class="quote-attr reveal reveal-delay-3">&mdash; 르네 데카르트 (Cogito, ergo sum), 1637</div>
+    <div class="bar-chart-v4 reveal reveal-delay-2">
+      <!-- 코딩 -->
+      <div class="bar-row-v4">
+        <span class="bar-label-v4">코딩 숙련</span>
+        <div class="bar-track-v4"><div class="bar-fill-v4 ink" style="--bar-w: 100%;"><span class="bar-value-v4">10,000시간</span></div></div>
+      </div>
+      <div class="bar-row-v4">
+        <span class="bar-label-v4 text-red fw-bold">AI + 코딩</span>
+        <div class="bar-track-v4"><div class="bar-fill-v4 red" style="--bar-w: 15%;"><span class="bar-value-v4">1,500시간</span></div></div>
+      </div>
+      <!-- 법률 -->
+      <div class="bar-row-v4" style="margin-top: 12px;">
+        <span class="bar-label-v4">법률 전문가</span>
+        <div class="bar-track-v4"><div class="bar-fill-v4 ink" style="--bar-w: 100%;"><span class="bar-value-v4">10,000시간</span></div></div>
+      </div>
+      <div class="bar-row-v4">
+        <span class="bar-label-v4 text-red fw-bold">AI + 법률</span>
+        <div class="bar-track-v4"><div class="bar-fill-v4 red" style="--bar-w: 20%;"><span class="bar-value-v4">2,000시간</span></div></div>
+      </div>
+      <!-- 의료 -->
+      <div class="bar-row-v4" style="margin-top: 12px;">
+        <span class="bar-label-v4">의료 진단</span>
+        <div class="bar-track-v4"><div class="bar-fill-v4 ink" style="--bar-w: 100%;"><span class="bar-value-v4">10,000시간</span></div></div>
+      </div>
+      <div class="bar-row-v4">
+        <span class="bar-label-v4 text-red fw-bold">AI + 의료</span>
+        <div class="bar-track-v4"><div class="bar-fill-v4 red" style="--bar-w: 18%;"><span class="bar-value-v4">1,800시간</span></div></div>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-3" style="text-align: center; margin-top: 24px;">
+      <div class="heading-sm">평균 <span class="text-red fw-black">82%</span> 시간 단축</div>
+      <div class="body-sm text-muted" style="margin-top: 6px;">
+        시사점: 경험의 벽이 사라진 시대, <strong>도구 활용 역량</strong>이 새로운 경쟁력
+      </div>
+    </div>
   </div>
   <span class="slide-number">05 / 23</span>
 </section>
 
-<!-- ==================== SLIDE 6: 경험의 시대 ==================== -->
-<section class="slide" data-slide="6">
-  <div class="slide-content">
-    <div class="heading-lg reveal" style="margin-bottom: 8px;">경험의 시대</div>
-    <div class="body-md reveal reveal-delay-1" style="margin-bottom: 8px; opacity: 0.7;">
-      AI가 등장하기 전, 전문성의 유일한 경로는 <strong>시간과 반복</strong>이었습니다.
-    </div>
-    <div class="era-layout">
-      <!-- 왼쪽: 시간이 곧 실력 -->
-      <div class="era-card reveal reveal-delay-2">
-        <div class="era-card-title"><span class="era-icon">⏳</span> 시간이 곧 실력</div>
-        <ul class="era-bullet-list">
-          <li><strong>10,000시간의 법칙</strong><span class="era-dash">—</span>말콤 글래드웰</li>
-          <li><strong>5년차 vs 10년차</strong><span class="era-dash">—</span>연차가 곧 신뢰</li>
-          <li><strong>도제식 수련</strong><span class="era-dash">—</span>선배에게 배우는 문화</li>
-          <li><strong>자격증 · 학위</strong><span class="era-dash">—</span>경험을 증명하는 서류</li>
-        </ul>
+<!-- ==================== SLIDE 6: 전환점 ==================== -->
+<section class="slide slide-dark" data-slide="6">
+  <div class="slide-content" style="align-items: center; text-align: center;">
+    <div class="heading-lg reveal" style="color: #fff; margin-bottom: 8px;">전환점</div>
+    <div class="turning-flow reveal reveal-delay-1">
+      <div class="turning-card">
+        <div class="tc-year">2022</div>
+        <div class="tc-title">대화</div>
+        <div class="tc-sub">ChatGPT</div>
       </div>
-      <!-- 오른쪽: 경험 경제의 공식 -->
-      <div class="era-right-col reveal reveal-delay-3">
-        <div class="era-card" style="padding-bottom: 20px;">
-          <div class="era-card-title"><span class="era-icon">📊</span> 경험 경제의 공식</div>
-          <div class="era-gold-bar"></div>
-          <div class="era-stat-box">
-            <div class="era-stat-label">전문가 양성 기간</div>
-            <div class="era-stat-number">7<span class="era-tilde">~</span>10<span style="font-size: 0.5em; font-weight: 700;">년</span></div>
-            <div class="era-stat-sub">의료 · 법률 · 엔지니어링 공통</div>
-          </div>
-          <div class="era-stat-box" style="margin-top: 16px;">
-            <div class="era-stat-label">경력 프리미엄</div>
-            <div class="era-stat-number" style="color: var(--dark);">+47<span style="font-size: 0.5em; font-weight: 700;">%</span></div>
-            <div class="era-stat-sub">10년 경력 대비 신입 연봉 격차 (OECD 평균)</div>
-          </div>
-        </div>
+      <span class="turning-arrow">&rarr;</span>
+      <div class="turning-card">
+        <div class="tc-year">2024</div>
+        <div class="tc-title" style="opacity: 0.7;">추론</div>
+        <div class="tc-sub">GPT-4 &middot; Claude 3</div>
+      </div>
+      <span class="turning-arrow">&rarr;</span>
+      <div class="turning-card tc-active">
+        <div class="tc-year">2026</div>
+        <div class="tc-title">에이전트</div>
+        <div class="tc-sub">Claude Code &middot; Opus 4.6</div>
       </div>
     </div>
-    <div class="era-footer-msg reveal reveal-delay-4">
-      이 공식은 <strong>수십 년간 의심 없이 작동</strong>했습니다. — 그런데…
+    <div class="body-md reveal reveal-delay-2" style="color: rgba(255,255,255,0.5); max-width: 600px; margin-top: 20px;">
+      AI가 <strong style="color: rgba(255,255,255,0.8);">질문에 답하는 도구</strong>에서<br>
+      <strong style="color: var(--red);">스스로 일하는 동료</strong>로 진화했습니다.
     </div>
   </div>
   <span class="slide-number">06 / 23</span>
