@@ -80,6 +80,18 @@ body {
   z-index: 2;
 }
 
+/* Compact variant for content-heavy slides */
+.slide.slide-compact {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* Dark variant */
+.slide.slide-dark {
+  background: var(--ink);
+  color: #fff;
+}
+
 /* Act labels */
 .act-label {
   font-family: 'Montserrat', sans-serif;
@@ -89,6 +101,9 @@ body {
   text-transform: uppercase;
   color: var(--red);
   margin-bottom: 1.2rem;
+}
+.slide-dark .act-label {
+  color: rgba(255,255,255,0.4);
 }
 
 /* ============================================
@@ -109,6 +124,7 @@ h2 {
   line-height: 1.2;
   color: var(--ink);
   letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
 }
 h3 {
   font-family: 'Montserrat', sans-serif;
@@ -174,11 +190,6 @@ p, li {
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
-.flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .gap-1 { gap: 1rem; }
 .gap-2 { gap: 2rem; }
 .gap-3 { gap: 3rem; }
@@ -209,7 +220,7 @@ p, li {
 .kpi-card {
   background: #fff;
   border: 1px solid var(--rule);
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 2rem;
   text-align: center;
   position: relative;
@@ -496,7 +507,7 @@ p, li {
 .flow-icon {
   width: 56px;
   height: 56px;
-  border-radius: 14px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -598,7 +609,7 @@ p, li {
 .stat-card {
   background: #fff;
   border: 1px solid var(--rule);
-  border-radius: 14px;
+  border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
 }
@@ -692,7 +703,7 @@ p, li {
   padding: 2rem;
   background: #fff;
   border: 1px solid var(--rule);
-  border-radius: 14px;
+  border-radius: 12px;
 }
 .roadmap-connector {
   display: flex;
@@ -873,6 +884,19 @@ p, li {
 .tag-gold { background: var(--gold-soft); color: var(--gold); }
 .tag-green { background: var(--green-soft); color: var(--green); }
 
+/* Highlight boxes (slide bottom callouts) */
+.highlight-box {
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+.highlight-box.red-bg { background: var(--red-soft); }
+.highlight-box.green-bg { background: var(--green-soft); }
+
+/* Dark slide overrides */
+.slide-dark h1 { color: #fff; }
+.slide-dark p { color: rgba(255,255,255,0.6); }
+
 /* Subtle background patterns */
 .bg-pattern {
   position: absolute;
@@ -887,20 +911,29 @@ p, li {
    MOBILE RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
-  .slide { padding: 3rem 5vw; }
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .stat-row { grid-template-columns: 1fr 1fr; }
+  .slide { padding: 2.5rem 5vw; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 1.2rem; }
+  .stat-row { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .nav-dots { display: none; }
-  .flow { flex-wrap: wrap; gap: 0.5rem; }
+
+  /* Flow diagram */
+  .flow { flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
   .flow-arrow { display: none; }
-  .flow-step { min-width: 100px; }
-  .bar-label { min-width: 70px; font-size: var(--caption); }
+  .flow-step { min-width: 80px; flex: 0 0 auto; }
+  .flow-icon { width: 44px; height: 44px; font-size: 1.2rem; border-radius: 10px; }
+
+  /* Bar charts — value outside short bars, inside wide bars */
+  .bar-label {
+    min-width: 60px !important;
+    font-size: var(--caption);
+    flex-shrink: 0;
+  }
   .bar-row { margin-bottom: 0.6rem; position: relative; }
   .bar-track { height: 26px; overflow: visible !important; }
   .bar-fill { overflow: visible !important; padding-right: 0; }
   .bar-fill .bar-value {
     position: absolute;
-    right: -6px;
+    right: -4px;
     transform: translateX(100%);
     color: var(--ink) !important;
     font-size: 0.65rem;
@@ -915,32 +948,149 @@ p, li {
   .bar-fill.ink { justify-content: flex-end; }
   .bar-track.thin { height: 16px; }
   .bar-track.thin .bar-value { font-size: 0.6rem; }
-  .roadmap { grid-template-columns: 1fr; }
+
+  /* Roadmap */
+  .roadmap { grid-template-columns: 1fr; gap: 0; }
   .roadmap-connector {
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     transform: rotate(90deg);
+    font-size: 1.5rem;
   }
-  .maturity { flex-direction: column; gap: 1.5rem; }
+  .roadmap-phase { padding: 1.5rem; }
+
+  /* Maturity model */
+  .maturity { flex-direction: column; gap: 1.2rem; }
   .maturity::before {
     top: 0; bottom: 0; left: 50%; right: auto;
     width: 4px; height: 100%;
     transform: translateX(-50%);
+    background: linear-gradient(to bottom, var(--ink-faint), var(--gold), var(--red));
   }
-  .data-table { font-size: var(--caption); }
-  .data-table th, .data-table td { padding: 0.5rem; }
-  .s-curve-container { height: 240px; padding: 1rem; }
-  h1 { font-size: clamp(2rem, 8vw, 3.5rem); }
-  .big-number { font-size: clamp(2.5rem, 10vw, 5rem); }
-  .kpi-card .kpi-value { font-size: clamp(1.8rem, 6vw, 2.8rem); }
-  .timeline { padding-left: 2.5rem; }
-  .quote { font-size: var(--body); }
+  .maturity-stage { text-align: center; }
+  .maturity-dot { width: 40px; height: 40px; font-size: 1rem; }
+
+  /* Table — scrollable on mobile to prevent horizontal overflow */
+  .data-table { font-size: var(--caption); display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+  .data-table thead, .data-table tbody, .data-table tr { display: table; width: 100%; table-layout: fixed; }
+  .data-table th, .data-table td { padding: 0.5rem 0.4rem; font-size: 0.7rem; white-space: normal; }
+  .data-table .label-col { min-width: 70px; }
+
+  /* S-curve */
+  .s-curve-container { height: 220px; padding: 1rem 0.5rem; }
+
+  /* Typography scaling */
+  h1 { font-size: clamp(1.8rem, 7vw, 3rem); }
+  h2 { font-size: clamp(1.4rem, 5vw, 2.2rem); }
+  h3 { font-size: clamp(1.1rem, 3.5vw, 1.5rem); }
+  .big-number { font-size: clamp(2.2rem, 9vw, 4rem); }
+  .kpi-card .kpi-value { font-size: clamp(1.6rem, 6vw, 2.5rem); }
+  .stat-value { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+
+  /* Timeline */
+  .timeline { padding-left: 2.2rem; }
+  .tl-dot { left: -2.2rem; width: 20px; height: 20px; }
+
+  /* Quote */
+  .quote { font-size: var(--body); padding-left: 1rem; }
+
+  /* Cards */
+  .card { padding: 1.2rem; }
+  .kpi-card { padding: 1.2rem; }
+
+  /* Slide counter */
+  .slide-counter { bottom: 1rem; right: 1rem; font-size: 0.7rem; }
+
+  /* Slide 19 scenario timeline — tighter left padding */
+  #slide-19 [style*="padding-left:60px"] {
+    padding-left: 44px !important;
+  }
+  #slide-19 [style*="left:-48px"] {
+    left: -36px !important;
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 0.6rem !important;
+  }
+
+  /* Donut chart scaling */
+  .donut { width: 100px; height: 100px; }
+  .donut::after { inset: 16px; }
+  .donut .donut-number { font-size: 1.2rem; }
 }
 
 @media (max-width: 480px) {
-  .slide { padding: 2rem 4vw; }
-  .stat-row { grid-template-columns: 1fr; }
-  .card { padding: 1.2rem; }
-  .kpi-card { padding: 1.2rem; }
+  .slide { padding: 1.8rem 4vw; }
+
+  /* Stack stat row fully */
+  .stat-row { grid-template-columns: 1fr; gap: 0.8rem; }
+  .stat-card { padding: 1rem; }
+
+  /* Further typography reduction */
+  h1 { font-size: clamp(1.5rem, 7vw, 2.4rem); }
+  h2 { font-size: clamp(1.2rem, 5vw, 1.8rem); }
+  .big-number { font-size: clamp(2rem, 8vw, 3.5rem); }
+  .kpi-card .kpi-value { font-size: clamp(1.4rem, 5.5vw, 2.2rem); }
+
+  /* Cards tighter */
+  .card { padding: 1rem; }
+  .kpi-card { padding: 1rem; }
+
+  /* Bar label even tighter */
+  .bar-label { min-width: 50px !important; font-size: 0.68rem; }
+
+  /* Table — tighter cells */
+  .data-table th, .data-table td { padding: 0.4rem 0.3rem; font-size: 0.65rem; }
+
+  /* Flow steps even tighter */
+  .flow-step { min-width: 60px; }
+  .flow-icon { width: 38px; height: 38px; font-size: 1rem; border-radius: 8px; }
+  .flow-name { font-size: 0.72rem; }
+  .flow-time { font-size: 0.65rem; }
+
+  /* Slide 19 scenario tags and step layout */
+  #slide-19 .tag { font-size: 0.6rem; padding: 0.15rem 0.4rem; }
+  #slide-19 [style*="justify-content:space-between"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.3rem !important;
+  }
+
+  /* Slide 20 schedule card badges */
+  #slide-20 .card [style*="width:50px"] {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 0.7rem !important;
+  }
+
+  /* Maturity dots */
+  .maturity-dot { width: 36px; height: 36px; font-size: 0.9rem; }
+  .maturity-title { font-size: 0.78rem; }
+  .maturity-desc { font-size: 0.68rem; }
+
+  /* Roadmap phase tighter */
+  .roadmap-phase { padding: 1rem; }
+  .roadmap-connector { padding: 0.5rem 0; font-size: 1.2rem; }
+
+  /* Slide counter */
+  .slide-counter { bottom: 0.8rem; right: 0.8rem; font-size: 0.65rem; }
+
+  /* Prevent horizontal overflow */
+  .slide-inner { overflow-x: hidden; }
+
+  /* Donut chart smaller */
+  .donut { width: 80px; height: 80px; }
+  .donut::after { inset: 14px; }
+  .donut .donut-number { font-size: 1rem; }
+
+  /* Timeline further compact */
+  .timeline { padding-left: 2rem; }
+  .tl-dot { left: -2rem; width: 18px; height: 18px; }
+  .tl-item { padding-bottom: 1.2rem; }
+
+  /* Inline min-width overrides for bar labels with inline styles */
+  .bar-chart .bar-label[style*="min-width"] { min-width: 50px !important; }
+
+  /* S-curve */
+  .s-curve-container { height: 200px; padding: 0.8rem 0.3rem; }
 }
 
 /* Print fallback */
@@ -1126,11 +1276,11 @@ p, li {
 <!-- ============================================
      SLIDE 5: 전환점
      ============================================ -->
-<section class="slide" id="slide-5" style="background:var(--ink); color:#fff;">
+<section class="slide slide-dark" id="slide-5">
   <div class="slide-inner" style="text-align:center;">
     <div class="reveal">
-      <p class="act-label" style="color:rgba(255,255,255,0.4); text-align:center;">Act 2 &mdash; The Turning Point</p>
-      <h1 style="color:#fff; margin-bottom:1.5rem;">
+      <p class="act-label" style="text-align:center;">Act 2 &mdash; The Turning Point</p>
+      <h1>
         <span class="glitch-text" data-text="전환점">전환점</span>
       </h1>
       <p style="font-size:var(--h3); color:rgba(255,255,255,0.6); font-weight:300;">
@@ -1148,7 +1298,7 @@ p, li {
 <!-- ============================================
      SLIDE 6: AI 진화 타임라인
      ============================================ -->
-<section class="slide" id="slide-6">
+<section class="slide slide-compact" id="slide-6">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 2 &mdash; AI Evolution</p>
@@ -1241,7 +1391,7 @@ p, li {
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 2 &mdash; Comparison</p>
-      <h2 style="margin-bottom:1.5rem;">경험의 시대 vs AI의 시대</h2>
+      <h2>경험의 시대 vs AI의 시대</h2>
 
       <table class="data-table">
         <thead>
@@ -1319,7 +1469,7 @@ p, li {
       </p>
       <p style="font-size:var(--body); color:var(--ink-muted); margin-top:1.5rem; max-width:650px; margin-left:auto; margin-right:auto;">
         도메인 전문성 + AI 활용 능력 = <strong>새로운 복합 경쟁력</strong><br>
-        경험은 여전히 가치있지만, AI가 그 경험을 <strong class="text-red">증폭</strong>시킵니다.
+        경험은 여전히 가치 있지만, AI가 그 경험을 <strong class="text-red">증폭</strong>시킵니다.
       </p>
     </div>
   </div>
@@ -1329,7 +1479,7 @@ p, li {
 <!-- ============================================
      SLIDE 9: 지금이 기회다 — S-Curve
      ============================================ -->
-<section class="slide" id="slide-9">
+<section class="slide slide-compact" id="slide-9">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 2 &mdash; Timing</p>
@@ -1350,7 +1500,7 @@ p, li {
 
           <!-- Phase labels -->
           <text x="120" y="248" text-anchor="middle" class="s-curve-label">혁신가</text>
-          <text x="230" y="248" text-anchor="middle" class="s-curve-label" font-weight="700" fill="#c0392b">초기 다수</text>
+          <text x="230" y="248" text-anchor="middle" class="s-curve-label" font-weight="700" style="fill:var(--red);">초기 다수</text>
           <text x="380" y="248" text-anchor="middle" class="s-curve-label">후기 다수</text>
           <text x="510" y="248" text-anchor="middle" class="s-curve-label">지각 수용자</text>
 
@@ -1401,7 +1551,7 @@ p, li {
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 3 &mdash; RB Cloud's Response</p>
-      <h2 style="margin-bottom:1.5rem;">해커톤 로드맵</h2>
+      <h2>해커톤 로드맵</h2>
 
       <div class="roadmap">
         <div class="roadmap-phase">
@@ -1444,11 +1594,11 @@ p, li {
 <!-- ============================================
      SLIDE 11: 해커톤 성과 기대치
      ============================================ -->
-<section class="slide" id="slide-11">
+<section class="slide slide-compact" id="slide-11">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 3 &mdash; Expected Outcomes</p>
-      <h2 style="margin-bottom:1.5rem;">1차 해커톤 성과 기대치</h2>
+      <h2>1차 해커톤 성과 기대치</h2>
 
       <div class="grid-4">
         <div class="kpi-card red">
@@ -1504,7 +1654,7 @@ p, li {
 <!-- ============================================
      SLIDE 12: AI 활용 전략의 진화
      ============================================ -->
-<section class="slide" id="slide-12">
+<section class="slide slide-compact" id="slide-12">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 3 &mdash; Strategic Evolution</p>
@@ -1553,7 +1703,7 @@ p, li {
 <!-- ============================================
      SLIDE 13: 하네스 엔지니어링 개요
      ============================================ -->
-<section class="slide" id="slide-13">
+<section class="slide slide-compact" id="slide-13">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 4 &mdash; Methodology</p>
@@ -1609,7 +1759,7 @@ p, li {
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 4 &mdash; Natural Language Operations</p>
-      <h2 style="margin-bottom:1.5rem;">자연어로 운용하는 AI</h2>
+      <h2>자연어로 운용하는 AI</h2>
 
       <div class="grid-3">
         <div class="card card-red" style="padding:1.5rem;">
@@ -1665,11 +1815,11 @@ p, li {
 <!-- ============================================
      SLIDE 15: ECC 오픈소스 하네스 Capability
      ============================================ -->
-<section class="slide" id="slide-15">
+<section class="slide slide-compact" id="slide-15">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 4 &mdash; Proven Methodology</p>
-      <h2 style="margin-bottom:0.3rem;">검증된 AI 하네스 시스템</h2>
+      <h2 style="margin-bottom:0.5rem;">검증된 AI 하네스 시스템</h2>
       <p class="mb-2" style="font-size:var(--small); color:var(--ink-muted);">
         Anthropic 해커톤 우승 시스템 기반 &mdash; ECC 오픈소스
       </p>
@@ -1725,11 +1875,11 @@ p, li {
 <!-- ============================================
      SLIDE 16: 실전 워크플로우
      ============================================ -->
-<section class="slide" id="slide-16">
+<section class="slide slide-compact" id="slide-16">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 4 &mdash; Workflow</p>
-      <h2 style="margin-bottom:1.5rem;">AI 실전 워크플로우</h2>
+      <h2>AI 실전 워크플로우</h2>
 
       <div class="flow">
         <div class="flow-step">
@@ -1879,7 +2029,7 @@ p, li {
 <!-- ============================================
      SLIDE 18: Agent Teams — AI 팀 빌딩
      ============================================ -->
-<section class="slide" id="slide-18">
+<section class="slide slide-compact" id="slide-18">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 4 &mdash; AI Team Building</p>
@@ -1931,11 +2081,11 @@ p, li {
 <!-- ============================================
      SLIDE 19: 해커톤 실전 시나리오
      ============================================ -->
-<section class="slide" id="slide-19">
+<section class="slide slide-compact" id="slide-19">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 4 &mdash; Real Scenario</p>
-      <h2 style="margin-bottom:1.5rem;">실전 시나리오: 아이디어 &rarr; 제품</h2>
+      <h2>실전 시나리오: 아이디어 &rarr; 제품</h2>
 
       <div style="position:relative;">
         <!-- Timeline line -->
@@ -2001,7 +2151,7 @@ p, li {
         </div>
       </div>
 
-      <div class="mt-2" style="background:var(--red-soft); border-radius:12px; padding:1.2rem; text-align:center;">
+      <div class="mt-2" style="background:var(--red-soft); border-radius:12px; padding:1.5rem; text-align:center;">
         <p style="font-size:var(--body); font-weight:700;">
           아이디어에서 배포까지 <span class="text-red" style="font-size:var(--h3);">4시간 15분</span>
         </p>
@@ -2015,11 +2165,11 @@ p, li {
 <!-- ============================================
      SLIDE 20: 해커톤 일정 & 진행방식
      ============================================ -->
-<section class="slide" id="slide-20">
+<section class="slide slide-compact" id="slide-20">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 5 &mdash; Action Plan</p>
-      <h2 style="margin-bottom:1.5rem;">해커톤 일정 & 진행방식</h2>
+      <h2>해커톤 일정 & 진행방식</h2>
 
       <div class="grid-2">
         <div>
@@ -2105,11 +2255,11 @@ p, li {
 <!-- ============================================
      SLIDE 21: 기대 효과 & ROI
      ============================================ -->
-<section class="slide" id="slide-21">
+<section class="slide slide-compact" id="slide-21">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 5 &mdash; Expected ROI</p>
-      <h2 style="margin-bottom:1.5rem;">기대 효과 & ROI</h2>
+      <h2>기대 효과 & ROI</h2>
 
       <div class="grid-2">
         <div>
@@ -2168,7 +2318,7 @@ p, li {
         </div>
       </div>
 
-      <div class="mt-2" style="background:var(--green-soft); border-radius:12px; padding:1.2rem; text-align:center;">
+      <div class="mt-2" style="background:var(--green-soft); border-radius:12px; padding:1.5rem; text-align:center;">
         <p style="font-size:var(--body); font-weight:600;">
           1년차 예상 ROI: 투자 대비 <span class="text-green" style="font-size:var(--h3);">340%</span> 회수
         </p>
@@ -2276,7 +2426,8 @@ p, li {
 
     // Counter
     const num = String(index + 1).padStart(2, '0');
-    slideCounter.textContent = `${num} / ${totalSlides}`;
+    const total = String(totalSlides).padStart(2, '0');
+    slideCounter.textContent = `${num} / ${total}`;
   }
 
   // Keyboard navigation
