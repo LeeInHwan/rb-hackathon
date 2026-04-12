@@ -1005,24 +1005,47 @@ html {
         <h2 class="reveal" style="font-size: var(--h2-size); font-weight: 700;">
             지금은 <span class="glow-cyan">생태계가 전환</span>되는 순간
         </h2>
-        <div class="timeline-row" style="display: flex; gap: clamp(2rem, 5vw, 5rem); margin-top: var(--content-gap); justify-content: center;">
-            <div class="reveal reveal-delay-1" style="text-align: center;">
-                <div style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem;">🌊</div>
-                <p style="color: #666; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.4rem;">과거</p>
-                <p style="color: #2a2520; margin: 0; font-weight: 600; white-space: nowrap;">경험 = 경쟁력</p>
-            </div>
-            <div class="reveal reveal-delay-2" style="text-align: center;">
-                <div style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem;">⚡</div>
-                <p style="color: #c0392b; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.4rem;">현재</p>
-                <p style="color: #2a2520; margin: 0; font-weight: 600; white-space: nowrap;">AI + 인간 = 기회</p>
-            </div>
-            <div class="reveal reveal-delay-3" style="text-align: center;">
-                <div style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem;">🔮</div>
-                <p style="color: #8b6914; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.4rem;">미래</p>
-                <p style="color: #2a2520; margin: 0; font-weight: 600; white-space: nowrap;">AI = 자율 에이전트</p>
-            </div>
+        <p class="reveal" style="font-size: var(--body-size); color: #666; margin-top: 0.5rem;">
+            — 에버렛 로저스, 『혁신의 확산』, 1962
+        </p>
+
+        <!-- S-Curve Chart -->
+        <div class="reveal reveal-delay-1" style="background: #fff; border-radius: 12px; padding: clamp(1rem, 3vw, 2rem); margin-top: var(--content-gap); max-width: 700px; width: 90%; box-shadow: 0 2px 20px rgba(0,0,0,0.06);">
+            <svg viewBox="0 0 600 260" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: auto;">
+                <!-- Axes -->
+                <line x1="50" y1="230" x2="570" y2="230" stroke="#2a2520" stroke-width="1" opacity="0.2" />
+                <line x1="50" y1="20" x2="50" y2="230" stroke="#2a2520" stroke-width="1" opacity="0.2" />
+
+                <!-- Axis labels -->
+                <text x="310" y="255" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-size="10" fill="#2a2520" opacity="0.4">시간 (Time)</text>
+                <text x="15" y="130" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-size="10" fill="#2a2520" opacity="0.4" transform="rotate(-90, 15, 130)">도입률 (Adoption)</text>
+
+                <!-- Phase labels -->
+                <text x="120" y="248" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-size="10" fill="#2a2520" opacity="0.35">혁신가</text>
+                <text x="230" y="248" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-size="11" fill="#c0392b" font-weight="700">초기 다수</text>
+                <text x="380" y="248" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-size="10" fill="#2a2520" opacity="0.35">후기 다수</text>
+                <text x="510" y="248" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-size="10" fill="#2a2520" opacity="0.35">지각 수용자</text>
+
+                <!-- S-Curve path -->
+                <path d="M 60,220 C 100,218 140,215 180,200 C 220,180 240,140 280,80 C 320,40 380,25 440,22 C 480,20 530,20 560,20" fill="none" stroke="#c0392b" stroke-width="3" stroke-linecap="round" />
+
+                <!-- "We are here" marker -->
+                <circle cx="210" cy="190" r="8" fill="#c0392b" />
+                <circle cx="210" cy="190" r="14" fill="none" stroke="#c0392b" stroke-width="2" opacity="0.4">
+                    <animate attributeName="r" values="14;22;14" dur="2s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <line x1="210" y1="178" x2="210" y2="138" stroke="#c0392b" stroke-width="2" />
+                <rect x="152" y="115" width="116" height="28" rx="6" fill="#c0392b" />
+                <text x="210" y="134" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" font-family="Noto Sans KR, sans-serif">우리는 여기 있다</text>
+
+                <!-- Opportunity window -->
+                <rect x="170" y="18" width="140" height="212" fill="#c0392b" opacity="0.04" rx="4" />
+                <text x="240" y="44" text-anchor="middle" fill="#c0392b" font-size="10" font-weight="600" font-family="Montserrat, sans-serif">OPPORTUNITY WINDOW</text>
+            </svg>
         </div>
-        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: #666; margin-top: var(--content-gap);">
+
+        <p class="reveal reveal-delay-2" style="font-size: var(--body-size); color: #666; margin-top: var(--content-gap);">
             도구로서의 AI를 활용할 수 있는 <span class="glow-cyan">지금이 기회</span>다
         </p>
     </div>
