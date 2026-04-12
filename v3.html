@@ -978,16 +978,18 @@ p, li {
   }
   .roadmap-phase { padding: 1.5rem; }
 
-  /* Maturity model */
-  .maturity { flex-direction: column; gap: 1.2rem; }
+  /* Maturity model — horizontal row on mobile */
+  .maturity { flex-direction: row; gap: 0; }
   .maturity::before {
-    top: 0; bottom: 0; left: 50%; right: auto;
-    width: 4px; height: 100%;
-    transform: translateX(-50%);
-    background: linear-gradient(to bottom, var(--ink-faint), var(--gold), var(--red));
+    top: 50%; left: 0; right: 0; bottom: auto;
+    width: 100%; height: 3px;
+    transform: translateY(-50%);
+    background: linear-gradient(to right, var(--ink-faint), var(--gold), var(--red));
   }
-  .maturity-stage { text-align: center; }
-  .maturity-dot { width: 40px; height: 40px; font-size: 1rem; }
+  .maturity-stage { text-align: center; padding: 0 0.2rem; }
+  .maturity-dot { width: 32px; height: 32px; font-size: 0.8rem; margin-bottom: 0.4rem; }
+  .maturity-title { font-size: 0.68rem; }
+  .maturity-desc { font-size: 0.55rem; line-height: 1.3; }
 
   /* Table — scrollable on mobile to prevent horizontal overflow */
   .data-table { font-size: var(--caption); display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
@@ -1085,12 +1087,12 @@ p, li {
   #slide-12 [style*="padding:1.2rem"]:last-child { padding: 0.6rem !important; }
 
   /* Slide 13: AI 활용 전략 진화 (892px → 812px) */
-  #slide-13 .maturity-dot { width: 28px; height: 28px; font-size: 0.75rem; }
-  #slide-13 .maturity-title { font-size: 0.7rem; }
-  #slide-13 .maturity-desc { font-size: 0.58rem; line-height: 1.3; }
+  #slide-13 .maturity-dot { width: 28px; height: 28px; font-size: 0.7rem; margin-bottom: 0.3rem; }
+  #slide-13 .maturity-title { font-size: 0.65rem; }
+  #slide-13 .maturity-desc { font-size: 0.52rem; line-height: 1.2; }
   #slide-13 .maturity-desc br { display: none; }
-  #slide-13 .maturity-desc .tag { font-size: 0.55rem; padding: 0.1rem 0.4rem; }
-  #slide-13 .maturity-stage { padding-bottom: 0.3rem; }
+  #slide-13 .maturity-desc .tag { font-size: 0.5rem; padding: 0.1rem 0.3rem; }
+  #slide-13 .maturity-stage { padding-bottom: 0.2rem; padding: 0 0.1rem; }
   #slide-13 .mt-3 { margin-top: 0.8rem !important; }
   #slide-13 .grid-3 { gap: 0.5rem; }
   #slide-13 .grid-3 .card { padding: 0.6rem !important; }
@@ -1208,9 +1210,9 @@ p, li {
   }
 
   /* Maturity dots */
-  .maturity-dot { width: 36px; height: 36px; font-size: 0.9rem; }
-  .maturity-title { font-size: 0.78rem; }
-  .maturity-desc { font-size: 0.68rem; }
+  .maturity-dot { width: 26px; height: 26px; font-size: 0.7rem; }
+  .maturity-title { font-size: 0.6rem; }
+  .maturity-desc { font-size: 0.5rem; }
 
   /* Roadmap phase tighter */
   .roadmap-phase { padding: 1rem; }
