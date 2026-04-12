@@ -929,24 +929,36 @@ p, li {
     font-size: var(--caption);
     flex-shrink: 0;
   }
-  .bar-row { margin-bottom: 0.6rem; position: relative; }
-  .bar-track { height: 26px; overflow: visible !important; }
-  .bar-fill { overflow: visible !important; padding-right: 0; }
+  .bar-row {
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .bar-track { height: 26px; flex: 1; min-width: 0; }
+  .bar-fill { padding-right: 0; }
   .bar-fill .bar-value {
-    position: absolute;
-    right: -4px;
-    transform: translateX(100%);
-    color: var(--ink) !important;
+    display: none;
+  }
+  .bar-row::after {
+    content: attr(data-value);
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--ink);
     white-space: nowrap;
+    margin-left: 6px;
+    flex-shrink: 0;
   }
   .bar-fill.ink .bar-value {
-    position: static !important;
-    transform: none !important;
+    display: inline !important;
     color: #fff !important;
     padding-right: 8px;
   }
   .bar-fill.ink { justify-content: flex-end; }
+  .bar-row:has(.bar-fill.ink)::after {
+    display: none;
+  }
   .bar-track.thin { height: 16px; }
   .bar-track.thin .bar-value { font-size: 0.6rem; }
 
@@ -1283,7 +1295,7 @@ p, li {
             </div>
           </div>
         </div>
-        <div class="bar-row">
+        <div class="bar-row" data-value="1,500시간">
           <span class="bar-label" style="color:var(--red); font-weight:700;">AI + 코딩</span>
           <div class="bar-track">
             <div class="bar-fill red" style="--bar-width:15%;">
@@ -1300,7 +1312,7 @@ p, li {
             </div>
           </div>
         </div>
-        <div class="bar-row">
+        <div class="bar-row" data-value="2,000시간">
           <span class="bar-label" style="color:var(--red); font-weight:700;">AI + 법률</span>
           <div class="bar-track">
             <div class="bar-fill red" style="--bar-width:20%;">
@@ -1317,7 +1329,7 @@ p, li {
             </div>
           </div>
         </div>
-        <div class="bar-row">
+        <div class="bar-row" data-value="1,800시간">
           <span class="bar-label" style="color:var(--red); font-weight:700;">AI + 의료</span>
           <div class="bar-track">
             <div class="bar-fill red" style="--bar-width:18%;">
@@ -1417,19 +1429,19 @@ p, li {
                 <div class="bar-fill ink" style="--bar-width:100%;"><span class="bar-value">27개월</span></div>
               </div>
             </div>
-            <div class="bar-row">
+            <div class="bar-row" data-value="9개월">
               <span class="bar-label" style="min-width:140px;">Opus 4.1→4.5</span>
               <div class="bar-track thin">
                 <div class="bar-fill gold" style="--bar-width:33%;"><span class="bar-value">9개월</span></div>
               </div>
             </div>
-            <div class="bar-row">
+            <div class="bar-row" data-value="3개월">
               <span class="bar-label" style="min-width:140px;">Opus 4.5→4.6</span>
               <div class="bar-track thin">
                 <div class="bar-fill red" style="--bar-width:11%;"><span class="bar-value">3개월</span></div>
               </div>
             </div>
-            <div class="bar-row">
+            <div class="bar-row" data-value="2개월">
               <span class="bar-label" style="min-width:140px;">Opus 4.6→Mythos</span>
               <div class="bar-track thin">
                 <div class="bar-fill red" style="--bar-width:7%;"><span class="bar-value">2개월</span></div>
@@ -1693,13 +1705,13 @@ p, li {
       <div class="mt-3" style="background:#fff; border:1px solid var(--rule); border-radius:12px; padding:1.5rem;">
         <h3 style="font-size:var(--small); margin-bottom:1rem;">ROI 시나리오 분석</h3>
         <div class="bar-chart">
-          <div class="bar-row">
+          <div class="bar-row" data-value="1.5억원">
             <span class="bar-label" style="min-width:100px;">보수적</span>
             <div class="bar-track thin">
               <div class="bar-fill green" style="--bar-width:40%;"><span class="bar-value">1.5억원</span></div>
             </div>
           </div>
-          <div class="bar-row">
+          <div class="bar-row" data-value="2.4억원">
             <span class="bar-label" style="min-width:100px; font-weight:700;">기대치</span>
             <div class="bar-track thin">
               <div class="bar-fill gold" style="--bar-width:65%;"><span class="bar-value">2.4억원</span></div>
