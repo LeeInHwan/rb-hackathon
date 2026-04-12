@@ -894,7 +894,20 @@ p, li {
   .flow { flex-wrap: wrap; gap: 0.5rem; }
   .flow-arrow { display: none; }
   .flow-step { min-width: 100px; }
-  .bar-label { min-width: 80px; font-size: var(--caption); }
+  .bar-label { min-width: 70px; font-size: var(--caption); }
+  .bar-row { margin-bottom: 0.6rem; }
+  .bar-track { height: 26px; }
+  .bar-fill { overflow: visible; padding-right: 0; justify-content: flex-start; }
+  .bar-fill .bar-value {
+    position: relative;
+    left: calc(100% + 6px);
+    color: var(--ink);
+    font-size: 0.65rem;
+    white-space: nowrap;
+  }
+  .bar-fill.ink .bar-value { color: #fff; left: auto; right: 6px; position: absolute; right: 6px; }
+  .bar-track.thin { height: 16px; }
+  .bar-track.thin .bar-value { font-size: 0.6rem; }
   .roadmap { grid-template-columns: 1fr; }
   .roadmap-connector {
     padding: 1rem 0;
