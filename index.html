@@ -491,14 +491,78 @@ html {
         padding: 0.5rem 0.8rem !important;
     }
 
-    /* ----- 해커톤 슬라이드: 2컬럼 → 1컬럼 ----- */
-    .slide:nth-child(28) [style*="grid-template-columns: 1fr 1fr"] {
-        grid-template-columns: 1fr !important;
-    }
+    /* =============================================================
+       SLIDE 26 (child 28): 해커톤 로드맵 — compact mobile layout
+       ============================================================= */
 
-    /* ----- 타임라인 플로우: 수평 → 수직 ----- */
+    /* 타임라인: 수직 + 패딩 축소 */
     .slide:nth-child(28) [style*="display: flex; align-items: stretch"] {
         flex-direction: column !important;
+        margin-top: 0.5rem !important;
+        gap: 0 !important;
+    }
+    .slide:nth-child(28) [style*="display: flex; align-items: stretch"] > div {
+        padding: 0.5rem 0.8rem !important;
+    }
+    .slide:nth-child(28) [style*="display: flex; align-items: stretch"] > div p {
+        margin: 0.1rem 0 0 !important;
+    }
+
+    /* 2컬럼 유지 (1컬럼X) — 심사+포상 나란히, 간격만 축소 */
+    .slide:nth-child(28) [style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.6rem !important;
+        margin-top: 0.6rem !important;
+    }
+
+    /* 심사 기준: 원형 뱃지 축소 + 간격 줄임 */
+    .slide:nth-child(28) [style*="grid-template-columns"] > div:first-child > p:first-child {
+        font-size: 0.6rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+    .slide:nth-child(28) [style*="grid-template-columns"] > div:first-child [style*="flex-direction: column"] {
+        gap: 0.3rem !important;
+    }
+    .slide:nth-child(28) [style*="grid-template-columns"] > div:first-child [style*="border-radius: 50%"] {
+        width: 1.8rem !important;
+        height: 1.8rem !important;
+        font-size: 0.6rem !important;
+    }
+    .slide:nth-child(28) [style*="grid-template-columns"] > div:first-child [style*="border-radius: 50%"] + span {
+        font-size: 0.7rem !important;
+    }
+
+    /* 포상: 카드 축소 */
+    .slide:nth-child(28) [style*="grid-template-columns"] > div:last-child > p:first-child {
+        font-size: 0.6rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+    .slide:nth-child(28) [style*="grid-template-columns"] > div:last-child [style*="display: flex; gap"] {
+        gap: 0.2rem !important;
+        overflow: hidden !important;
+    }
+    .slide:nth-child(28) [style*="grid-template-columns"] > div:last-child [style*="display: flex; gap"] > div {
+        padding: 0.3rem 0.15rem !important;
+        border-radius: 6px !important;
+    }
+    .slide:nth-child(28) [style*="grid-template-columns"] > div:last-child [style*="display: flex; gap"] > div p {
+        font-size: 0.57rem !important;
+    }
+    .slide:nth-child(28) [style*="grid-template-columns"] > div:last-child [style*="display: flex; gap"] > div p[style*="font-weight: 800"] {
+        font-size: clamp(1rem, 4vw, 1.5rem) !important;
+    }
+    /* 대상 카드 (가운데 큰 것) */
+    .slide:nth-child(28) [style*="grid-template-columns"] > div:last-child [style*="background: #c0392b"] {
+        padding: 0.4rem 0.15rem !important;
+        transform: translateY(-2px) !important;
+    }
+    .slide:nth-child(28) [style*="grid-template-columns"] > div:last-child [style*="background: #c0392b"] p[style*="font-weight: 800"] {
+        font-size: clamp(1.2rem, 5vw, 1.6rem) !important;
+    }
+    /* 사업화 성공 시 텍스트 */
+    .slide:nth-child(28) [style*="grid-template-columns"] > div:last-child > p:last-child {
+        font-size: 0.57rem !important;
+        margin-top: 0.15rem !important;
     }
 }
 @media (prefers-reduced-motion: reduce) {
