@@ -1071,15 +1071,18 @@ p, li {
   #slide-11 .card { padding: 0.7rem !important; }
   #slide-11 .card p { font-size: 0.65rem; }
 
-  /* Slide 12: 성과 기대치 */
-  #slide-12 .kpi-card { padding: 0.5rem; margin-bottom: 0; }
-  #slide-12 .kpi-value { font-size: 1.1rem !important; }
-  #slide-12 .kpi-sub { font-size: 0.55rem; }
-  #slide-12 .kpi-label { font-size: 0.55rem; }
-  #slide-12 .stat-row { gap: 0.4rem; }
-  #slide-12 .mt-3 { margin-top: 0.5rem !important; padding: 0.7rem !important; }
-  #slide-12 .mt-3 h3 { font-size: 0.7rem; margin-bottom: 0.3rem; }
-  #slide-12 .bar-row { margin-bottom: 0.2rem; }
+  /* Slide 12: 해커톤 기대 효과 */
+  #slide-12 h2 { font-size: 1.1rem; margin-bottom: 0.3rem !important; }
+  #slide-12 .grid-3 { gap: 0.4rem; margin-bottom: 0.6rem !important; }
+  #slide-12 .card { padding: 0.6rem !important; }
+  #slide-12 .card p[style*="font-size:1.5rem"] { font-size: 1rem !important; margin-bottom: 0.2rem !important; }
+  #slide-12 .card h3 { font-size: 0.7rem; margin-bottom: 0.2rem; }
+  #slide-12 .card p { font-size: 0.6rem !important; line-height: 1.3 !important; }
+  #slide-12 .flow-step { min-width: 55px; }
+  #slide-12 .flow-icon { width: 32px; height: 32px; font-size: 0.9rem; }
+  #slide-12 .flow-name { font-size: 0.6rem; }
+  #slide-12 .flow-time { font-size: 0.55rem; }
+  #slide-12 [style*="padding:1.2rem"]:last-child { padding: 0.6rem !important; }
 
   /* Slide 13: AI 활용 전략 진화 (892px → 812px) */
   #slide-13 .maturity-dot { width: 28px; height: 28px; font-size: 0.75rem; }
@@ -1817,60 +1820,78 @@ p, li {
 
 
 <!-- ============================================
-     SLIDE 11: 해커톤 성과 기대치
+     SLIDE 11: 해커톤 기대 효과
      ============================================ -->
 <section class="slide slide-compact" id="slide-12">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 3 &mdash; Expected Outcomes</p>
-      <h2>1차 해커톤 성과 기대치</h2>
+      <h2>해커톤 기대 효과</h2>
 
-      <div class="grid-4">
-        <div class="kpi-card red">
-          <p class="kpi-label">참가팀</p>
-          <p class="kpi-value text-red">8<span style="font-size:0.5em; font-weight:400;">팀</span></p>
-          <p class="kpi-sub">전 부서 참여 목표</p>
+      <div class="grid-3" style="margin-bottom:1.5rem;">
+        <!-- 효과 1: AI 역량 내재화 -->
+        <div class="card card-red" style="padding:1.2rem;">
+          <p style="font-size:1.5rem; margin-bottom:0.5rem;">&#129302;</p>
+          <h3 style="font-size:var(--small); margin-bottom:0.5rem;">AI 활용 역량 내재화</h3>
+          <p style="font-size:var(--caption); color:var(--ink-light); line-height:1.5;">
+            전 직원이 AI를 <strong>일상 업무 도구</strong>로 사용<br>
+            프롬프트 설계 &rarr; 자동화 &rarr; 에이전트 구축까지<br>
+            <strong class="text-red">스스로 할 수 있는 조직</strong>으로 전환
+          </p>
         </div>
-        <div class="kpi-card gold">
-          <p class="kpi-label">실무 적용 가능 아이템</p>
-          <p class="kpi-value text-gold">10<span style="font-size:0.5em; font-weight:400;">건+</span></p>
-          <p class="kpi-sub">즉시 현업 적용 가능</p>
+
+        <!-- 효과 2: 업무 효율화 -->
+        <div class="card" style="padding:1.2rem; border-color:var(--gold);">
+          <p style="font-size:1.5rem; margin-bottom:0.5rem;">&#9889;</p>
+          <h3 style="font-size:var(--small); margin-bottom:0.5rem;">업무 프로세스 혁신</h3>
+          <p style="font-size:var(--caption); color:var(--ink-light); line-height:1.5;">
+            반복 업무 자동화로 <strong>핵심 업무 집중</strong><br>
+            보고서 작성, 데이터 분석, 코드 리뷰 등<br>
+            <strong style="color:var(--gold);">기존 대비 3~5배 속도 향상</strong>
+          </p>
         </div>
-        <div class="kpi-card green">
-          <p class="kpi-label">예상 생산성 향상</p>
-          <p class="kpi-value text-green">35<span style="font-size:0.5em; font-weight:400;">%</span></p>
-          <p class="kpi-sub">적용 업무 기준</p>
-        </div>
-        <div class="kpi-card red">
-          <p class="kpi-label">연간 비용 절감 예상</p>
-          <p class="kpi-value text-red">2.4<span style="font-size:0.5em; font-weight:400;">억원</span></p>
-          <p class="kpi-sub">인건비 환산 기준</p>
+
+        <!-- 효과 3: 사업화 -->
+        <div class="card" style="padding:1.2rem; border-color:var(--green);">
+          <p style="font-size:1.5rem; margin-bottom:0.5rem;">&#128640;</p>
+          <h3 style="font-size:var(--small); margin-bottom:0.5rem;">고객 맞춤 솔루션 발굴</h3>
+          <p style="font-size:var(--caption); color:var(--ink-light); line-height:1.5;">
+            주고객사가 <strong>실제로 필요한 업무 툴</strong> 발굴<br>
+            AI 기반 자동화 도구를 직접 만들어<br>
+            <strong style="color:var(--green);">신규 사업 아이템으로 확장</strong>
+          </p>
         </div>
       </div>
 
-      <div class="mt-3" style="background:#fff; border:1px solid var(--rule); border-radius:12px; padding:1.5rem;">
-        <h3 style="font-size:var(--small); margin-bottom:1rem;">ROI 시나리오 분석</h3>
-        <div class="bar-chart">
-          <div class="bar-row" data-value="1.5억원">
-            <span class="bar-label" style="min-width:100px;">보수적</span>
-            <div class="bar-track thin">
-              <div class="bar-fill green" style="--bar-width:40%;"><span class="bar-value">1.5억원</span></div>
-            </div>
+      <!-- 기대 성과 흐름 -->
+      <div style="background:#fff; border:1px solid var(--rule); border-radius:12px; padding:1.2rem;">
+        <div class="flow" style="justify-content:center; gap:0.8rem;">
+          <div class="flow-step">
+            <div class="flow-icon" style="background:var(--red-soft); color:var(--red);">&#127891;</div>
+            <p class="flow-name">AI 학습</p>
+            <p class="flow-time">해커톤 중</p>
           </div>
-          <div class="bar-row" data-value="2.4억원">
-            <span class="bar-label" style="min-width:100px; font-weight:700;">기대치</span>
-            <div class="bar-track thin">
-              <div class="bar-fill gold" style="--bar-width:65%;"><span class="bar-value">2.4억원</span></div>
-            </div>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step">
+            <div class="flow-icon" style="background:var(--gold-soft); color:var(--gold);">&#128736;</div>
+            <p class="flow-name">업무 적용</p>
+            <p class="flow-time">1~2개월</p>
           </div>
-          <div class="bar-row">
-            <span class="bar-label" style="min-width:100px;">낙관적</span>
-            <div class="bar-track thin">
-              <div class="bar-fill red" style="--bar-width:100%;"><span class="bar-value">3.8억원</span></div>
-            </div>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step">
+            <div class="flow-icon" style="background:var(--green-soft); color:var(--green);">&#128176;</div>
+            <p class="flow-name">고객 툴 개발</p>
+            <p class="flow-time">3~6개월</p>
+          </div>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step">
+            <div class="flow-icon" style="background:var(--ink); color:#fff;">&#127919;</div>
+            <p class="flow-name">사업화</p>
+            <p class="flow-time">6개월~</p>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
