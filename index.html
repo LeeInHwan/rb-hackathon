@@ -173,60 +173,60 @@ html {
     }
 
     /* ===== 슬라이드 20: 자연어 운용 4카드 축소 ===== */
-    .slide:nth-child(20) .slide-content .tag {
+    .slide:nth-child(22) .slide-content .tag {
         font-size: 0.55rem !important;
         padding: 0.15rem 0.5rem !important;
     }
-    .slide:nth-child(20) .slide-content h2 {
+    .slide:nth-child(22) .slide-content h2 {
         font-size: clamp(0.85rem, 3.8vw, 1.2rem) !important;
         margin-top: 0.1rem !important;
     }
-    .slide:nth-child(20) .slide-content > div {
+    .slide:nth-child(22) .slide-content > div {
         gap: 0.3rem !important;
         margin-top: 0.3rem !important;
     }
-    .slide:nth-child(20) .slide-content > div > div {
+    .slide:nth-child(22) .slide-content > div > div {
         padding: 0.3rem 0.5rem !important;
     }
-    .slide:nth-child(20) .slide-content > div > div p {
+    .slide:nth-child(22) .slide-content > div > div p {
         font-size: clamp(0.55rem, 2.2vw, 0.75rem) !important;
         margin: 0 !important;
         line-height: 1.3 !important;
     }
-    .slide:nth-child(20) .slide-content > div > div p:first-child {
+    .slide:nth-child(22) .slide-content > div > div p:first-child {
         margin-bottom: 0.1rem !important;
     }
-    .slide:nth-child(20) .slide-content > p:last-of-type {
+    .slide:nth-child(22) .slide-content > p:last-of-type {
         font-size: clamp(0.6rem, 2.2vw, 0.8rem) !important;
         margin-top: 0.2rem !important;
     }
 
     /* ===== 슬라이드 17: 변천사 3단 카드 축소 ===== */
-    .slide:nth-child(17) .slide-content h2 {
+    .slide:nth-child(19) .slide-content h2 {
         font-size: clamp(0.9rem, 4vw, 1.3rem) !important;
         margin-bottom: 0.2rem !important;
     }
-    .slide:nth-child(17) .slide-content > div {
+    .slide:nth-child(19) .slide-content > div {
         gap: 0.4rem !important;
     }
-    .slide:nth-child(17) .slide-content > div > div {
+    .slide:nth-child(19) .slide-content > div > div {
         padding: 0.4rem 0.6rem !important;
         gap: 0.3rem !important;
     }
-    .slide:nth-child(17) .slide-content > div > div > div:first-child {
+    .slide:nth-child(19) .slide-content > div > div > div:first-child {
         min-width: 70px !important;
     }
-    .slide:nth-child(17) .slide-content > div > div > div:first-child span {
+    .slide:nth-child(19) .slide-content > div > div > div:first-child span {
         font-size: clamp(1rem, 3.5vw, 1.4rem) !important;
     }
-    .slide:nth-child(17) .slide-content > div > div > div:last-child p:first-child {
+    .slide:nth-child(19) .slide-content > div > div > div:last-child p:first-child {
         font-size: clamp(0.75rem, 2.8vw, 1rem) !important;
     }
-    .slide:nth-child(17) .slide-content > div > div > div:last-child p:last-child {
+    .slide:nth-child(19) .slide-content > div > div > div:last-child p:last-child {
         font-size: clamp(0.6rem, 2.2vw, 0.8rem) !important;
         margin-top: 0.1rem !important;
     }
-    .slide:nth-child(17) .slide-content > p:last-of-type {
+    .slide:nth-child(19) .slide-content > p:last-of-type {
         font-size: clamp(0.65rem, 2.5vw, 0.85rem) !important;
         margin-top: 0.3rem !important;
     }
@@ -251,6 +251,89 @@ html {
     .neon-cyber [style*="max-width: 900px"] {
         max-width: 92vw !important;
         width: 92vw !important;
+    }
+
+    /* ===== 전체 pre 태그 모바일 대응 ===== */
+    .neon-cyber pre {
+        white-space: pre-wrap !important;
+        word-break: break-all !important;
+        overflow-x: auto !important;
+    }
+
+    /* ===== 슬라이드 21 (child 23): ECC 3열 통계 ===== */
+    .slide:nth-child(23) [style*="repeat(3, 1fr)"] {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.3rem !important;
+    }
+    .slide:nth-child(23) [style*="repeat(3, 1fr)"] p {
+        font-size: clamp(0.55rem, 2vw, 0.75rem) !important;
+    }
+    .slide:nth-child(23) [style*="repeat(3, 1fr)"] p:first-child {
+        font-size: clamp(1.2rem, 5vw, 1.8rem) !important;
+    }
+
+    /* ===== 슬라이드 23 (child 25): 워크플로우 그리드 ===== */
+    .slide:nth-child(25) [style*="repeat(3, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.25rem !important;
+    }
+    .slide:nth-child(25) [style*="repeat(2, 1fr)"] {
+        grid-template-columns: 1fr !important;
+        gap: 0.25rem !important;
+    }
+    .slide:nth-child(25) .slide-content .tag {
+        font-size: 0.55rem !important;
+        padding: 0.12rem 0.4rem !important;
+    }
+    .slide:nth-child(25) .slide-content h2 {
+        font-size: clamp(0.85rem, 3.8vw, 1.2rem) !important;
+    }
+    .slide:nth-child(25) [style*="repeat"] > div {
+        padding: 0.3rem 0.4rem !important;
+    }
+    .slide:nth-child(25) [style*="repeat"] > div p {
+        font-size: clamp(0.5rem, 2vw, 0.7rem) !important;
+        margin-bottom: 0.1rem !important;
+    }
+    .slide:nth-child(25) [style*="repeat"] > div div {
+        font-size: clamp(0.45rem, 1.8vw, 0.6rem) !important;
+        line-height: 1.4 !important;
+    }
+
+    /* ===== 슬라이드 24 (child 26): 병렬 Claude Code 타임라인 ===== */
+    .slide:nth-child(26) .slide-content h2 {
+        font-size: clamp(0.85rem, 3.8vw, 1.2rem) !important;
+    }
+    .slide:nth-child(26) .slide-content > div[style*="display: flex"][style*="gap"] {
+        flex-wrap: wrap !important;
+        gap: 0.3rem !important;
+        justify-content: center !important;
+    }
+    .slide:nth-child(26) .slide-content > div[style*="display: flex"] > div[style*="flex: 1"] {
+        flex: 0 0 80% !important;
+    }
+    .slide:nth-child(26) .slide-content > div[style*="display: flex"] > div[style*="align-items: center"] {
+        display: none !important;
+    }
+    .slide:nth-child(26) .slide-content > div[style*="display: grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 0.3rem !important;
+    }
+
+    /* ===== 슬라이드 25 (child 27): Agent Teams ===== */
+    .slide:nth-child(27) .slide-content h2 {
+        font-size: clamp(0.85rem, 3.8vw, 1.2rem) !important;
+    }
+    .slide:nth-child(27) [style*="repeat(3, 1fr)"] {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.2rem !important;
+    }
+    .slide:nth-child(27) [style*="repeat(3, 1fr)"] p {
+        font-size: clamp(0.55rem, 2vw, 0.7rem) !important;
+    }
+    .slide:nth-child(27) pre {
+        font-size: clamp(0.5rem, 1.8vw, 0.65rem) !important;
+        line-height: 1.5 !important;
     }
 
     /* ===== nav dots 숨김 ===== */
@@ -393,7 +476,7 @@ html {
     border-bottom: 1px solid rgba(0,0,0,0.05);
     line-height: 1.4;
 }
-.comparison-table .row.past { color: #999; }
+.comparison-table .row.past { color: #888; }
 .comparison-table .row.future { color: #333; }
 
 .big-question {
@@ -536,7 +619,7 @@ html {
             RB Cloud<br><span class="accent">AI Hackathon</span>
         </h1>
         <div class="rule reveal reveal-delay-2"></div>
-        <p class="reveal reveal-delay-3" style="position: absolute; bottom: clamp(2rem, 5vh, 4rem); font-family: 'Montserrat', sans-serif; font-size: clamp(1rem, 1.8vw, 1.4rem); font-weight: 500; color: #999; letter-spacing: 0.12em; text-transform: uppercase;">April 2026 &nbsp;&middot;&nbsp; Inhwan Lee</p>
+        <p class="reveal reveal-delay-3" style="position: absolute; bottom: clamp(2rem, 5vh, 4rem); font-family: 'Montserrat', sans-serif; font-size: clamp(1rem, 1.8vw, 1.4rem); font-weight: 500; color: #888; letter-spacing: 0.12em; text-transform: uppercase;">April 2026 &nbsp;&middot;&nbsp; Inhwan Lee</p>
     </div>
     <span class="slide-number">01</span>
 </section>
@@ -620,7 +703,7 @@ html {
 <section class="slide transition-slide" data-theme="transition">
     <div class="slide-content centered">
         <p class="reveal" style="font-size: clamp(1.5rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em;">
-            <span style="color: rgba(0, 0, 0, 0.4);">그런데,</span>
+            <span style="color: #888;">그런데,</span>
             <span style="color: #2a2520;" class="glitch-text"> ChatGPT가 등장하면서</span>
         </p>
         <p class="reveal reveal-delay-1" style="font-size: clamp(1.2rem, 3vw, 2.5rem); font-weight: 700; color: #0088cc; margin-top: var(--element-gap);">
@@ -652,7 +735,7 @@ html {
                 </p>
             </div>
             <div class="reveal reveal-delay-3" style="display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.5rem); background: rgba(255,200,0,0.05); border-left: 3px solid rgba(255,180,0,0.4); border-radius: 0 8px 8px 0;">
-                <span style="font-size: clamp(1rem, 1.8vw, 1.3rem); color: rgba(255,180,0,0.6); font-weight: 700; white-space: nowrap; min-width: 90px;">2023~24</span>
+                <span style="font-size: clamp(1rem, 1.8vw, 1.3rem); color: #cc8800; font-weight: 700; white-space: nowrap; min-width: 90px;">2023~24</span>
                 <p style="margin: 0; font-weight: 600; white-space: nowrap;">
                     Google, MS, 알리바바 등 — <span style="color: #ffb400;">AI LLM의 춘추전국 시대</span>
                 </p>
@@ -682,7 +765,7 @@ html {
                 </p>
             </div>
         </div>
-        <p class="reveal reveal-delay-8" style="color: #777; margin-top: var(--content-gap);">
+        <p class="reveal reveal-delay-8" style="color: #666; margin-top: var(--content-gap);">
             고도화 주기는 짧아지고, <span class="glow-cyan">AI는 모두의 도구</span>가 되었다
         </p>
     </div>
@@ -714,8 +797,8 @@ html {
 
     <div class="slide-content centered" style="z-index: 1;">
         <h2 class="reveal" style="margin-bottom: var(--content-gap);">
-            <span style="color: #999;">경험의 시대</span>
-            <span style="color: #999;"> vs</span>
+            <span style="color: #888;">경험의 시대</span>
+            <span style="color: #888;"> vs</span>
             <span class="glow-cyan">AI의 시대</span>
         </h2>
         <div class="comparison-table reveal reveal-delay-1">
@@ -781,7 +864,7 @@ html {
                 </p>
             </div>
         </div>
-        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: #777; margin-top: var(--content-gap);">
+        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: #666; margin-top: var(--content-gap);">
             AI 시대의 경쟁력은 <span class="glow-cyan">도구를 쓰는 인간</span>에게 있다
         </p>
     </div>
@@ -821,7 +904,7 @@ html {
         <div class="timeline-row" style="display: flex; gap: clamp(2rem, 5vw, 5rem); margin-top: var(--content-gap); justify-content: center;">
             <div class="reveal reveal-delay-1" style="text-align: center;">
                 <div style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem;">🌊</div>
-                <p style="color: #777; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.4rem;">과거</p>
+                <p style="color: #666; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.4rem;">과거</p>
                 <p style="color: #2a2520; margin: 0; font-weight: 600; white-space: nowrap;">경험 = 경쟁력</p>
             </div>
             <div class="reveal reveal-delay-2" style="text-align: center;">
@@ -835,7 +918,7 @@ html {
                 <p style="color: #2a2520; margin: 0; font-weight: 600; white-space: nowrap;">AI = 자율 에이전트</p>
             </div>
         </div>
-        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: #777; margin-top: var(--content-gap);">
+        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: #666; margin-top: var(--content-gap);">
             도구로서의 AI를 활용할 수 있는 <span class="glow-cyan">지금이 기회</span>다
         </p>
     </div>
@@ -852,7 +935,7 @@ html {
         <h2 class="reveal reveal-delay-1" style="font-size: var(--h2-size); font-weight: 700; margin-top: var(--element-gap);">
             1차 AI Hackathon
         </h2>
-        <p class="reveal reveal-delay-1" style="font-size: var(--body-size); color: #777; margin-top: 0.3rem;">
+        <p class="reveal reveal-delay-1" style="font-size: var(--body-size); color: #666; margin-top: 0.3rem;">
             AI를 도구로 활용하여 실무에 즉시 적용 가능한 아이템 발굴
         </p>
         <div style="display: flex; flex-direction: column; align-items: center; gap: clamp(0.5rem, 1.2vw, 1rem); margin-top: var(--content-gap); max-width: 650px; width: 100%;">
@@ -860,21 +943,21 @@ html {
                 <span style="font-size: clamp(1.2rem, 2vw, 1.6rem);">💼</span>
                 <div style="text-align: center;">
                     <p style="font-size: var(--body-size); font-weight: 600; color: #2a2520; margin: 0;">현재 업무 관련 아이템</p>
-                    <p style="font-size: var(--small-size); color: #777; margin: 0.2rem 0 0;">기존 워크플로우를 AI로 혁신</p>
+                    <p style="font-size: var(--small-size); color: #666; margin: 0.2rem 0 0;">기존 워크플로우를 AI로 혁신</p>
                 </div>
             </div>
             <div class="reveal reveal-delay-3" style="display: flex; align-items: center; justify-content: center; gap: clamp(0.5rem, 1.5vw, 1rem); padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem); background: rgba(0,120,200,0.06); border: 1px solid rgba(0,120,200,0.2); border-radius: 8px; width: 100%;">
                 <span style="font-size: clamp(1.2rem, 2vw, 1.6rem);">🔧</span>
                 <div style="text-align: center;">
                     <p style="font-size: var(--body-size); font-weight: 600; color: #2a2520; margin: 0;">솔루션 연관 아이템</p>
-                    <p style="font-size: var(--small-size); color: #777; margin: 0.2rem 0 0;">자사 솔루션과 AI의 결합</p>
+                    <p style="font-size: var(--small-size); color: #666; margin: 0.2rem 0 0;">자사 솔루션과 AI의 결합</p>
                 </div>
             </div>
             <div class="reveal reveal-delay-4" style="display: flex; align-items: center; justify-content: center; gap: clamp(0.5rem, 1.5vw, 1rem); padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem); background: rgba(150,0,200,0.06); border: 1px solid rgba(150,0,200,0.2); border-radius: 8px; width: 100%;">
                 <span style="font-size: clamp(1.2rem, 2vw, 1.6rem);">📺</span>
                 <div style="text-align: center;">
                     <p style="font-size: var(--body-size); font-weight: 600; color: #2a2520; margin: 0;">IPTV 활용 아이템</p>
-                    <p style="font-size: var(--small-size); color: #777; margin: 0.2rem 0 0;">IPTV 서비스에 AI를 접목</p>
+                    <p style="font-size: var(--small-size); color: #666; margin: 0.2rem 0 0;">IPTV 서비스에 AI를 접목</p>
                 </div>
             </div>
         </div>
@@ -892,7 +975,7 @@ html {
         <h2 class="reveal reveal-delay-1" style="font-size: var(--h2-size); font-weight: 700; margin-top: var(--element-gap);">
             2차 AI Hackathon
         </h2>
-        <p class="reveal reveal-delay-1" style="font-size: var(--body-size); color: #777; margin-top: 0.3rem;">
+        <p class="reveal reveal-delay-1" style="font-size: var(--body-size); color: #666; margin-top: 0.3rem;">
             1차의 성과를 바탕으로, 더 발전된 AI와 함께
         </p>
         <div style="margin-top: var(--content-gap); max-width: 900px; width: 90%;" class="reveal reveal-delay-2">
@@ -902,7 +985,7 @@ html {
                     <p style="font-size: var(--body-size); font-weight: 600; color: #2a2520; margin: 0;">
                         <span class="glow-magenta">신규 사업 아이템</span> 발굴
                     </p>
-                    <p style="font-size: var(--small-size); color: #777; margin: 0.3rem 0 0; line-height: 1.6; white-space: nowrap;">
+                    <p style="font-size: var(--small-size); color: #666; margin: 0.3rem 0 0; line-height: 1.6; white-space: nowrap;">
                         AI의 진화에 맞춰 기존 경계를 넘는 새로운 비즈니스 모델 창출
                     </p>
                 </div>
@@ -910,12 +993,12 @@ html {
         </div>
         <div style="display: flex; gap: clamp(1rem, 3vw, 2rem); margin-top: var(--content-gap); align-items: center;" class="reveal reveal-delay-3">
             <div style="text-align: center;">
-                <p style="font-size: var(--small-size); color: #999; margin: 0;">1차</p>
+                <p style="font-size: var(--small-size); color: #888; margin: 0;">1차</p>
                 <p style="font-size: var(--body-size); color: #0088cc; margin: 0.2rem 0 0;">실무 적용</p>
             </div>
             <span style="color: #bbb; font-size: var(--body-size);">→</span>
             <div style="text-align: center;">
-                <p style="font-size: var(--small-size); color: #999; margin: 0;">2차</p>
+                <p style="font-size: var(--small-size); color: #888; margin: 0;">2차</p>
                 <p style="font-size: var(--body-size); color: #9900cc; margin: 0.2rem 0 0;">사업 확장</p>
             </div>
         </div>
@@ -942,7 +1025,7 @@ html {
                     <p style="margin: 0; font-weight: 700; font-size: clamp(1.3rem, 3vw, 2.2rem); color: #0088cc;">
                         Prompt Engineering
                     </p>
-                    <p style="margin: 0.3rem 0 0; font-size: clamp(1rem, 2vw, 1.4rem); color: #777;">
+                    <p style="margin: 0.3rem 0 0; font-size: clamp(1rem, 2vw, 1.4rem); color: #666;">
                         질문을 잘하는 기술 — "어떻게 물어볼까?"
                     </p>
                 </div>
@@ -956,7 +1039,7 @@ html {
                     <p style="margin: 0; font-weight: 700; font-size: clamp(1.3rem, 3vw, 2.2rem); color: #9900cc;">
                         Context Engineering
                     </p>
-                    <p style="margin: 0.3rem 0 0; font-size: clamp(1rem, 2vw, 1.4rem); color: #777;">
+                    <p style="margin: 0.3rem 0 0; font-size: clamp(1rem, 2vw, 1.4rem); color: #666;">
                         맥락을 설계하는 기술 — "무엇을 알려줄까?"
                     </p>
                 </div>
@@ -970,13 +1053,13 @@ html {
                     <p style="margin: 0; font-weight: 700; font-size: clamp(1.3rem, 3vw, 2.2rem); color: #0088cc; text-shadow: none;">
                         Harness Engineering
                     </p>
-                    <p style="margin: 0.3rem 0 0; font-size: clamp(1rem, 2vw, 1.4rem); color: #777;">
+                    <p style="margin: 0.3rem 0 0; font-size: clamp(1rem, 2vw, 1.4rem); color: #666;">
                         AI를 시스템으로 운용하는 기술 — "어떻게 굴릴까?"
                     </p>
                 </div>
             </div>
         </div>
-        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: #777; margin-top: var(--content-gap);">
+        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: #666; margin-top: var(--content-gap);">
             질문에서 맥락으로, 맥락에서 <span class="glow-cyan">시스템</span>으로 진화
         </p>
     </div>
@@ -1001,7 +1084,7 @@ html {
                     <p style="margin: 0; font-weight: 700; font-size: clamp(1.1rem, 2.2vw, 1.6rem); color: #0088cc;">
                         CLAUDE.md — 프로젝트의 뇌
                     </p>
-                    <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #777;">
+                    <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #666;">
                         규칙, 컨벤션, 아키텍처를 문서로 정의 → AI가 맥락을 이해
                     </p>
                 </div>
@@ -1013,7 +1096,7 @@ html {
                     <p style="margin: 0; font-weight: 700; font-size: clamp(1.1rem, 2.2vw, 1.6rem); color: #9900cc;">
                         Hooks — 자동화된 품질 관리
                     </p>
-                    <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #777;">
+                    <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #666;">
                         코드 작성 후 자동 린트, 포맷, 테스트 → 사람 개입 없이 품질 유지
                     </p>
                 </div>
@@ -1025,7 +1108,7 @@ html {
                     <p style="margin: 0; font-weight: 700; font-size: clamp(1.1rem, 2.2vw, 1.6rem); color: #0088cc;">
                         Agents — 병렬로 일하는 AI 팀
                     </p>
-                    <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #777;">
+                    <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #666;">
                         코드리뷰, 보안점검, 테스트를 동시에 실행하는 서브에이전트
                     </p>
                 </div>
@@ -1037,13 +1120,13 @@ html {
                     <p style="margin: 0; font-weight: 700; font-size: clamp(1.1rem, 2.2vw, 1.6rem); color: #9900cc;">
                         Memory — 대화를 넘어 축적되는 지식
                     </p>
-                    <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #777;">
+                    <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #666;">
                         피드백, 프로젝트 컨텍스트가 세션을 넘어 유지 → 점점 똑똑해짐
                     </p>
                 </div>
             </div>
         </div>
-        <p class="reveal reveal-delay-6" style="font-size: var(--body-size); color: #777; margin-top: var(--content-gap);">
+        <p class="reveal reveal-delay-6" style="font-size: var(--body-size); color: #666; margin-top: var(--content-gap);">
             프롬프트 한 줄이 아닌, <span class="glow-cyan">시스템 전체</span>를 설계하는 것
         </p>
     </div>
@@ -1097,7 +1180,7 @@ Agent 3: tdd-guide
 → 세션이 바뀌어도 기억 유지</code></pre>
             </div>
         </div>
-        <p class="reveal reveal-delay-6" style="font-size: var(--body-size); color: #777; margin-top: var(--content-gap);">
+        <p class="reveal reveal-delay-6" style="font-size: var(--body-size); color: #666; margin-top: var(--content-gap);">
             이 4가지만 셋팅하면, AI가 <span class="glow-cyan">팀원처럼</span> 일한다
         </p>
     </div>
@@ -1156,7 +1239,7 @@ Agent 3: tdd-guide
                 </p>
             </div>
         </div>
-        <p class="reveal reveal-delay-6" style="font-size: var(--body-size); color: #999; margin-top: var(--content-gap);">
+        <p class="reveal reveal-delay-6" style="font-size: var(--body-size); color: #888; margin-top: var(--content-gap);">
             프로그래밍 언어가 아닌, <span class="glow-cyan">자연어</span>가 새로운 인터페이스
         </p>
     </div>
@@ -1173,34 +1256,34 @@ Agent 3: tdd-guide
         <h2 class="reveal reveal-delay-1" style="font-weight: 700; margin-top: var(--element-gap);">
             <span class="glow-magenta">Everything Claude Code</span>
         </h2>
-        <p class="reveal reveal-delay-1" style="font-size: var(--body-size); color: #777; margin-top: 0.3rem;">
+        <p class="reveal reveal-delay-1" style="font-size: var(--body-size); color: #666; margin-top: 0.3rem;">
             Anthropic 해커톤 우승자가 오픈소스로 공개한 하네스 시스템
         </p>
         <div style="margin-top: var(--content-gap); display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.5rem, 1.2vw, 0.8rem); max-width: 1000px; width: 95%;">
             <div class="reveal reveal-delay-2" style="background: rgba(0,120,200,0.06); border: 1px solid rgba(0,120,200,0.2); border-radius: 8px; padding: clamp(0.6rem, 1.2vw, 1rem); text-align: center;">
                 <p style="margin: 0; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 800; color: #0088cc;">47</p>
-                <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #777;">Agents</p>
-                <p style="margin: 0.1rem 0 0; font-size: clamp(0.6rem, 1vw, 0.75rem); color: #777;">코드리뷰, 보안, 빌드, GAN</p>
+                <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #666;">Agents</p>
+                <p style="margin: 0.1rem 0 0; font-size: clamp(0.6rem, 1vw, 0.75rem); color: #666;">코드리뷰, 보안, 빌드, GAN</p>
             </div>
             <div class="reveal reveal-delay-3" style="background: rgba(150,0,200,0.06); border: 1px solid rgba(150,0,200,0.2); border-radius: 8px; padding: clamp(0.6rem, 1.2vw, 1rem); text-align: center;">
                 <p style="margin: 0; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 800; color: #9900cc;">170+</p>
-                <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #777;">Skills</p>
-                <p style="margin: 0.1rem 0 0; font-size: clamp(0.6rem, 1vw, 0.75rem); color: #777;">TDD, 리서치, 토큰최적화</p>
+                <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #666;">Skills</p>
+                <p style="margin: 0.1rem 0 0; font-size: clamp(0.6rem, 1vw, 0.75rem); color: #666;">TDD, 리서치, 토큰최적화</p>
             </div>
             <div class="reveal reveal-delay-4" style="background: rgba(0,120,200,0.06); border: 1px solid rgba(0,120,200,0.2); border-radius: 8px; padding: clamp(0.6rem, 1.2vw, 1rem); text-align: center;">
                 <p style="margin: 0; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 800; color: #0088cc;">79</p>
-                <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #777;">Commands</p>
-                <p style="margin: 0.1rem 0 0; font-size: clamp(0.6rem, 1vw, 0.75rem); color: #777;">/plan /tdd /deep-research</p>
+                <p style="margin: 0.2rem 0 0; font-size: var(--small-size); color: #666;">Commands</p>
+                <p style="margin: 0.1rem 0 0; font-size: clamp(0.6rem, 1vw, 0.75rem); color: #666;">/plan /tdd /deep-research</p>
             </div>
         </div>
         <!-- 설치 방법 -->
         <div class="reveal reveal-delay-5" style="margin-top: var(--content-gap); max-width: 1000px; width: 95%; background: rgba(0,0,0,0.03); border: 1px solid rgba(0,120,200,0.2); border-radius: 8px; padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.5rem);">
             <p style="margin: 0 0 0.3rem; font-size: var(--small-size); color: #0088cc; font-weight: 700;">⚡ 설치 (3줄이면 끝)</p>
-            <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.7rem, 1.3vw, 1rem); color: #333; line-height: 1.6; background: none;"><code><span style="color: #999;">$</span> git clone https://github.com/affaan-m/everything-claude-code
-<span style="color: #999;">$</span> cd everything-claude-code
-<span style="color: #999;">$</span> ./install.sh python   <span style="color: #0088cc;"># 언어별 규칙 자동 설치</span></code></pre>
+            <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.7rem, 1.3vw, 1rem); color: #333; line-height: 1.6; background: none;"><code><span style="color: #888;">$</span> git clone https://github.com/affaan-m/everything-claude-code
+<span style="color: #888;">$</span> cd everything-claude-code
+<span style="color: #888;">$</span> ./install.sh python   <span style="color: #0088cc;"># 언어별 규칙 자동 설치</span></code></pre>
         </div>
-        <p class="reveal reveal-delay-6" style="font-size: var(--small-size); color: #777; margin-top: 0.5rem;">
+        <p class="reveal reveal-delay-6" style="font-size: var(--small-size); color: #666; margin-top: 0.5rem;">
             github.com/affaan-m/everything-claude-code
         </p>
     </div>
@@ -1222,40 +1305,40 @@ Agent 3: tdd-guide
             <div class="reveal reveal-delay-2" style="background: rgba(0,0,0,0.03); border: 1px solid rgba(0,120,200,0.2); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);">
                 <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.3rem;">
                     <span style="font-size: var(--small-size); color: #0088cc; font-weight: 700; font-family: 'Space Grotesk', monospace;">/plan</span>
-                    <span style="font-size: clamp(0.6rem, 1vw, 0.75rem); color: #777;">기능 구현 전 설계</span>
+                    <span style="font-size: clamp(0.6rem, 1vw, 0.75rem); color: #666;">기능 구현 전 설계</span>
                 </div>
-                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.65rem, 1.1vw, 0.85rem); color: #444; line-height: 1.5; background: none;"><code><span style="color: #999;">you:</span> /plan 로그인 기능에 OAuth 소셜 로그인 추가
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.65rem, 1.1vw, 0.85rem); color: #444; line-height: 1.5; background: none;"><code><span style="color: #888;">you:</span> /plan 로그인 기능에 OAuth 소셜 로그인 추가
 <span style="color: #0088cc;">AI:</span>  → PRD 작성 → 아키텍처 설계 → 태스크 분해 → 구현 순서 제안</code></pre>
             </div>
             <!-- /tdd -->
             <div class="reveal reveal-delay-3" style="background: rgba(0,0,0,0.03); border: 1px solid rgba(150,0,200,0.2); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);">
                 <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.3rem;">
                     <span style="font-size: var(--small-size); color: #9900cc; font-weight: 700; font-family: 'Space Grotesk', monospace;">/tdd</span>
-                    <span style="font-size: clamp(0.6rem, 1vw, 0.75rem); color: #777;">테스트 먼저 작성</span>
+                    <span style="font-size: clamp(0.6rem, 1vw, 0.75rem); color: #666;">테스트 먼저 작성</span>
                 </div>
-                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.65rem, 1.1vw, 0.85rem); color: #444; line-height: 1.5; background: none;"><code><span style="color: #999;">you:</span> /tdd 결제 금액 계산 함수
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.65rem, 1.1vw, 0.85rem); color: #444; line-height: 1.5; background: none;"><code><span style="color: #888;">you:</span> /tdd 결제 금액 계산 함수
 <span style="color: #9900cc;">AI:</span>  → 테스트 작성(RED) → 구현(GREEN) → 리팩토링 → 커버리지 80%+ 확인</code></pre>
             </div>
             <!-- /security-scan -->
             <div class="reveal reveal-delay-4" style="background: rgba(0,0,0,0.03); border: 1px solid rgba(0,120,200,0.2); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);">
                 <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.3rem;">
                     <span style="font-size: var(--small-size); color: #0088cc; font-weight: 700; font-family: 'Space Grotesk', monospace;">/security-scan</span>
-                    <span style="font-size: clamp(0.6rem, 1vw, 0.75rem); color: #777;">보안 취약점 점검</span>
+                    <span style="font-size: clamp(0.6rem, 1vw, 0.75rem); color: #666;">보안 취약점 점검</span>
                 </div>
-                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.65rem, 1.1vw, 0.85rem); color: #444; line-height: 1.5; background: none;"><code><span style="color: #999;">you:</span> /security-scan
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.65rem, 1.1vw, 0.85rem); color: #444; line-height: 1.5; background: none;"><code><span style="color: #888;">you:</span> /security-scan
 <span style="color: #0088cc;">AI:</span>  → OWASP Top 10 점검 → SQL 인젝션 탐지 → API키 노출 확인 → 리포트</code></pre>
             </div>
             <!-- /code-review -->
             <div class="reveal reveal-delay-5" style="background: rgba(0,0,0,0.03); border: 1px solid rgba(150,0,200,0.2); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);">
                 <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.3rem;">
                     <span style="font-size: var(--small-size); color: #9900cc; font-weight: 700; font-family: 'Space Grotesk', monospace;">/review-pr</span>
-                    <span style="font-size: clamp(0.6rem, 1vw, 0.75rem); color: #777;">PR 코드 리뷰</span>
+                    <span style="font-size: clamp(0.6rem, 1vw, 0.75rem); color: #666;">PR 코드 리뷰</span>
                 </div>
-                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.65rem, 1.1vw, 0.85rem); color: #444; line-height: 1.5; background: none;"><code><span style="color: #999;">you:</span> /review-pr 42
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.65rem, 1.1vw, 0.85rem); color: #444; line-height: 1.5; background: none;"><code><span style="color: #888;">you:</span> /review-pr 42
 <span style="color: #9900cc;">AI:</span>  → diff 분석 → 버그 탐지 → 성능 이슈 → 개선안 제시 → 승인/반려</code></pre>
             </div>
         </div>
-        <p class="reveal reveal-delay-6" style="font-size: var(--body-size); color: #999; margin-top: var(--content-gap);">
+        <p class="reveal reveal-delay-6" style="font-size: var(--body-size); color: #888; margin-top: var(--content-gap);">
             슬래시 명령 하나로, <span class="glow-cyan">시니어 개발자 수준</span>의 워크플로우 실행
         </p>
     </div>
@@ -1272,7 +1355,7 @@ Agent 3: tdd-guide
         <h2 class="reveal reveal-delay-1" style="font-weight: 700; margin-top: var(--element-gap);">
             우승자의 <span class="glow-cyan">실전 워크플로우</span>
         </h2>
-        <p class="reveal reveal-delay-1" style="font-size: clamp(0.55rem, 0.9vw, 0.7rem); color: #777; margin-top: 0.2rem;">
+        <p class="reveal reveal-delay-1" style="font-size: clamp(0.55rem, 0.9vw, 0.7rem); color: #666; margin-top: 0.2rem;">
             79 Commands · 47 Agents · 170+ Skills — 해커톤 파이프라인 순서대로
         </p>
         <div style="margin-top: var(--content-gap); display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.35rem, 0.8vw, 0.6rem); max-width: 1100px; width: 95%;">
@@ -1330,8 +1413,8 @@ Agent 3: tdd-guide
             </div>
         </div>
         <!-- 하단: 에이전트 + 핵심 -->
-        <div style="margin-top: clamp(0.35rem, 0.8vw, 0.5rem); max-width: 1100px; width: 95; background: rgba(0,0,0,0.03); border: 1px solid rgba(0,120,200,0.15); border-radius: 8px; padding: clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.6rem, 1.2vw, 1rem);">
-            <p class="reveal reveal-delay-6" style="margin: 0; font-size: clamp(0.5rem, 0.85vw, 0.65rem); color: #777; line-height: 1.5; text-align: center;">
+        <div style="margin-top: clamp(0.35rem, 0.8vw, 0.5rem); max-width: 1100px; width: 95%; background: rgba(0,0,0,0.03); border: 1px solid rgba(0,120,200,0.15); border-radius: 8px; padding: clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.6rem, 1.2vw, 1rem);">
+            <p class="reveal reveal-delay-6" style="margin: 0; font-size: clamp(0.5rem, 0.85vw, 0.65rem); color: #666; line-height: 1.5; text-align: center;">
                 <span style="color: #9900cc; font-weight: 600;">47 Agents</span> code-reviewer · security-reviewer · architect · planner · tdd-guide · e2e-runner · gan-planner · gan-generator · gan-evaluator · performance-optimizer · 10개 언어별 리뷰어 ...
             </p>
         </div>
@@ -1349,39 +1432,39 @@ Agent 3: tdd-guide
         <h2 class="reveal reveal-delay-1" style="font-weight: 700; margin-top: var(--element-gap);">
             해커톤 우승 비법: <span class="glow-cyan">병렬 Claude Code</span>
         </h2>
-        <p class="reveal reveal-delay-1" style="font-size: var(--small-size); color: #999; margin-top: 0.2rem;">
+        <p class="reveal reveal-delay-1" style="font-size: var(--small-size); color: #888; margin-top: 0.2rem;">
             Anthropic 해커톤 우승자 Affaan Mustafa의 핵심 전략
         </p>
         <!-- 진화 타임라인 -->
         <div style="margin-top: var(--content-gap); display: flex; gap: clamp(0.4rem, 1vw, 0.7rem); max-width: 1100px; width: 95%; justify-content: center;">
             <!-- 1세대 -->
             <div class="reveal reveal-delay-2" style="flex: 1; background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem); text-align: center;">
-                <p style="margin: 0; font-size: clamp(0.6rem, 0.9vw, 0.75rem); color: #777;">1세대 · 2025</p>
+                <p style="margin: 0; font-size: clamp(0.6rem, 0.9vw, 0.75rem); color: #666;">1세대 · 2025</p>
                 <p style="margin: 0.2rem 0; font-size: var(--small-size); color: #444; font-weight: 600;">수동 병렬</p>
-                <p style="margin: 0; font-size: clamp(0.55rem, 0.85vw, 0.7rem); color: #999;">Worktree + tmux</p>
+                <p style="margin: 0; font-size: clamp(0.55rem, 0.85vw, 0.7rem); color: #888;">Worktree + tmux</p>
             </div>
             <div style="display: flex; align-items: center; color: #0088cc; font-size: clamp(1rem, 2vw, 1.5rem);">→</div>
             <!-- 2세대 -->
             <div class="reveal reveal-delay-3" style="flex: 1; background: rgba(150,0,200,0.06); border: 1px solid rgba(150,0,200,0.2); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem); text-align: center;">
                 <p style="margin: 0; font-size: clamp(0.6rem, 0.9vw, 0.75rem); color: #9900cc;">2세대 · 2026.02</p>
                 <p style="margin: 0.2rem 0; font-size: var(--small-size); color: #9900cc; font-weight: 600;">claude-swarm</p>
-                <p style="margin: 0; font-size: clamp(0.55rem, 0.85vw, 0.7rem); color: #999;">자동 오케스트레이션</p>
+                <p style="margin: 0; font-size: clamp(0.55rem, 0.85vw, 0.7rem); color: #888;">자동 오케스트레이션</p>
             </div>
             <div style="display: flex; align-items: center; color: #0088cc; font-size: clamp(1rem, 2vw, 1.5rem);">→</div>
             <!-- 3세대 -->
             <div class="reveal reveal-delay-4" style="flex: 1; background: rgba(0,136,204,0.04); border: 1px solid rgba(0,136,204,0.15); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem); text-align: center;">
                 <p style="margin: 0; font-size: clamp(0.6rem, 0.9vw, 0.75rem); color: #0088cc;">3세대 · 2026.02</p>
                 <p style="margin: 0.2rem 0; font-size: var(--small-size); color: #0088cc; font-weight: 700;">Agent Teams</p>
-                <p style="margin: 0; font-size: clamp(0.55rem, 0.85vw, 0.7rem); color: #999;">Anthropic 공식 기능</p>
+                <p style="margin: 0; font-size: clamp(0.55rem, 0.85vw, 0.7rem); color: #888;">Anthropic 공식 기능</p>
             </div>
         </div>
         <!-- 핵심 구조 -->
         <div style="margin-top: clamp(0.5rem, 1.2vw, 0.8rem); max-width: 1100px; width: 95%; display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(0.4rem, 1vw, 0.7rem);">
             <div class="reveal reveal-delay-5" style="background: rgba(0,0,0,0.03); border: 1px solid rgba(0,120,200,0.2); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem);">
                 <p style="margin: 0 0 0.3rem; font-size: var(--small-size); color: #0088cc; font-weight: 700;">핵심 원리</p>
-                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.55rem, 0.9vw, 0.75rem); color: #444; line-height: 1.6; background: none;"><code><span style="color: #777;">PC 1대</span> → Claude Code <span style="color: #0088cc;">3~4개</span> 동시 실행
-<span style="color: #777;">각각</span> → 독립 <span style="color: #9900cc;">Git Worktree</span> (파일 충돌 X)
-<span style="color: #777;">관리</span> → <span style="color: #0088cc;">tmux</span> 세션으로 화면 분할</code></pre>
+                <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.55rem, 0.9vw, 0.75rem); color: #444; line-height: 1.6; background: none;"><code><span style="color: #666;">PC 1대</span> → Claude Code <span style="color: #0088cc;">3~4개</span> 동시 실행
+<span style="color: #666;">각각</span> → 독립 <span style="color: #9900cc;">Git Worktree</span> (파일 충돌 X)
+<span style="color: #666;">관리</span> → <span style="color: #0088cc;">tmux</span> 세션으로 화면 분할</code></pre>
             </div>
             <div class="reveal reveal-delay-5" style="background: rgba(0,0,0,0.03); border: 1px solid rgba(150,0,200,0.2); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem);">
                 <p style="margin: 0 0 0.3rem; font-size: var(--small-size); color: #9900cc; font-weight: 700;">왜 강력한가?</p>
@@ -1407,7 +1490,7 @@ Agent 3: tdd-guide
         <h2 class="reveal reveal-delay-1" style="font-weight: 700; margin-top: var(--element-gap);">
             <span class="glow-magenta">Agent Teams</span> 실전 사용법
         </h2>
-        <p class="reveal reveal-delay-1" style="font-size: var(--small-size); color: #999; margin-top: 0.2rem;">
+        <p class="reveal reveal-delay-1" style="font-size: var(--small-size); color: #888; margin-top: 0.2rem;">
             Anthropic 공식 기능 · Opus 4.6부터 지원
         </p>
         <!-- 설정 -->
@@ -1419,30 +1502,30 @@ Agent 3: tdd-guide
         <div style="margin-top: clamp(0.4rem, 1vw, 0.6rem); display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.4rem, 1vw, 0.7rem); max-width: 1100px; width: 95%;">
             <div class="reveal reveal-delay-3" style="background: rgba(0,120,200,0.06); border: 1px solid rgba(0,120,200,0.2); border-radius: 8px; padding: clamp(0.4rem, 0.8vw, 0.6rem); text-align: center;">
                 <p style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.8rem, 1.5vw, 1.2rem); font-weight: 700; color: #0088cc;">Shift+Tab</p>
-                <p style="margin: 0.2rem 0 0; font-size: clamp(0.55rem, 0.85vw, 0.7rem); color: #777;">팀원에게 작업 위임</p>
+                <p style="margin: 0.2rem 0 0; font-size: clamp(0.55rem, 0.85vw, 0.7rem); color: #666;">팀원에게 작업 위임</p>
             </div>
             <div class="reveal reveal-delay-3" style="background: rgba(150,0,200,0.06); border: 1px solid rgba(150,0,200,0.2); border-radius: 8px; padding: clamp(0.4rem, 0.8vw, 0.6rem); text-align: center;">
                 <p style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.8rem, 1.5vw, 1.2rem); font-weight: 700; color: #9900cc;">Ctrl+T</p>
-                <p style="margin: 0.2rem 0 0; font-size: clamp(0.55rem, 0.85vw, 0.7rem); color: #777;">태스크 목록 보기</p>
+                <p style="margin: 0.2rem 0 0; font-size: clamp(0.55rem, 0.85vw, 0.7rem); color: #666;">태스크 목록 보기</p>
             </div>
             <div class="reveal reveal-delay-3" style="background: rgba(0,120,200,0.06); border: 1px solid rgba(0,120,200,0.2); border-radius: 8px; padding: clamp(0.4rem, 0.8vw, 0.6rem); text-align: center;">
                 <p style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.8rem, 1.5vw, 1.2rem); font-weight: 700; color: #0088cc;">Shift+↑↓</p>
-                <p style="margin: 0.2rem 0 0; font-size: clamp(0.55rem, 0.85vw, 0.7rem); color: #777;">팀원에게 메시지</p>
+                <p style="margin: 0.2rem 0 0; font-size: clamp(0.55rem, 0.85vw, 0.7rem); color: #666;">팀원에게 메시지</p>
             </div>
         </div>
         <!-- 실전 예시 -->
         <div class="reveal reveal-delay-4" style="margin-top: clamp(0.4rem, 1vw, 0.6rem); max-width: 1100px; width: 95%; background: rgba(0,0,0,0.03); border: 1px solid rgba(150,0,200,0.2); border-radius: 8px; padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);">
             <p style="margin: 0 0 0.4rem; font-size: var(--small-size); color: #9900cc; font-weight: 700;">🎮 해커톤 실전 시나리오</p>
-            <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.55rem, 0.95vw, 0.8rem); color: #444; line-height: 1.7; background: none;"><code><span style="color: #999;">you:</span> 쇼핑몰 MVP 만들어줘
+            <pre style="margin: 0; font-family: 'Space Grotesk', monospace; font-size: clamp(0.55rem, 0.95vw, 0.8rem); color: #444; line-height: 1.7; background: none;"><code><span style="color: #888;">you:</span> 쇼핑몰 MVP 만들어줘
 
 <span style="color: #0088cc;">[Lead]</span>  설계 완료. 팀원 배정합니다.
    <span style="color: #9900cc;">Shift+Tab →</span> <span style="color: #ff9500;">팀원A</span> "백엔드 API + DB 설계"
    <span style="color: #9900cc;">Shift+Tab →</span> <span style="color: #ff9500;">팀원B</span> "프론트 UI 구현"
    <span style="color: #9900cc;">Shift+Tab →</span> <span style="color: #ff9500;">팀원C</span> "테스트 + 배포 준비"
 
-<span style="color: #777;">→ 3명이 동시 작업 → 완료 후 자동 병합</span></code></pre>
+<span style="color: #666;">→ 3명이 동시 작업 → 완료 후 자동 병합</span></code></pre>
         </div>
-        <p class="reveal reveal-delay-5" style="font-size: var(--small-size); color: #999; margin-top: clamp(0.3rem, 0.8vw, 0.5rem);">
+        <p class="reveal reveal-delay-5" style="font-size: var(--small-size); color: #888; margin-top: clamp(0.3rem, 0.8vw, 0.5rem);">
             혼자서 <span class="glow-cyan">시니어 3~4명 규모의 팀</span>을 운영하는 효과
         </p>
     </div>
@@ -1470,7 +1553,7 @@ Agent 3: tdd-guide
         <p class="reveal reveal-delay-5" style="font-size: var(--small-size); color: #8b7355; margin-top: var(--element-gap); letter-spacing: 0.05em;">
             Thank you.
         </p>
-        <p class="reveal reveal-delay-6" style="position: absolute; bottom: clamp(2rem, 5vh, 4rem); font-family: 'Montserrat', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.1rem); font-weight: 500; color: #999; letter-spacing: 0.12em; text-transform: uppercase;">April 2026 &nbsp;&middot;&nbsp; Inhwan Lee</p>
+        <p class="reveal reveal-delay-6" style="position: absolute; bottom: clamp(2rem, 5vh, 4rem); font-family: 'Montserrat', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.1rem); font-weight: 500; color: #888; letter-spacing: 0.12em; text-transform: uppercase;">April 2026 &nbsp;&middot;&nbsp; Inhwan Lee</p>
     </div>
     <span class="slide-number">26</span>
 </section>
