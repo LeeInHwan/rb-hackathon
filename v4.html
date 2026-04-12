@@ -177,32 +177,53 @@ body {
   color: var(--dark); opacity: 0.5; margin-top: 8px;
 }
 
-/* ========== SLIDE 6: 10000 HOURS ========== */
-.hours-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
-.hours-number {
-  font-family: var(--font-heading); font-size: clamp(80px, 9vw, 130px);
-  font-weight: 900; color: var(--red); line-height: 1;
+/* ========== SLIDE 6: 경험의 시대 ========== */
+.era-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
+.era-card {
+  background: white; border-radius: 12px; padding: 32px 28px;
+  box-shadow: 0 2px 20px rgba(42,37,32,0.06);
+  border: 1px solid rgba(42,37,32,0.06);
 }
-.hours-label {
-  font-family: var(--font-heading); font-size: clamp(28px, 3vw, 42px);
-  font-weight: 700; color: var(--dark);
+.era-card-title {
+  font-family: var(--font-heading); font-size: clamp(18px, 1.4vw, 22px);
+  font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
 }
-.hours-list { list-style: none; margin-top: 16px; }
-.hours-list li {
-  padding: 6px 0; font-size: clamp(14px, 1vw, 17px);
-  border-bottom: 1px solid rgba(42,37,32,0.08);
-  display: flex; justify-content: space-between;
+.era-card-title .era-icon { font-size: 20px; }
+.era-bullet-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.era-bullet-list li {
+  font-size: clamp(14px, 1vw, 17px); line-height: 1.6;
+  padding-left: 0;
 }
-.hours-list li span:last-child { color: var(--red); font-weight: 600; }
-.progress-bar-10k {
-  width: 100%; height: 6px; background: rgba(42,37,32,0.08);
-  border-radius: 3px; margin-top: 24px; overflow: hidden;
+.era-bullet-list li strong { font-weight: 700; }
+.era-bullet-list li .era-dash { color: var(--dark); opacity: 0.4; margin: 0 6px; }
+.era-right-col { display: flex; flex-direction: column; gap: 20px; }
+.era-right-col .era-card { text-align: center; }
+.era-right-col .era-card-title { justify-content: flex-start; }
+.era-stat-box {
+  background: white; border-radius: 12px; padding: 24px;
+  box-shadow: 0 2px 20px rgba(42,37,32,0.06);
+  border: 1px solid rgba(42,37,32,0.06);
+  text-align: center;
 }
-.progress-bar-10k-fill {
-  height: 100%; background: var(--red); border-radius: 3px;
-  width: 0; transition: width 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.era-stat-label {
+  font-size: clamp(13px, 0.9vw, 15px); color: var(--dark); opacity: 0.6; margin-bottom: 8px;
 }
-.visible .progress-bar-10k-fill { width: 100%; }
+.era-stat-number {
+  font-family: var(--font-heading); font-size: clamp(40px, 4vw, 64px);
+  font-weight: 900; color: var(--dark); line-height: 1.1;
+}
+.era-stat-sub {
+  font-size: clamp(12px, 0.8vw, 14px); color: var(--dark); opacity: 0.5; margin-top: 6px;
+}
+.era-stat-number .era-tilde { font-weight: 300; }
+.era-footer-msg {
+  margin-top: 24px; text-align: center;
+  font-size: clamp(15px, 1.1vw, 19px); color: var(--dark);
+}
+.era-footer-msg strong { font-weight: 700; }
+.era-gold-bar {
+  width: 100%; height: 4px; background: var(--gold); border-radius: 2px; margin-bottom: 20px;
+}
 
 /* ========== SLIDE 7: CHATGPT TRANSITION ========== */
 .transition-slide .slide-content {
@@ -649,30 +670,44 @@ body {
   <span class="slide-number">05 / 23</span>
 </section>
 
-<!-- ==================== SLIDE 6: 10,000 HOURS ==================== -->
+<!-- ==================== SLIDE 6: 경험의 시대 ==================== -->
 <section class="slide" data-slide="6">
   <div class="slide-content">
-    <div class="heading-md reveal" style="margin-bottom: 24px;">10,000시간의 법칙</div>
-    <div class="hours-layout">
-      <div class="reveal reveal-delay-1" style="text-align: center;">
-        <div class="hours-number">10,000</div>
-        <div class="hours-label">시간</div>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="body-sm text-muted" style="margin-bottom: 4px;">말콤 글래드웰, 2008</div>
-        <div class="body-md" style="margin-bottom: 16px;">
-          "특정 분야에서 세계적 수준의 전문가가 되려면<br>최소 10,000시간의 의도적 연습이 필요하다."
-        </div>
-        <ul class="hours-list">
-          <li><span>의사</span><span>10년</span></li>
-          <li><span>개발자</span><span>7~10년</span></li>
-          <li><span>변호사</span><span>8년</span></li>
-          <li><span>경영자</span><span>15~20년</span></li>
+    <div class="heading-lg reveal" style="margin-bottom: 8px;">경험의 시대</div>
+    <div class="body-md reveal reveal-delay-1" style="margin-bottom: 8px; opacity: 0.7;">
+      AI가 등장하기 전, 전문성의 유일한 경로는 <strong>시간과 반복</strong>이었습니다.
+    </div>
+    <div class="era-layout">
+      <!-- 왼쪽: 시간이 곧 실력 -->
+      <div class="era-card reveal reveal-delay-2">
+        <div class="era-card-title"><span class="era-icon">⏳</span> 시간이 곧 실력</div>
+        <ul class="era-bullet-list">
+          <li><strong>10,000시간의 법칙</strong><span class="era-dash">—</span>말콤 글래드웰</li>
+          <li><strong>5년차 vs 10년차</strong><span class="era-dash">—</span>연차가 곧 신뢰</li>
+          <li><strong>도제식 수련</strong><span class="era-dash">—</span>선배에게 배우는 문화</li>
+          <li><strong>자격증 · 학위</strong><span class="era-dash">—</span>경험을 증명하는 서류</li>
         </ul>
       </div>
+      <!-- 오른쪽: 경험 경제의 공식 -->
+      <div class="era-right-col reveal reveal-delay-3">
+        <div class="era-card" style="padding-bottom: 20px;">
+          <div class="era-card-title"><span class="era-icon">📊</span> 경험 경제의 공식</div>
+          <div class="era-gold-bar"></div>
+          <div class="era-stat-box">
+            <div class="era-stat-label">전문가 양성 기간</div>
+            <div class="era-stat-number">7<span class="era-tilde">~</span>10<span style="font-size: 0.5em; font-weight: 700;">년</span></div>
+            <div class="era-stat-sub">의료 · 법률 · 엔지니어링 공통</div>
+          </div>
+          <div class="era-stat-box" style="margin-top: 16px;">
+            <div class="era-stat-label">경력 프리미엄</div>
+            <div class="era-stat-number" style="color: var(--dark);">+47<span style="font-size: 0.5em; font-weight: 700;">%</span></div>
+            <div class="era-stat-sub">10년 경력 대비 신입 연봉 격차 (OECD 평균)</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="progress-bar-10k reveal reveal-delay-3">
-      <div class="progress-bar-10k-fill"></div>
+    <div class="era-footer-msg reveal reveal-delay-4">
+      이 공식은 <strong>수십 년간 의심 없이 작동</strong>했습니다. — 그런데…
     </div>
   </div>
   <span class="slide-number">06 / 23</span>
