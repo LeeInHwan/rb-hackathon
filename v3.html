@@ -987,9 +987,23 @@ p, li {
   .kpi-card .kpi-value { font-size: clamp(1.6rem, 6vw, 2.5rem); }
   .stat-value { font-size: clamp(1.8rem, 5vw, 2.5rem); }
 
-  /* Timeline */
+  /* Timeline — compact for mobile */
   .timeline { padding-left: 2.2rem; }
-  .tl-dot { left: -2.2rem; width: 20px; height: 20px; }
+  .tl-dot { left: -2.2rem; width: 16px; height: 16px; border-width: 2px; }
+  .tl-item { padding-bottom: 0.8rem; }
+  .tl-year { font-size: 0.65rem; margin-bottom: 0; }
+  .tl-title { font-size: 0.8rem; }
+  .tl-desc { font-size: 0.65rem; margin-top: 0; }
+
+  /* Slide 7 timeline — fit everything in one screen */
+  #slide-7 h2 { font-size: 1.2rem; margin-bottom: 0.3rem !important; }
+  #slide-7 .mb-2 { margin-bottom: 0.5rem !important; }
+  #slide-7 .grid-2 { gap: 1rem; }
+  #slide-7 h3 { font-size: 0.9rem; margin-bottom: 0.5rem; }
+  #slide-7 .bar-label { min-width: 100px !important; font-size: 0.65rem; }
+  #slide-7 .bar-row { margin-bottom: 0.3rem; }
+  #slide-7 .mt-1 { margin-top: 0.3rem !important; }
+  #slide-7 .mt-1 br { display: none; }
 
   /* Quote */
   .quote { font-size: var(--body); padding-left: 1rem; }
@@ -1083,9 +1097,12 @@ p, li {
   .donut .donut-number { font-size: 1rem; }
 
   /* Timeline further compact */
-  .timeline { padding-left: 2rem; }
-  .tl-dot { left: -2rem; width: 18px; height: 18px; }
-  .tl-item { padding-bottom: 1.2rem; }
+  .timeline { padding-left: 1.8rem; }
+  .tl-dot { left: -1.8rem; width: 14px; height: 14px; border-width: 2px; }
+  .tl-item { padding-bottom: 0.5rem; }
+  .tl-year { font-size: 0.6rem; }
+  .tl-title { font-size: 0.75rem; }
+  .tl-desc { font-size: 0.6rem; }
 
   /* Inline min-width overrides for bar labels with inline styles */
   .bar-chart .bar-label[style*="min-width"] { min-width: 50px !important; }
