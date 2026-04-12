@@ -82,6 +82,12 @@ html {
     }
 }
 @media (max-width: 768px) {
+    /* ============================================================
+       MOBILE: UNIFIED STRATEGY FOR 375x812 (iPhone)
+       Slide N = body child N+2 (progress-bar + nav-dots first)
+       ============================================================ */
+
+    /* ----- 1. CSS VARIABLES ----- */
     :root {
         --title-size: clamp(1.3rem, 6vw, 2rem);
         --h2-size: clamp(1.1rem, 5vw, 1.6rem);
@@ -92,19 +98,19 @@ html {
         --content-gap: clamp(0.3rem, 1.5vw, 0.8rem);
     }
 
-    /* ===== 전체: nowrap 강제 해제 ===== */
+    /* ----- 2. GLOBAL RESETS ----- */
     .slide p, .slide span, .slide div, .slide h2 {
         white-space: normal !important;
         word-break: keep-all !important;
     }
-
-    /* ===== 슬라이드 중앙 정렬 ===== */
     .slide-content {
         justify-content: center !important;
         padding-top: 0 !important;
     }
+    .nav-dots { display: none; }
+    .keyboard-hint { display: none; }
 
-    /* ===== Paper & Ink 슬라이드 (1-6) ===== */
+    /* ----- 3. PAPER & INK (slides 1-6, 26) ----- */
     .hero-title {
         font-size: clamp(1.2rem, 6vw, 1.8rem) !important;
     }
@@ -113,14 +119,16 @@ html {
         line-height: 1.5 !important;
     }
 
-    /* ===== 슬라이드 7: 전환 ===== */
+    /* ----- 4. TRANSITION SLIDE (slide 7) ----- */
     .transition-slide p {
         font-size: clamp(0.9rem, 3.5vw, 1.2rem) !important;
     }
 
-    /* ===== Neon Cyber 전체 ===== */
+    /* ----- 5. NEON CYBER BASE (all neon-cyber slides 8-25) -----
+       ONE consistent set of base sizes. No per-slide h2 overrides
+       needed for "normal" density slides (9, 11, 12, 13, 14, 15, 16). */
     .neon-cyber h2 {
-        font-size: clamp(1rem, 4.2vw, 1.4rem) !important;
+        font-size: clamp(0.95rem, 4vw, 1.3rem) !important;
         line-height: 1.3 !important;
     }
     .neon-cyber .big-question {
@@ -131,8 +139,35 @@ html {
         font-size: clamp(0.7rem, 2.8vw, 0.9rem) !important;
         line-height: 1.4 !important;
     }
+    .neon-cyber .tag {
+        font-size: 0.55rem !important;
+        padding: 0.15rem 0.5rem !important;
+    }
 
-    /* ===== 슬라이드 8: AI 타임라인 ===== */
+    /* ----- 6. PRE/CODE: universal overflow handling ----- */
+    .neon-cyber pre {
+        white-space: pre-wrap !important;
+        word-break: break-all !important;
+        overflow-x: auto !important;
+        font-size: clamp(0.5rem, 1.8vw, 0.7rem) !important;
+        line-height: 1.5 !important;
+    }
+    .neon-cyber code {
+        font-size: inherit !important;
+    }
+
+    /* ----- 7. MAX-WIDTH CONTAINERS: full-width on mobile ----- */
+    .neon-cyber [style*="max-width: 650px"],
+    .neon-cyber [style*="max-width: 700px"],
+    .neon-cyber [style*="max-width: 800px"],
+    .neon-cyber [style*="max-width: 900px"],
+    .neon-cyber [style*="max-width: 1000px"],
+    .neon-cyber [style*="max-width: 1100px"] {
+        max-width: 95vw !important;
+        width: 95vw !important;
+    }
+
+    /* ----- 8. SLIDE 8 (child 10): AI 타임라인 — 7 stacked items ----- */
     .ai-timeline {
         gap: 0.3rem !important;
         width: 95vw !important;
@@ -152,7 +187,7 @@ html {
         line-height: 1.3 !important;
     }
 
-    /* ===== 슬라이드 10: 비교표 ===== */
+    /* ----- 9. SLIDE 10 (child 12): 비교표 ----- */
     .comparison-table {
         width: 92vw !important;
         margin-top: 0.3rem !important;
@@ -164,23 +199,82 @@ html {
         padding: 0.15rem 0.1rem !important;
     }
 
-    /* ===== 슬라이드 12: 인간의 가치 답변 카드 ===== */
-    .neon-cyber [style*="max-width: 800px"] {
-        max-width: 95vw !important;
+    /* ----- 10. SLIDE 14 (child 16): 생태계 전환기 3칸 ----- */
+    .timeline-row {
+        flex-direction: column !important;
+        gap: 0.6rem !important;
+        align-items: center !important;
     }
-    .neon-cyber [style*="max-width: 800px"] p {
-        font-size: 0.75rem !important;
+    .timeline-row > div {
+        flex-direction: row !important;
+        gap: 0.5rem !important;
+    }
+    .timeline-row > div > div:first-child {
+        font-size: 1.5rem !important;
+        margin-bottom: 0 !important;
     }
 
-    /* ===== 슬라이드 20: 자연어 운용 4카드 축소 ===== */
-    .slide:nth-child(22) .slide-content .tag {
-        font-size: 0.55rem !important;
-        padding: 0.15rem 0.5rem !important;
+    /* =============================================================
+       CARD-BASED SLIDES: UNIFIED COMPACT TREATMENT
+       Applies to slides with 3-4 stacked cards:
+        - Slide 17 (child 19): 변천사 3단
+        - Slide 18 (child 20): 하네스 4카드
+        - Slide 20 (child 22): 자연어 운용 4카드
+        - Slide 22 (child 24): ECC 실사용 4카드
+       ============================================================= */
+
+    /* --- Slide 17 (child 19): 변천사 3단 카드 --- */
+    .slide:nth-child(19) .slide-content > div {
+        gap: 0.4rem !important;
+        margin-top: 0.3rem !important;
     }
-    .slide:nth-child(22) .slide-content h2 {
-        font-size: clamp(0.85rem, 3.8vw, 1.2rem) !important;
+    .slide:nth-child(19) .slide-content > div > div {
+        padding: 0.35rem 0.5rem !important;
+        gap: 0.25rem !important;
+    }
+    .slide:nth-child(19) .slide-content > div > div > div:first-child {
+        min-width: 60px !important;
+    }
+    .slide:nth-child(19) .slide-content > div > div > div:first-child span {
+        font-size: clamp(0.9rem, 3.5vw, 1.2rem) !important;
+    }
+    .slide:nth-child(19) .slide-content > div > div > div:last-child p:first-child {
+        font-size: clamp(0.7rem, 2.8vw, 0.95rem) !important;
+    }
+    .slide:nth-child(19) .slide-content > div > div > div:last-child p:last-child {
+        font-size: clamp(0.6rem, 2.2vw, 0.8rem) !important;
         margin-top: 0.1rem !important;
     }
+    .slide:nth-child(19) .slide-content > p:last-of-type {
+        font-size: clamp(0.65rem, 2.5vw, 0.85rem) !important;
+        margin-top: 0.3rem !important;
+    }
+
+    /* --- Slide 18 (child 20): 하네스 4카드 --- */
+    .slide:nth-child(20) .slide-content > div {
+        gap: 0.3rem !important;
+        margin-top: 0.3rem !important;
+    }
+    .slide:nth-child(20) .slide-content > div > div {
+        padding: 0.3rem 0.5rem !important;
+        gap: 0.25rem !important;
+    }
+    .slide:nth-child(20) .slide-content > div > div > div:first-child span {
+        font-size: clamp(0.9rem, 3.5vw, 1.2rem) !important;
+    }
+    .slide:nth-child(20) .slide-content > div > div > div:last-child p:first-child {
+        font-size: clamp(0.7rem, 2.8vw, 0.95rem) !important;
+    }
+    .slide:nth-child(20) .slide-content > div > div > div:last-child p:last-child {
+        font-size: clamp(0.6rem, 2.2vw, 0.8rem) !important;
+        margin-top: 0.1rem !important;
+    }
+    .slide:nth-child(20) .slide-content > p:last-of-type {
+        font-size: clamp(0.65rem, 2.5vw, 0.85rem) !important;
+        margin-top: 0.2rem !important;
+    }
+
+    /* --- Slide 20 (child 22): 자연어 운용 4카드 --- */
     .slide:nth-child(22) .slide-content > div {
         gap: 0.3rem !important;
         margin-top: 0.3rem !important;
@@ -201,110 +295,73 @@ html {
         margin-top: 0.2rem !important;
     }
 
-    /* ===== 슬라이드 18 (child 20): 하네스 4카드 축소 ===== */
-    .slide:nth-child(20) .slide-content .tag {
-        font-size: 0.55rem !important;
-        padding: 0.12rem 0.4rem !important;
-    }
-    .slide:nth-child(20) .slide-content h2 {
-        font-size: clamp(0.9rem, 4vw, 1.3rem) !important;
-        margin-top: 0.1rem !important;
-    }
-    .slide:nth-child(20) .slide-content > div {
-        gap: 0.35rem !important;
+    /* --- Slide 22 (child 24): ECC 실사용 예시 4카드 --- */
+    .slide:nth-child(24) .slide-content > div {
+        gap: 0.3rem !important;
         margin-top: 0.3rem !important;
     }
-    .slide:nth-child(20) .slide-content > div > div {
-        padding: 0.35rem 0.5rem !important;
-        gap: 0.25rem !important;
+    .slide:nth-child(24) .slide-content > div > div {
+        padding: 0.3rem 0.5rem !important;
     }
-    .slide:nth-child(20) .slide-content > div > div > div:first-child span {
-        font-size: clamp(0.9rem, 3.5vw, 1.2rem) !important;
+    .slide:nth-child(24) .slide-content > div > div p {
+        font-size: clamp(0.55rem, 2.2vw, 0.75rem) !important;
+        margin: 0 !important;
+        line-height: 1.3 !important;
     }
-    .slide:nth-child(20) .slide-content > div > div > div:last-child p:first-child {
-        font-size: clamp(0.7rem, 2.8vw, 0.95rem) !important;
+    .slide:nth-child(24) .slide-content > div > div pre {
+        font-size: clamp(0.5rem, 1.6vw, 0.65rem) !important;
+        margin-top: 0.15rem !important;
     }
-    .slide:nth-child(20) .slide-content > div > div > div:last-child p:last-child {
+    .slide:nth-child(24) .slide-content > p:last-of-type {
         font-size: clamp(0.6rem, 2.2vw, 0.8rem) !important;
-        margin-top: 0.1rem !important;
-    }
-    .slide:nth-child(20) .slide-content > p:last-of-type {
-        font-size: clamp(0.65rem, 2.5vw, 0.85rem) !important;
         margin-top: 0.2rem !important;
     }
 
-    /* ===== 슬라이드 17: 변천사 3단 카드 ===== */
-    .slide:nth-child(19) .slide-content h2 {
-        font-size: clamp(1.1rem, 5vw, 1.6rem) !important;
-        margin-bottom: 0.5rem !important;
+    /* =============================================================
+       GRID / DENSE SLIDES: COMPACT TREATMENT
+       - Slide 19 (child 21): 하네스 셋팅 2x2 grid
+       - Slide 21 (child 23): ECC 3열 통계
+       - Slide 23 (child 25): 워크플로우 5-box grid
+       - Slide 24 (child 26): 병렬 Claude Code
+       - Slide 25 (child 27): Agent Teams
+       ============================================================= */
+
+    /* --- Slide 19 (child 21): 하네스 셋팅 2x2 grid --- */
+    .slide:nth-child(21) [style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 0.3rem !important;
     }
-    .slide:nth-child(19) .slide-content > div {
-        gap: 0.8rem !important;
+    .slide:nth-child(21) .slide-content > div > div {
+        padding: 0.4rem 0.5rem !important;
     }
-    .slide:nth-child(19) .slide-content > div > div {
-        padding: 0.8rem 1rem !important;
-        gap: 0.5rem !important;
+    .slide:nth-child(21) .slide-content > div > div p {
+        font-size: clamp(0.6rem, 2.2vw, 0.8rem) !important;
     }
-    .slide:nth-child(19) .slide-content > div > div > div:first-child {
-        min-width: 80px !important;
-    }
-    .slide:nth-child(19) .slide-content > div > div > div:first-child span {
-        font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
-    }
-    .slide:nth-child(19) .slide-content > div > div > div:last-child p:first-child {
-        font-size: clamp(0.95rem, 3.5vw, 1.2rem) !important;
-    }
-    .slide:nth-child(19) .slide-content > div > div > div:last-child p:last-child {
-        font-size: clamp(0.75rem, 2.8vw, 0.95rem) !important;
-        margin-top: 0.15rem !important;
-    }
-    .slide:nth-child(19) .slide-content > p:last-of-type {
-        font-size: clamp(0.8rem, 3vw, 1rem) !important;
-        margin-top: 0.5rem !important;
+    .slide:nth-child(21) .slide-content > p:last-of-type {
+        font-size: clamp(0.6rem, 2.2vw, 0.8rem) !important;
+        margin-top: 0.2rem !important;
     }
 
-    /* ===== 슬라이드 14: 생태계 전환기 3칸 ===== */
-    .timeline-row {
-        flex-direction: column !important;
-        gap: 0.6rem !important;
-        align-items: center !important;
-    }
-    .timeline-row > div {
-        flex-direction: row !important;
-        gap: 0.5rem !important;
-    }
-    .timeline-row > div > div:first-child {
-        font-size: 1.5rem !important;
-        margin-bottom: 0 !important;
-    }
-
-    /* ===== 슬라이드 15/16: 해커톤 카드 ===== */
-    .neon-cyber [style*="max-width: 650px"],
-    .neon-cyber [style*="max-width: 900px"] {
-        max-width: 92vw !important;
-        width: 92vw !important;
-    }
-
-    /* ===== 전체 pre 태그 모바일 대응 ===== */
-    .neon-cyber pre {
-        white-space: pre-wrap !important;
-        word-break: break-all !important;
-        overflow-x: auto !important;
-    }
-
-    /* ===== 슬라이드 21 (child 23): ECC 3열 통계 ===== */
+    /* --- Slide 21 (child 23): ECC 3열 통계 --- */
     .slide:nth-child(23) [style*="repeat(3, 1fr)"] {
         grid-template-columns: repeat(3, 1fr) !important;
         gap: 0.3rem !important;
     }
+    .slide:nth-child(23) [style*="repeat(3, 1fr)"] > div {
+        padding: 0.4rem 0.3rem !important;
+    }
     .slide:nth-child(23) [style*="repeat(3, 1fr)"] p {
-        font-size: clamp(0.55rem, 2vw, 0.75rem) !important;
+        font-size: clamp(0.55rem, 2vw, 0.7rem) !important;
     }
     .slide:nth-child(23) [style*="repeat(3, 1fr)"] p:first-child {
         font-size: clamp(1.2rem, 5vw, 1.8rem) !important;
     }
+    /* ECC install box */
+    .slide:nth-child(23) .slide-content > div[style*="background"] {
+        padding: 0.4rem 0.5rem !important;
+    }
 
-    /* ===== 슬라이드 23 (child 25): 워크플로우 그리드 ===== */
+    /* --- Slide 23 (child 25): 워크플로우 5-box grid --- */
     .slide:nth-child(25) [style*="repeat(3, 1fr)"] {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 0.25rem !important;
@@ -312,13 +369,6 @@ html {
     .slide:nth-child(25) [style*="repeat(2, 1fr)"] {
         grid-template-columns: 1fr !important;
         gap: 0.25rem !important;
-    }
-    .slide:nth-child(25) .slide-content .tag {
-        font-size: 0.55rem !important;
-        padding: 0.12rem 0.4rem !important;
-    }
-    .slide:nth-child(25) .slide-content h2 {
-        font-size: clamp(0.85rem, 3.8vw, 1.2rem) !important;
     }
     .slide:nth-child(25) [style*="repeat"] > div {
         padding: 0.3rem 0.4rem !important;
@@ -331,11 +381,15 @@ html {
         font-size: clamp(0.45rem, 1.8vw, 0.6rem) !important;
         line-height: 1.4 !important;
     }
-
-    /* ===== 슬라이드 24 (child 26): 병렬 Claude Code 타임라인 ===== */
-    .slide:nth-child(26) .slide-content h2 {
-        font-size: clamp(0.85rem, 3.8vw, 1.2rem) !important;
+    /* bottom agents bar */
+    .slide:nth-child(25) .slide-content > div[style*="background"]:last-of-type {
+        padding: 0.25rem 0.4rem !important;
     }
+    .slide:nth-child(25) .slide-content > div[style*="background"]:last-of-type p {
+        font-size: clamp(0.45rem, 1.6vw, 0.6rem) !important;
+    }
+
+    /* --- Slide 24 (child 26): 병렬 Claude Code --- */
     .slide:nth-child(26) .slide-content > div[style*="display: flex"][style*="gap"] {
         flex-wrap: wrap !important;
         gap: 0.3rem !important;
@@ -351,31 +405,34 @@ html {
         grid-template-columns: 1fr !important;
         gap: 0.3rem !important;
     }
-
-    /* ===== 슬라이드 25 (child 27): Agent Teams ===== */
-    .slide:nth-child(27) .slide-content h2 {
-        font-size: clamp(0.85rem, 3.8vw, 1.2rem) !important;
+    .slide:nth-child(26) .slide-content > div > div {
+        padding: 0.35rem 0.5rem !important;
     }
+
+    /* --- Slide 25 (child 27): Agent Teams --- */
     .slide:nth-child(27) [style*="repeat(3, 1fr)"] {
         grid-template-columns: repeat(3, 1fr) !important;
         gap: 0.2rem !important;
     }
+    .slide:nth-child(27) [style*="repeat(3, 1fr)"] > div {
+        padding: 0.3rem 0.3rem !important;
+    }
     .slide:nth-child(27) [style*="repeat(3, 1fr)"] p {
         font-size: clamp(0.55rem, 2vw, 0.7rem) !important;
     }
-    .slide:nth-child(27) pre {
-        font-size: clamp(0.5rem, 1.8vw, 0.65rem) !important;
-        line-height: 1.5 !important;
+    .slide:nth-child(27) .slide-content > div[style*="background"] {
+        padding: 0.35rem 0.5rem !important;
     }
 
-    /* ===== nav dots 숨김 ===== */
-    .nav-dots {
-        display: none;
-    }
-
-    /* ===== 키보드 힌트 숨김 ===== */
-    .keyboard-hint {
-        display: none;
+    /* =============================================================
+       DENSE SLIDES: shared smaller h2 for content-heavy slides
+       These are slides 17-25 (children 19-27) which have cards,
+       grids, or pre blocks that need a smaller heading to fit.
+       ============================================================= */
+    .slide:nth-child(n+19):nth-child(-n+27).neon-cyber h2,
+    .slide:nth-child(n+19):nth-child(-n+27) .slide-content h2 {
+        font-size: clamp(0.85rem, 3.8vw, 1.2rem) !important;
+        margin-top: 0.1rem !important;
     }
 }
 @media (prefers-reduced-motion: reduce) {
