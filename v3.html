@@ -179,7 +179,6 @@ p, li {
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: stretch;
-  align-items: start;
 }
 .grid-3 {
   display: grid;
@@ -909,6 +908,20 @@ p, li {
 }
 
 /* ============================================
+   PC SLIDE-SPECIFIC OVERRIDES
+   ============================================ */
+#slide-7 { justify-content: flex-start; padding-top: 2rem; padding-bottom: 1.5rem; }
+#slide-7 h2 { font-size: 2rem; margin-bottom: 0.3rem !important; }
+#slide-7 .mb-2 { margin-bottom: 0.8rem !important; }
+#slide-7 .tl-item { padding-bottom: 0.4rem; }
+#slide-7 .tl-year { margin-bottom: 0; font-size: 0.75rem; }
+#slide-7 .tl-title { font-size: 0.95rem; }
+#slide-7 .tl-desc { font-size: 0.8rem; margin-top: 0.1rem; }
+#slide-7 .tl-dot { width: 20px; height: 20px; left: -2.8rem; }
+#slide-7 .timeline { padding-left: 2.8rem; }
+#slide-7 .timeline::before { left: 9px; }
+
+/* ============================================
    MOBILE RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
@@ -1309,7 +1322,7 @@ p, li {
 
       <div class="grid-2">
         <div style="display:flex;">
-          <div class="card" style="padding:1.8rem; flex:1;">
+          <div class="card" style="padding:1.8rem; flex:1; display:flex; flex-direction:column; justify-content:center;">
             <h3 style="color:var(--gold); margin-bottom:1rem;">&#9201; 시간이 곧 실력</h3>
             <ul style="list-style:none; padding:0; line-height:2;">
               <li><strong>10,000시간의 법칙</strong> &mdash; 말콤 글래드웰</li>
@@ -1372,7 +1385,7 @@ p, li {
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 1 &mdash; Paradigm Shift</p>
-      <div class="grid-2">
+      <div class="grid-2" style="align-items:center;">
         <div>
           <div class="quote">
             "1온스의 경험은 1톤의 이론보다 가치 있다"
@@ -1536,7 +1549,7 @@ p, li {
         릴리스 간격이 점점 짧아지고 있습니다 &mdash; 가속의 증거
       </p>
 
-      <div class="grid-2">
+      <div class="grid-2" style="align-items:start;">
         <div class="timeline">
           <div class="tl-item">
             <div class="tl-dot"></div>
@@ -1594,7 +1607,7 @@ p, li {
             <div class="bar-row">
               <span class="bar-label" style="min-width:140px;">4.6→Mythos</span>
               <div class="bar-track thin">
-                <div class="bar-fill ink" style="--bar-width:7%;"><span class="bar-value">2개월</span></div>
+                <div class="bar-fill ink" style="--bar-width:7%; min-width:50px;"><span class="bar-value">2개월</span></div>
               </div>
             </div>
           </div>
@@ -2222,7 +2235,7 @@ p, li {
       <div class="grid-2">
         <div style="text-align:center;">
           <h3 style="font-size:var(--body); margin-bottom:1rem; color:var(--ink-muted);">순차 실행</h3>
-          <div style="background:#fff; border:1px solid var(--rule); border-radius:12px; padding:1.5rem;">
+          <div style="background:#fff; border:1px solid var(--rule); border-radius:12px; padding:1.5rem; height:100%; display:flex; flex-direction:column; justify-content:center;">
             <div style="margin-bottom:0.8rem;">
               <div style="height:24px; background:var(--ink-faint); border-radius:4px; margin-bottom:4px; display:flex; align-items:center; padding:0 8px;">
                 <span style="font-size:0.7rem; color:#fff; font-weight:600;">Agent 1 &mdash; 4시간</span>
@@ -2235,7 +2248,7 @@ p, li {
 
         <div style="text-align:center;">
           <h3 style="font-size:var(--body); margin-bottom:1rem; color:var(--red);">병렬 실행</h3>
-          <div style="background:#fff; border:2px solid var(--red); border-radius:12px; padding:1.5rem;">
+          <div style="background:#fff; border:2px solid var(--red); border-radius:12px; padding:1.5rem; height:100%; display:flex; flex-direction:column; justify-content:center;">
             <div style="margin-bottom:0.8rem;">
               <div style="height:24px; background:var(--red); border-radius:4px; margin-bottom:4px; width:25%; display:flex; align-items:center; padding:0 8px;">
                 <span style="font-size:0.65rem; color:#fff; font-weight:600;">A1</span>
