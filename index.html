@@ -362,31 +362,37 @@ html {
     }
 
     /* --- Slide 23 (child 25): 워크플로우 5-box grid --- */
+    .slide:nth-child(25) h2 {
+        font-size: clamp(1rem, 4.5vw, 1.4rem) !important;
+        margin-bottom: 0.2rem !important;
+    }
     .slide:nth-child(25) [style*="repeat(3, 1fr)"] {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.25rem !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 0.35rem !important;
     }
     .slide:nth-child(25) [style*="repeat(2, 1fr)"] {
-        grid-template-columns: 1fr !important;
-        gap: 0.25rem !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.35rem !important;
+        max-width: 95vw !important;
+        width: 95vw !important;
     }
     .slide:nth-child(25) [style*="repeat"] > div {
-        padding: 0.3rem 0.4rem !important;
+        padding: 0.45rem 0.5rem !important;
     }
     .slide:nth-child(25) [style*="repeat"] > div p {
-        font-size: clamp(0.5rem, 2vw, 0.7rem) !important;
-        margin-bottom: 0.1rem !important;
+        font-size: clamp(0.6rem, 2.5vw, 0.8rem) !important;
+        margin-bottom: 0.15rem !important;
     }
     .slide:nth-child(25) [style*="repeat"] > div div {
-        font-size: clamp(0.45rem, 1.8vw, 0.6rem) !important;
-        line-height: 1.4 !important;
+        font-size: clamp(0.52rem, 2vw, 0.68rem) !important;
+        line-height: 1.5 !important;
     }
     /* bottom agents bar */
     .slide:nth-child(25) .slide-content > div[style*="background"]:last-of-type {
-        padding: 0.25rem 0.4rem !important;
+        padding: 0.35rem 0.5rem !important;
     }
     .slide:nth-child(25) .slide-content > div[style*="background"]:last-of-type p {
-        font-size: clamp(0.45rem, 1.6vw, 0.6rem) !important;
+        font-size: clamp(0.5rem, 1.8vw, 0.65rem) !important;
     }
 
     /* --- Slide 24 (child 26): 병렬 Claude Code --- */
