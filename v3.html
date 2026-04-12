@@ -911,7 +911,13 @@ p, li {
    MOBILE RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
-  .slide { padding: 1.5rem 5vw 1rem; }
+  .slide {
+    padding: 1.5rem 5vw 1rem;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+    justify-content: flex-start;
+    padding-top: 2rem;
+  }
   .slide.slide-compact { padding-top: 1rem; padding-bottom: 0.8rem; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 1.2rem; }
   .stat-row { grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -1167,7 +1173,7 @@ p, li {
 }
 
 @media (max-width: 480px) {
-  .slide { padding: 1.8rem 4vw; }
+  .slide { padding: 1.5rem 4vw; padding-top: 1.5rem; }
 
   /* Stack stat row fully */
   .stat-row { grid-template-columns: 1fr; gap: 0.8rem; }
