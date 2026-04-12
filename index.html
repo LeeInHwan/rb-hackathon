@@ -1660,7 +1660,102 @@ Agent 3: tdd-guide
 </section>
 
 <!-- ============================
-     SLIDE 26: CLOSING — 이제는 당신의 차례
+     SLIDE 26: 해커톤 진행 안내
+     ============================ -->
+<section class="slide paper-ink" data-theme="paper">
+    <div class="slide-content centered" style="max-width: 1100px; width: 90%;">
+        <h2 class="reveal" style="font-family: 'Montserrat', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: var(--h2-size); color: #2a2520; margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);">
+            해커톤 진행 안내
+        </h2>
+
+        <!-- Top: 일정 + 심사 기준 -->
+        <div class="reveal reveal-delay-1" style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); margin-bottom: clamp(1.5rem, 3vw, 2.5rem); text-align: left;">
+
+            <!-- 일정 -->
+            <div>
+                <h3 style="font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 700; color: #2a2520; margin: 0 0 clamp(0.8rem, 1.5vw, 1.2rem); letter-spacing: 0.05em;">일정</h3>
+                <div style="display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.8rem);">
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(42,37,32,0.08);">
+                        <span style="font-family: Montserrat, sans-serif; font-weight: 700; color: #c0392b; font-size: clamp(0.8rem, 1.2vw, 0.95rem); min-width: 3.5rem;">W1-2</span>
+                        <span style="font-size: var(--body-size); color: #444;">사전 준비 & 아이템 발굴</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(42,37,32,0.08);">
+                        <span style="font-family: Montserrat, sans-serif; font-weight: 700; color: #c0392b; font-size: clamp(0.8rem, 1.2vw, 0.95rem); min-width: 3.5rem;">W3-4</span>
+                        <span style="font-size: var(--body-size); color: #444;">MVP 개발, 개별 제출</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.6rem 0;">
+                        <span style="font-family: Montserrat, sans-serif; font-weight: 700; color: #c0392b; font-size: clamp(0.8rem, 1.2vw, 0.95rem); min-width: 3.5rem;">W5</span>
+                        <span style="font-size: var(--body-size); color: #444;">심사 & 포상자 발표</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 심사 기준 -->
+            <div>
+                <h3 style="font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 700; color: #2a2520; margin: 0 0 clamp(0.8rem, 1.5vw, 1.2rem); letter-spacing: 0.05em;">심사 기준</h3>
+                <div style="display: flex; flex-direction: column; gap: clamp(0.4rem, 0.8vw, 0.6rem);">
+                    <div style="display: flex; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: clamp(0.75rem, 1vw, 0.85rem); color: #444; min-width: 5rem;">실무 적용성</span>
+                        <div style="flex: 1; height: 18px; background: rgba(42,37,32,0.06); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 100%; height: 100%; background: #c0392b; border-radius: 4px;"></div>
+                        </div>
+                        <span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: clamp(0.75rem, 1vw, 0.85rem); color: #2a2520; min-width: 2.5rem; text-align: right;">40%</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: clamp(0.75rem, 1vw, 0.85rem); color: #444; min-width: 5rem;">비즈니스</span>
+                        <div style="flex: 1; height: 18px; background: rgba(42,37,32,0.06); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 75%; height: 100%; background: #c0392b; border-radius: 4px;"></div>
+                        </div>
+                        <span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: clamp(0.75rem, 1vw, 0.85rem); color: #2a2520; min-width: 2.5rem; text-align: right;">30%</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: clamp(0.75rem, 1vw, 0.85rem); color: #444; min-width: 5rem;">AI 활용도</span>
+                        <div style="flex: 1; height: 18px; background: rgba(42,37,32,0.06); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 50%; height: 100%; background: #c0392b; border-radius: 4px;"></div>
+                        </div>
+                        <span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: clamp(0.75rem, 1vw, 0.85rem); color: #2a2520; min-width: 2.5rem; text-align: right;">20%</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: clamp(0.75rem, 1vw, 0.85rem); color: #444; min-width: 5rem;">창의성</span>
+                        <div style="flex: 1; height: 18px; background: rgba(42,37,32,0.06); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 25%; height: 100%; background: #c0392b; border-radius: 4px;"></div>
+                        </div>
+                        <span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: clamp(0.75rem, 1vw, 0.85rem); color: #2a2520; min-width: 2.5rem; text-align: right;">10%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom: 포상 -->
+        <div class="reveal reveal-delay-2">
+            <h3 style="font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 700; color: #2a2520; margin: 0 0 clamp(0.8rem, 1.5vw, 1.2rem); letter-spacing: 0.05em; text-align: center;">포상</h3>
+            <div style="display: flex; justify-content: center; gap: clamp(1rem, 2.5vw, 2rem);">
+                <div style="background: #fff; border-radius: 12px; padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 2.5rem); text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+                    <p style="margin: 0 0 0.3rem; font-size: clamp(0.8rem, 1.1vw, 0.95rem); color: #666;">우수</p>
+                    <p style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: #c0392b;">50</p>
+                    <p style="margin: 0; font-size: clamp(0.75rem, 1vw, 0.85rem); color: #888;">만원</p>
+                </div>
+                <div style="background: #fff; border-radius: 12px; padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 2.5rem); text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.05); border: 2.5px solid #c0392b;">
+                    <p style="margin: 0 0 0.3rem; font-size: clamp(0.8rem, 1.1vw, 0.95rem); color: #666;">대상</p>
+                    <p style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4.5vw, 3.2rem); color: #c0392b;">150</p>
+                    <p style="margin: 0; font-size: clamp(0.75rem, 1vw, 0.85rem); color: #888;">만원</p>
+                </div>
+                <div style="background: #fff; border-radius: 12px; padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 2.5rem); text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+                    <p style="margin: 0 0 0.3rem; font-size: clamp(0.8rem, 1.1vw, 0.95rem); color: #666;">최우수</p>
+                    <p style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: #c0392b;">100</p>
+                    <p style="margin: 0; font-size: clamp(0.75rem, 1vw, 0.85rem); color: #888;">만원</p>
+                </div>
+            </div>
+            <p class="reveal reveal-delay-3" style="font-size: clamp(0.75rem, 1vw, 0.85rem); color: #888; margin-top: clamp(0.8rem, 1.5vw, 1.2rem); text-align: center; font-style: italic;">
+                * 사업화 성공 시 별도 인센티브 제공
+            </p>
+        </div>
+    </div>
+    <span class="slide-number">26</span>
+</section>
+
+<!-- ============================
+     SLIDE 27: CLOSING — 이제는 당신의 차례
      ============================ -->
 <section class="slide paper-ink" data-theme="paper">
     <div class="slide-content centered">
@@ -1682,7 +1777,7 @@ Agent 3: tdd-guide
         </p>
         <p class="reveal reveal-delay-6" style="position: absolute; bottom: clamp(2rem, 5vh, 4rem); font-family: 'Montserrat', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.1rem); font-weight: 500; color: #888; letter-spacing: 0.12em; text-transform: uppercase;">April 2026 &nbsp;&middot;&nbsp; Inhwan Lee</p>
     </div>
-    <span class="slide-number">26</span>
+    <span class="slide-number">27</span>
 </section>
 
 <!-- Keyboard Hint -->
