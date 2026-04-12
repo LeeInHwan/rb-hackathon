@@ -915,10 +915,18 @@ p, li {
     padding: 1.5rem 5vw 1rem;
     min-height: 100dvh;
     min-height: -webkit-fill-available;
-    justify-content: flex-start;
+    justify-content: center;
     padding-top: 2rem;
   }
-  .slide.slide-compact { padding-top: 1rem; padding-bottom: 0.8rem; }
+  .slide.slide-compact {
+    justify-content: flex-start;
+    padding-top: 1rem;
+    padding-bottom: 0.8rem;
+  }
+  /* Overflowing non-compact slides need flex-start */
+  #slide-2 { justify-content: flex-start; }
+  /* Non-overflowing compact slides → center for better balance */
+  #slide-12, #slide-13 { justify-content: center; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 1.2rem; }
   .stat-row { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .nav-dots { display: none; }
@@ -1075,7 +1083,7 @@ p, li {
 
   /* Slide 12: 해커톤 기대 효과 */
   #slide-12 h2 { font-size: 1.1rem; margin-bottom: 0.3rem !important; }
-  #slide-12 .grid-3 { gap: 0.4rem; margin-bottom: 0.6rem !important; }
+  #slide-12 .grid-3 { grid-template-columns: 1fr 1fr 1fr !important; gap: 0.4rem; margin-bottom: 0.6rem !important; }
   #slide-12 .card { padding: 0.6rem !important; }
   #slide-12 .card p[style*="font-size:1.5rem"] { font-size: 1rem !important; margin-bottom: 0.2rem !important; }
   #slide-12 .card h3 { font-size: 0.7rem; margin-bottom: 0.2rem; }
@@ -1086,17 +1094,19 @@ p, li {
   #slide-12 .flow-time { font-size: 0.55rem; }
   #slide-12 [style*="padding:1.2rem"]:last-child { padding: 0.6rem !important; }
 
-  /* Slide 13: AI 활용 전략 진화 (892px → 812px) */
+  /* Slide 13: AI 활용 전략 진화 */
   #slide-13 .maturity-dot { width: 28px; height: 28px; font-size: 0.7rem; margin-bottom: 0.3rem; }
+  #slide-13 .maturity-dot[style*="box-shadow"] { box-shadow: 0 0 0 3px rgba(192,57,43,0.12) !important; }
   #slide-13 .maturity-title { font-size: 0.65rem; }
   #slide-13 .maturity-desc { font-size: 0.52rem; line-height: 1.2; }
   #slide-13 .maturity-desc br { display: none; }
   #slide-13 .maturity-desc .tag { font-size: 0.5rem; padding: 0.1rem 0.3rem; }
   #slide-13 .maturity-stage { padding-bottom: 0.2rem; padding: 0 0.1rem; }
   #slide-13 .mt-3 { margin-top: 0.8rem !important; }
-  #slide-13 .grid-3 { gap: 0.5rem; }
+  #slide-13 .grid-3 { grid-template-columns: 1fr 1fr 1fr !important; gap: 0.4rem; }
   #slide-13 .grid-3 .card { padding: 0.6rem !important; }
-  #slide-13 .grid-3 .card p { font-size: 0.65rem; line-height: 1.3; }
+  #slide-13 .grid-3 .card p { font-size: 0.6rem; line-height: 1.3; }
+  #slide-13 .grid-3 .card p:first-child { font-size: 0.68rem; }
 
   /* Slide 14: 4가지 축 (864px → 812px) */
   #slide-14 .card { padding: 0.7rem !important; }
