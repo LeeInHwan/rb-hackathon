@@ -1296,18 +1296,18 @@ Agent 3: tdd-guide
                     <span style="color: #0088cc;">/feature-dev</span> 기능 개발 플로우
                 </div>
             </div>
-            <!-- ③ 개발 -->
+            <!-- ③ 병렬 개발 (개발 + 병렬 실행 통합) -->
             <div class="reveal reveal-delay-3" style="background: rgba(150,0,200,0.06); border: 1px solid rgba(150,0,200,0.2); border-radius: 8px; padding: clamp(0.4rem, 0.8vw, 0.7rem);">
-                <p style="margin: 0 0 0.25rem; font-size: var(--small-size); color: #9900cc; font-weight: 700;"><span style="opacity: 0.4;">③</span> 개발</p>
+                <p style="margin: 0 0 0.25rem; font-size: var(--small-size); color: #9900cc; font-weight: 700;"><span style="opacity: 0.4;">③</span> 병렬 개발</p>
                 <div style="font-family: 'Space Grotesk', monospace; font-size: clamp(0.5rem, 0.85vw, 0.7rem); color: #444; line-height: 1.6;">
+                    <span style="color: #9900cc;">/orchestrate</span> 멀티 에이전트<br>
+                    <span style="color: #9900cc;">/devfleet</span> 에이전트 함대<br>
                     <span style="color: #9900cc;">/tdd</span> 테스트 주도 개발<br>
-                    <span style="color: #9900cc;">/build-fix</span> 빌드 에러 해결<br>
-                    <span style="color: #9900cc;">/e2e</span> E2E 테스트<br>
-                    <span style="color: #9900cc;">/test-coverage</span> 커버리지 분석
+                    <span style="color: #9900cc;">/multi-execute</span> 병렬 워크플로우
                 </div>
             </div>
         </div>
-        <div style="margin-top: clamp(0.35rem, 0.8vw, 0.6rem); display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.35rem, 0.8vw, 0.6rem); max-width: 1100px; width: 95%;">
+        <div style="margin-top: clamp(0.35rem, 0.8vw, 0.6rem); display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(0.35rem, 0.8vw, 0.6rem); max-width: 740px; width: 95%;">
             <!-- ④ 품질 -->
             <div class="reveal reveal-delay-4" style="background: rgba(0,120,200,0.06); border: 1px solid rgba(0,120,200,0.2); border-radius: 8px; padding: clamp(0.4rem, 0.8vw, 0.7rem);">
                 <p style="margin: 0 0 0.25rem; font-size: var(--small-size); color: #0088cc; font-weight: 700;"><span style="opacity: 0.4;">④</span> 품질</p>
@@ -1318,19 +1318,9 @@ Agent 3: tdd-guide
                     <span style="color: #0088cc;">/refactor-clean</span> 데드코드 제거
                 </div>
             </div>
-            <!-- ⑤ 병렬 실행 -->
-            <div class="reveal reveal-delay-4" style="background: rgba(0,136,204,0.03); border: 1px solid rgba(0,136,204,0.12); border-radius: 8px; padding: clamp(0.4rem, 0.8vw, 0.7rem);">
-                <p style="margin: 0 0 0.25rem; font-size: var(--small-size); color: #0088cc; font-weight: 700;"><span style="opacity: 0.4;">⑤</span> 병렬 실행</p>
-                <div style="font-family: 'Space Grotesk', monospace; font-size: clamp(0.5rem, 0.85vw, 0.7rem); color: #444; line-height: 1.6;">
-                    <span style="color: #0088cc;">/orchestrate</span> 멀티 에이전트<br>
-                    <span style="color: #0088cc;">/multi-execute</span> 병렬 워크플로우<br>
-                    <span style="color: #0088cc;">/devfleet</span> 에이전트 함대<br>
-                    <span style="color: #0088cc;">/multi-backend</span> 백엔드 분산
-                </div>
-            </div>
-            <!-- ⑥ 배포 & 학습 -->
+            <!-- ⑤ 배포 & 학습 -->
             <div class="reveal reveal-delay-5" style="background: rgba(150,0,200,0.06); border: 1px solid rgba(150,0,200,0.2); border-radius: 8px; padding: clamp(0.4rem, 0.8vw, 0.7rem);">
-                <p style="margin: 0 0 0.25rem; font-size: var(--small-size); color: #9900cc; font-weight: 700;"><span style="opacity: 0.4;">⑥</span> 배포 & 학습</p>
+                <p style="margin: 0 0 0.25rem; font-size: var(--small-size); color: #9900cc; font-weight: 700;"><span style="opacity: 0.4;">⑤</span> 배포 & 학습</p>
                 <div style="font-family: 'Space Grotesk', monospace; font-size: clamp(0.5rem, 0.85vw, 0.7rem); color: #444; line-height: 1.6;">
                     <span style="color: #9900cc;">/prp-commit</span> 커밋<br>
                     <span style="color: #9900cc;">/review-pr</span> PR 리뷰<br>
