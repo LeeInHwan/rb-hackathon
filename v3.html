@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>RB Cloud AI Hackathon</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================
+   BASE: VIEWPORT & SCROLL-SNAP
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+:root {
+    /* Palette */
+    --cream: #faf6f0;
+    --ink: #2a2520;
+    --ink-light: #5a5048;
+    --ink-muted: #8b7e72;
+    --ink-faint: #b8ada2;
+    --red: #c0392b;
+    --red-soft: rgba(192, 57, 43, 0.08);
+    --gold: #8b6914;
+    --gold-soft: rgba(139, 105, 20, 0.08);
+    --rule-color: #d4c8b8;
+
+    /* Typography scale */
+    --title-size: clamp(2.8rem, 7vw, 5rem);
+    --h2-size: clamp(2rem, 5vw, 3.5rem);
+    --h3-size: clamp(1.4rem, 3vw, 2rem);
+    --body-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    --small-size: clamp(0.85rem, 1.6vw, 1.05rem);
+    --micro-size: clamp(0.7rem, 1.2vw, 0.85rem);
+
+    /* Spacing */
+    --slide-padding: clamp(1.5rem, 5vw, 5rem);
+    --content-gap: clamp(1rem, 3vw, 2.5rem);
+    --element-gap: clamp(0.4rem, 1vw, 1rem);
+}
+
+/* ============================================
+   SLIDE CONTAINER
+   ============================================ */
+.slide {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+}
+
+.slide-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 100%;
+    overflow: hidden;
+    padding: var(--slide-padding);
+    text-align: center;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.hero-title {
+    font-size: var(--title-size);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+}
+
+.section-title {
+    font-size: var(--h2-size);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+
+.quote-text {
+    font-size: clamp(1.3rem, 3vw, 2.2rem);
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--ink);
+    max-width: 800px;
+}
+
+.quote-author {
+    font-size: var(--body-size);
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+    margin-top: var(--element-gap);
+}
+
+.accent { color: var(--red); }
+.gold { color: var(--gold); }
+
+/* Thin horizontal rule */
+.rule {
+    width: 60px;
+    height: 1.5px;
+    background: var(--red);
+    margin: var(--content-gap) auto;
+    border: none;
+}
+.rule.gold-rule { background: var(--gold); }
+.rule.muted { background: var(--rule-color); }
+
+/* Slide number */
+.slide-num {
+    position: absolute;
+    bottom: clamp(1rem, 3vw, 2rem);
+    right: clamp(1rem, 3vw, 2rem);
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--micro-size);
+    color: var(--ink-faint);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+/* Tag / label */
+.tag {
+    display: inline-block;
+    font-size: var(--micro-size);
+    font-weight: 600;
+    padding: 0.3rem 1rem;
+    border-radius: 100px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.tag-red {
+    background: var(--red-soft);
+    color: var(--red);
+    border: 1px solid rgba(192, 57, 43, 0.2);
+}
+.tag-gold {
+    background: var(--gold-soft);
+    color: var(--gold);
+    border: 1px solid rgba(139, 105, 20, 0.2);
+}
+.tag-muted {
+    background: rgba(0,0,0,0.04);
+    color: var(--ink-muted);
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* ============================================
+   CARD SYSTEM (paper/card-stock feel)
+   ============================================ */
+.card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 6px;
+    padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1rem, 2vw, 1.5rem);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    text-align: left;
+}
+.card-accent-left {
+    border-left: 3px solid var(--red);
+}
+.card-accent-left-gold {
+    border-left: 3px solid var(--gold);
+}
+
+/* ============================================
+   COMPARISON TABLE
+   ============================================ */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: min(92vw, 1000px);
+    margin-top: var(--content-gap);
+    text-align: left;
+}
+.comparison-grid .col-head {
+    font-size: var(--small-size);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding-bottom: var(--element-gap);
+    border-bottom: 2px solid var(--ink);
+}
+.comparison-grid .col-head.past-head { color: var(--ink-muted); }
+.comparison-grid .col-head.now-head { color: var(--red); }
+.comparison-grid .cell {
+    font-size: var(--body-size);
+    padding: clamp(0.4rem, 1vw, 0.7rem) 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    line-height: 1.5;
+}
+.comparison-grid .cell.past-cell { color: var(--ink-muted); }
+.comparison-grid .cell.now-cell { color: var(--ink); }
+.comparison-grid .cell .hl { color: var(--red); font-weight: 600; }
+
+/* ============================================
+   TIMELINE
+   ============================================ */
+.timeline-stack {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.3rem, 0.7vw, 0.5rem);
+    width: min(95vw, 1000px);
+    margin-top: var(--content-gap);
+}
+.timeline-item {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 2rem);
+    padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
+    background: #fff;
+    border-left: 3px solid var(--rule-color);
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    text-align: left;
+}
+.timeline-item.highlight {
+    border-left: 4px solid var(--red);
+    background: rgba(192,57,43,0.03);
+}
+.timeline-year {
+    font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+    font-weight: 700;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    min-width: 80px;
+}
+.timeline-item.highlight .timeline-year { color: var(--red); }
+.timeline-desc {
+    font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0;
+}
+.timeline-desc strong { font-weight: 700; }
+.timeline-desc .hl { color: var(--red); font-weight: 700; }
+.timeline-desc .gold-hl { color: var(--gold); font-weight: 700; }
+
+/* ============================================
+   THREE-COLUMN EPOCH
+   ============================================ */
+.epoch-row {
+    display: flex;
+    gap: clamp(2rem, 5vw, 5rem);
+    margin-top: var(--content-gap);
+    justify-content: center;
+}
+.epoch-col { text-align: center; }
+.epoch-icon { font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 0.4rem; }
+.epoch-label {
+    font-size: var(--micro-size);
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+}
+.epoch-label.now-label { color: var(--red); }
+.epoch-label.future-label { color: var(--gold); }
+.epoch-text {
+    font-size: var(--body-size);
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+}
+
+/* ============================================
+   STEP CARDS (numbered)
+   ============================================ */
+.step-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 1.2vw, 0.8rem);
+    width: min(95vw, 900px);
+    margin-top: var(--content-gap);
+}
+.step-card {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.8rem, 1.5vw, 1.2rem);
+    padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.5rem);
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    text-align: left;
+}
+.step-num {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-weight: 800;
+    color: var(--red);
+    min-width: 40px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.step-num.gold-num { color: var(--gold); }
+.step-title {
+    font-size: clamp(0.95rem, 1.8vw, 1.3rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+}
+.step-desc {
+    font-size: var(--small-size);
+    color: var(--ink-muted);
+    margin: 0.15rem 0 0;
+}
+
+/* ============================================
+   ERA CARDS (2023/2024-25/2026)
+   ============================================ */
+.era-stack {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.6rem, 1.5vw, 1rem);
+    width: min(95vw, 900px);
+    margin-top: var(--content-gap);
+}
+.era-card {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-left: 4px solid var(--rule-color);
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    text-align: left;
+}
+.era-card.current { border-left-color: var(--red); background: rgba(192,57,43,0.02); }
+.era-year {
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    color: var(--ink-muted);
+    min-width: 120px;
+    text-align: center;
+    flex-shrink: 0;
+    letter-spacing: -0.02em;
+}
+.era-card.current .era-year { color: var(--red); }
+.era-name {
+    font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+}
+.era-card.current .era-name { color: var(--red); }
+.era-sub {
+    font-size: var(--small-size);
+    color: var(--ink-muted);
+    margin: 0.2rem 0 0;
+}
+
+/* ============================================
+   GRID LAYOUTS
+   ============================================ */
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(0.5rem, 1.2vw, 0.8rem);
+    width: min(95vw, 1000px);
+    margin-top: var(--content-gap);
+}
+.grid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.4rem, 1vw, 0.7rem);
+    width: min(95vw, 1000px);
+    margin-top: var(--content-gap);
+}
+.grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(0.4rem, 1vw, 0.7rem);
+    width: min(95vw, 700px);
+    margin-top: clamp(0.3rem, 0.8vw, 0.5rem);
+}
+
+.stat-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 6px;
+    padding: clamp(0.6rem, 1.2vw, 1rem);
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.stat-num {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--red);
+    margin: 0;
+}
+.stat-num.gold-stat { color: var(--gold); }
+.stat-label {
+    font-size: var(--small-size);
+    color: var(--ink-muted);
+    margin: 0.1rem 0 0;
+}
+.stat-sub {
+    font-size: var(--micro-size);
+    color: var(--ink-faint);
+    margin: 0.1rem 0 0;
+}
+
+/* ============================================
+   CODE / PRE
+   ============================================ */
+.code-block {
+    background: rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 4px;
+    padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.6rem, 1.2vw, 1rem);
+    font-family: 'Montserrat', monospace;
+    font-size: clamp(0.6rem, 1.1vw, 0.85rem);
+    color: var(--ink-light);
+    line-height: 1.6;
+    text-align: left;
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow-x: auto;
+    margin: 0;
+}
+.code-block .cmd { color: var(--ink-muted); }
+.code-block .hl { color: var(--red); font-weight: 600; }
+.code-block .gold-hl { color: var(--gold); font-weight: 600; }
+
+/* ============================================
+   PROMPT CARDS (slide 20, 22)
+   ============================================ */
+.prompt-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 6px;
+    padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    text-align: left;
+}
+.prompt-label {
+    font-size: var(--micro-size);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+.prompt-label.red-label { color: var(--red); }
+.prompt-label.gold-label { color: var(--gold); }
+.prompt-input {
+    font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+    font-style: italic;
+    color: var(--ink);
+    margin: 0;
+}
+.prompt-result {
+    font-size: var(--small-size);
+    color: var(--ink-muted);
+    margin: 0.2rem 0 0;
+}
+.prompt-result .hl { color: var(--red); }
+
+/* ============================================
+   COMMAND DEMO CARDS (slide 22)
+   ============================================ */
+.cmd-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 6px;
+    padding: clamp(0.4rem, 0.8vw, 0.7rem) clamp(0.8rem, 1.5vw, 1.2rem);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    text-align: left;
+}
+.cmd-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.2rem;
+}
+.cmd-name {
+    font-family: 'Montserrat', monospace;
+    font-size: var(--small-size);
+    font-weight: 700;
+}
+.cmd-name.red-cmd { color: var(--red); }
+.cmd-name.gold-cmd { color: var(--gold); }
+.cmd-tag {
+    font-size: var(--micro-size);
+    color: var(--ink-muted);
+}
+
+/* ============================================
+   WORKFLOW GRID (slide 23)
+   ============================================ */
+.wf-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 6px;
+    padding: clamp(0.35rem, 0.7vw, 0.6rem) clamp(0.5rem, 1vw, 0.8rem);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    text-align: left;
+}
+.wf-title {
+    font-size: var(--small-size);
+    font-weight: 700;
+    margin: 0 0 0.2rem;
+}
+.wf-title .num { opacity: 0.35; }
+.wf-title.red-wf { color: var(--red); }
+.wf-title.gold-wf { color: var(--gold); }
+.wf-body {
+    font-family: 'Montserrat', monospace;
+    font-size: clamp(0.5rem, 0.85vw, 0.7rem);
+    color: var(--ink-light);
+    line-height: 1.6;
+}
+.wf-body .hl { color: var(--red); font-weight: 600; }
+.wf-body .gold-hl { color: var(--gold); font-weight: 600; }
+
+/* ============================================
+   EVOLUTION ROW (slide 24)
+   ============================================ */
+.evo-row {
+    display: flex;
+    gap: clamp(0.3rem, 0.8vw, 0.5rem);
+    width: min(95vw, 1000px);
+    margin-top: var(--content-gap);
+    justify-content: center;
+    align-items: center;
+}
+.evo-card {
+    flex: 1;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 6px;
+    padding: clamp(0.4rem, 0.8vw, 0.7rem);
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.evo-card.evo-current { border-color: var(--red); border-width: 2px; }
+.evo-gen { font-size: var(--micro-size); color: var(--ink-muted); margin: 0; }
+.evo-name { font-size: var(--small-size); font-weight: 600; color: var(--ink); margin: 0.15rem 0; }
+.evo-card.evo-current .evo-name { color: var(--red); font-weight: 700; }
+.evo-sub { font-size: var(--micro-size); color: var(--ink-faint); margin: 0; }
+.evo-arrow { color: var(--ink-faint); font-size: clamp(0.8rem, 1.5vw, 1.2rem); flex-shrink: 0; }
+
+/* ============================================
+   SHORTCUT CARDS (slide 25)
+   ============================================ */
+.key-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 6px;
+    padding: clamp(0.35rem, 0.7vw, 0.5rem);
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.key-name {
+    font-family: 'Montserrat', monospace;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    font-weight: 700;
+    color: var(--red);
+    margin: 0;
+}
+.key-desc {
+    font-size: var(--micro-size);
+    color: var(--ink-muted);
+    margin: 0.15rem 0 0;
+}
+
+/* ============================================
+   FOOTER LINE (closing text under content)
+   ============================================ */
+.foot-note {
+    font-size: var(--body-size);
+    color: var(--ink-muted);
+    margin-top: var(--content-gap);
+}
+.foot-note .hl { color: var(--red); font-weight: 600; }
+
+/* ============================================
+   REVEAL ANIMATIONS
+   ============================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.d1 { transition-delay: 0.15s; }
+.d2 { transition-delay: 0.3s; }
+.d3 { transition-delay: 0.45s; }
+.d4 { transition-delay: 0.6s; }
+.d5 { transition-delay: 0.75s; }
+.d6 { transition-delay: 0.9s; }
+.d7 { transition-delay: 1.05s; }
+.d8 { transition-delay: 1.2s; }
+
+/* Blinking cursor for transition */
+@keyframes blink { 0%,100% { border-color: var(--red); } 50% { border-color: transparent; } }
+.cursor { border-right: 2px solid var(--red); padding-right: 3px; animation: blink 1s infinite; }
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--red);
+    z-index: 200;
+    transition: width 0.3s ease;
+}
+
+.nav-dots {
+    position: fixed;
+    right: clamp(0.5rem, 1.2vw, 1.2rem);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    z-index: 100;
+}
+.nav-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--ink-faint);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    opacity: 0.4;
+}
+.nav-dot.active {
+    background: var(--red);
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+.keyboard-hint {
+    position: fixed;
+    bottom: clamp(0.5rem, 1.2vw, 0.8rem);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(0.5rem, 0.7vw, 0.6rem);
+    color: var(--ink-faint);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    z-index: 100;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    :root {
+        --title-size: clamp(1.6rem, 7vw, 2.2rem);
+        --h2-size: clamp(1.2rem, 5.5vw, 1.7rem);
+        --h3-size: clamp(1rem, 4vw, 1.3rem);
+        --body-size: clamp(0.8rem, 3.2vw, 1rem);
+        --small-size: clamp(0.7rem, 2.8vw, 0.88rem);
+        --micro-size: clamp(0.6rem, 2.2vw, 0.75rem);
+        --slide-padding: clamp(1rem, 4vw, 1.5rem);
+        --content-gap: clamp(0.5rem, 2vw, 1rem);
+        --element-gap: clamp(0.3rem, 1vw, 0.5rem);
+    }
+    .nav-dots, .keyboard-hint { display: none; }
+    .slide-inner {
+        justify-content: center !important;
+        padding-top: 0.5rem !important;
+    }
+
+    /* Grids to single column or tighter */
+    .grid-2x2 { grid-template-columns: 1fr; gap: 0.3rem; }
+    .grid-3col { grid-template-columns: repeat(3, 1fr); gap: 0.25rem; }
+    .grid-2col { grid-template-columns: repeat(2, 1fr); gap: 0.25rem; }
+
+    .era-stack { gap: 0.4rem; }
+    .era-card { gap: 0.8rem; padding: 0.5rem 0.8rem; }
+    .era-year { font-size: clamp(1.1rem, 4vw, 1.5rem) !important; min-width: 70px; }
+    .era-name { font-size: clamp(0.85rem, 3.2vw, 1.1rem) !important; }
+    .era-sub { font-size: clamp(0.6rem, 2.2vw, 0.75rem) !important; }
+
+    .step-list { gap: 0.35rem; }
+    .step-card { gap: 0.6rem; padding: 0.4rem 0.7rem; }
+    .step-num { font-size: clamp(1rem, 3.5vw, 1.3rem) !important; min-width: 30px; }
+    .step-title { font-size: clamp(0.75rem, 2.8vw, 0.95rem) !important; }
+    .step-desc { font-size: clamp(0.6rem, 2.2vw, 0.75rem) !important; }
+
+    .timeline-stack { gap: 0.25rem; }
+    .timeline-item { gap: 0.5rem; padding: 0.35rem 0.6rem; flex-direction: column; align-items: flex-start; }
+    .timeline-year { font-size: clamp(0.7rem, 2.5vw, 0.85rem) !important; min-width: auto; }
+    .timeline-desc { font-size: clamp(0.65rem, 2.5vw, 0.8rem) !important; }
+
+    .comparison-grid { width: 95vw; }
+    .comparison-grid .cell { font-size: clamp(0.6rem, 2.4vw, 0.78rem) !important; line-height: 1.4; }
+    .comparison-grid .col-head { font-size: clamp(0.6rem, 2.2vw, 0.75rem) !important; }
+
+    .epoch-row { gap: 1.5rem; flex-wrap: wrap; }
+    .epoch-icon { font-size: 1.5rem; }
+    .epoch-text { font-size: clamp(0.75rem, 2.8vw, 0.9rem) !important; }
+
+    .prompt-card, .cmd-card, .wf-card { padding: 0.35rem 0.6rem; }
+    .prompt-input { font-size: clamp(0.7rem, 2.6vw, 0.88rem) !important; }
+    .prompt-result { font-size: clamp(0.58rem, 2.2vw, 0.72rem) !important; }
+    .prompt-label { font-size: clamp(0.55rem, 2vw, 0.68rem) !important; }
+
+    .code-block { font-size: clamp(0.5rem, 1.8vw, 0.68rem) !important; padding: 0.3rem 0.5rem; }
+
+    .stat-num { font-size: clamp(1.3rem, 5vw, 1.8rem) !important; }
+    .stat-label { font-size: clamp(0.6rem, 2.2vw, 0.75rem) !important; }
+    .stat-sub { font-size: clamp(0.5rem, 1.8vw, 0.65rem) !important; }
+
+    .evo-row { flex-wrap: wrap; gap: 0.25rem; }
+    .evo-card { flex: 1 1 28%; min-width: 0; padding: 0.3rem 0.4rem; }
+    .evo-arrow { display: none; }
+    .evo-gen { font-size: clamp(0.5rem, 1.8vw, 0.62rem) !important; }
+    .evo-name { font-size: clamp(0.6rem, 2.2vw, 0.75rem) !important; }
+    .evo-sub { font-size: clamp(0.48rem, 1.6vw, 0.58rem) !important; }
+
+    .key-card { padding: 0.3rem; }
+    .key-name { font-size: clamp(0.65rem, 2.5vw, 0.85rem) !important; }
+    .key-desc { font-size: clamp(0.48rem, 1.8vw, 0.6rem) !important; }
+
+    .wf-title { font-size: clamp(0.6rem, 2.2vw, 0.75rem) !important; }
+    .wf-body { font-size: clamp(0.48rem, 1.7vw, 0.6rem) !important; }
+
+    .foot-note { font-size: clamp(0.65rem, 2.5vw, 0.82rem) !important; }
+
+    /* Dense slide headings */
+    .slide:nth-child(n+19) .section-title {
+        font-size: clamp(1rem, 4.5vw, 1.4rem) !important;
+    }
+}
+
+@media (max-height: 650px) {
+    :root {
+        --slide-padding: clamp(0.6rem, 2.5vw, 1.2rem);
+        --content-gap: clamp(0.3rem, 1vw, 0.6rem);
+        --title-size: clamp(1.2rem, 4vw, 2rem);
+        --h2-size: clamp(1rem, 3vw, 1.5rem);
+    }
+    .nav-dots, .keyboard-hint { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+    html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Navigation Dots -->
+<nav class="nav-dots" id="navDots"></nav>
+
+
+<!-- ============================
+     SLIDE 1: TITLE
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <div class="rule reveal" style="width: 40px;"></div>
+        <h1 class="hero-title reveal d1">
+            RB Cloud<br><span class="accent">AI Hackathon</span>
+        </h1>
+        <div class="rule reveal d2" style="width: 40px;"></div>
+        <p class="reveal d3" style="position: absolute; bottom: clamp(2rem, 5vh, 4rem); font-size: clamp(0.85rem, 1.5vw, 1.1rem); font-weight: 500; color: var(--ink-faint); letter-spacing: 0.12em; text-transform: uppercase;">April 2026 &middot; Inhwan Lee</p>
+    </div>
+    <span class="slide-num">01</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 2
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <h1 class="hero-title reveal">
+            <span style="color: var(--ink);">&#xacbd;&#xd5d8;&#xc758; &#xc2dc;&#xb300;&#xc5d0;&#xc11c;</span><br><span class="accent">AI</span>&#xc758; &#xc2dc;&#xb300;&#xb85c;
+        </h1>
+    </div>
+    <span class="slide-num">02</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 3: DEWEY
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <p class="quote-text reveal">
+            "&#xc6b0;&#xb9ac;&#xb294; &#xacbd;&#xd5d8;&#xc744; &#xd1b5;&#xd574; &#xbc30;&#xc6b0;&#xb294; &#xac83;&#xc774; &#xc544;&#xb2c8;&#xb77c;,<br>
+            &#xacbd;&#xd5d8;&#xc5d0; &#xb300;&#xd55c; <span class="accent">&#xbc18;&#xc131;</span>&#xc744; &#xd1b5;&#xd574; &#xbc30;&#xc6b4;&#xb2e4;"
+        </p>
+        <div class="rule reveal d1"></div>
+        <p class="quote-author reveal d2">&mdash; &#xc874; &#xb4c0;&#xc774; (John Dewey)</p>
+    </div>
+    <span class="slide-num">03</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 4: KANT
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <p class="quote-text reveal">
+            "&#xc9c0;&#xc2dd;&#xc740; <span class="accent">&#xacbd;&#xd5d8;</span>&#xc5d0;&#xc11c; &#xc2dc;&#xc791;&#xb41c;&#xb2e4;"
+        </p>
+        <div class="rule reveal d1"></div>
+        <p class="quote-author reveal d2">&mdash; &#xc784;&#xb9c8;&#xb204;&#xc5d8; &#xce78;&#xd2b8;, &#x300e;&#xc21c;&#xc218;&#xc774;&#xc131;&#xbe44;&#xd310;&#x300f;</p>
+    </div>
+    <span class="slide-num">04</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 5: DESCARTES
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <p class="quote-text reveal">
+            "&#xb098;&#xb294; <span class="accent">&#xc0dd;&#xac01;&#xd55c;&#xb2e4;</span>, &#xace0;&#xb85c; &#xc874;&#xc7ac;&#xd55c;&#xb2e4;"
+        </p>
+        <div class="rule reveal d1"></div>
+        <p class="quote-author reveal d2">&mdash; &#xb974;&#xb124; &#xb370;&#xce74;&#xb974;&#xd2b8; (Cogito, ergo sum)</p>
+    </div>
+    <span class="slide-num">05</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 6: 10,000 HOURS
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <p class="reveal" style="font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.02em;">
+            <span class="accent">10,000</span>&#xc2dc;&#xac04;&#xc758; &#xbc95;&#xce59;
+        </p>
+        <p class="quote-author reveal d1" style="font-size: var(--body-size); max-width: 500px; text-align: center; line-height: 1.7;">
+            &#xc804;&#xbb38;&#xc131;&#xc740; &#xbc18;&#xbcf5;&#xb41c; &#xacbd;&#xd5d8;&#xc758; &#xcd95;&#xc801;&#xc774;&#xb2e4;.<br>
+            &#xc778;&#xb958;&#xb294; 2,500&#xb144;&#xac04; &#xc774;&#xac83;&#xc744; &#xbbff;&#xc5b4;&#xc654;&#xb2e4;.
+        </p>
+        <div class="rule reveal d2"></div>
+        <p class="quote-author reveal d3">&mdash; &#xb9d0;&#xcf64; &#xae00;&#xb798;&#xb4dc;&#xc6f0;</p>
+    </div>
+    <span class="slide-num">06</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 7: TRANSITION
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <p class="reveal" style="font-size: clamp(1.4rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em;">
+            <span style="color: var(--ink-muted);">&#xadf8;&#xb7f0;&#xb370;,</span>
+            <span style="color: var(--ink);"> ChatGPT&#xac00; &#xb4f1;&#xc7a5;&#xd558;&#xba74;&#xc11c;</span>
+        </p>
+        <p class="reveal d1" style="font-size: clamp(1.1rem, 3vw, 2.2rem); font-weight: 700; color: var(--red); margin-top: var(--element-gap);">
+            AI&#xac00; &#xacbd;&#xd5d8; &#xc5c6;&#xc774; &#xc804;&#xbb38;&#xac00;&#xb97c; &#xb118;&#xc5b4;&#xc12f;&#xb2e4;<span class="cursor"></span>
+        </p>
+    </div>
+</section>
+
+
+<!-- ============================
+     SLIDE 8: AI EVOLUTION TIMELINE
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <h2 class="section-title reveal">
+            <span class="accent">AI&#xc758; &#xc9c4;&#xd654;</span>, &#xadf8; &#xc18d;&#xb3c4;
+        </h2>
+        <div class="timeline-stack">
+            <div class="timeline-item reveal d1">
+                <span class="timeline-year">2022.11</span>
+                <p class="timeline-desc"><strong class="hl">ChatGPT</strong> &#xb4f1;&#xc7a5; &mdash; &#xc18c;&#xc218; &#xc804;&#xbb38;&#xac00;&#xc758; AI, &#xb300;&#xc911;&#xc5d0;&#xac8c; &#xc5f4;&#xb9ac;&#xb2e4;</p>
+            </div>
+            <div class="timeline-item reveal d2">
+                <span class="timeline-year">2023.03</span>
+                <p class="timeline-desc"><strong class="gold-hl">Claude</strong> &#xcd9c;&#xc2dc; &mdash; &#xcd94;&#xb860;&#xacfc; &#xc548;&#xc804;&#xc131;&#xc758; &#xc0c8; &#xae30;&#xc900;</p>
+            </div>
+            <div class="timeline-item reveal d3">
+                <span class="timeline-year">2023~24</span>
+                <p class="timeline-desc">Google, MS, &#xc54c;&#xb9ac;&#xbc14;&#xbc14; &#xb4f1; &mdash; <strong class="gold-hl">AI LLM&#xc758; &#xcd98;&#xcd94;&#xc804;&#xad6d; &#xc2dc;&#xb300;</strong></p>
+            </div>
+            <div class="timeline-item reveal d4">
+                <span class="timeline-year">2025.02</span>
+                <p class="timeline-desc"><strong class="gold-hl">Claude Opus 4.1</strong> &mdash; &#xcf54;&#xb529; &#xd2b9;&#xd654;, &#xc5d0;&#xc774;&#xc804;&#xd2b8; &#xc2dc;&#xb300;&#xc758; &#xac1c;&#xb9c9;</p>
+            </div>
+            <div class="timeline-item reveal d5">
+                <span class="timeline-year">2025.11</span>
+                <p class="timeline-desc"><strong class="gold-hl">Claude Opus 4.5</strong> &mdash; &#xac00;&#xc7a5; &#xae4a;&#xc740; &#xcd94;&#xb860;, &#xcf54;&#xb529;&#xc758; &#xc0c8; &#xc9c0;&#xd3c9;</p>
+            </div>
+            <div class="timeline-item highlight reveal d6">
+                <span class="timeline-year">2026.02</span>
+                <p class="timeline-desc"><strong class="hl">Claude Opus 4.6</strong> + <strong class="gold-hl">OpenClaw</strong> &mdash; &#xb204;&#xad6c;&#xb098; AI&#xb97c; &#xc4f0;&#xb294; &#xc2dc;&#xb300;</p>
+            </div>
+            <div class="timeline-item reveal d7" style="border-left-color: var(--red);">
+                <span class="timeline-year" style="color: var(--red);">2026.04</span>
+                <p class="timeline-desc"><strong class="hl">Claude Mythos</strong> &mdash; AI&#xac00; &#xc81c;&#xb85c;&#xb370;&#xc774; &#xcde8;&#xc57d;&#xc810;&#xc744; &#xc2a4;&#xc2a4;&#xb85c; &#xcc3e;&#xc544;&#xb0b4;&#xb294; &#xc2dc;&#xb300;</p>
+            </div>
+        </div>
+        <p class="foot-note reveal d8">
+            &#xace0;&#xb3c4;&#xd654; &#xc8fc;&#xae30;&#xb294; &#xc9e7;&#xc544;&#xc9c0;&#xace0;, <span class="hl">AI&#xb294; &#xbaa8;&#xb450;&#xc758; &#xb3c4;&#xad6c;</span>&#xac00; &#xb418;&#xc5c8;&#xb2e4;
+        </p>
+    </div>
+    <span class="slide-num">08</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 9: 10,000 HOURS BROKEN
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <span class="tag tag-red reveal">PARADIGM SHIFT</span>
+        <h2 class="section-title reveal d1" style="margin-top: var(--element-gap);">
+            <span class="accent">10,000</span>&#xc2dc;&#xac04;&#xc774;<br>&#xd544;&#xc694; &#xc5c6;&#xb294; &#xc138;&#xc0c1;
+        </h2>
+        <p class="foot-note reveal d2">
+            &#xacbd;&#xd5d8;&#xc758; &#xbc95;&#xce59;&#xc774; &#xae68;&#xc84c;&#xb2e4;
+        </p>
+    </div>
+    <span class="slide-num">09</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 10: COMPARISON TABLE
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <h2 class="section-title reveal">
+            <span style="color: var(--ink-muted);">&#xacbd;&#xd5d8;&#xc758; &#xc2dc;&#xb300;</span>
+            <span style="color: var(--ink-faint);"> vs </span>
+            <span class="accent">AI&#xc758; &#xc2dc;&#xb300;</span>
+        </h2>
+        <div class="comparison-grid reveal d1">
+            <div class="col-head past-head">&#xacfc;&#xac70;</div>
+            <div class="col-head now-head">&#xd604;&#xc7ac;</div>
+
+            <div class="cell past-cell">&#xc758;&#xc0ac; 10&#xb144; &#xc218;&#xb828; &rarr; &#xc9c4;&#xb2e8; &#xb2a5;&#xb825;</div>
+            <div class="cell now-cell">AI&#xac00; &#xb17c;&#xbb38; &#xc218;&#xbc31;&#xb9cc; &#xd3b8; &#xd559;&#xc2b5; &rarr; <span class="hl">&#xc989;&#xc2dc; &#xc9c4;&#xb2e8;</span></div>
+
+            <div class="cell past-cell">&#xbcf4;&#xc548;&#xc804;&#xbb38;&#xac00; 20&#xb144; &#xacbd;&#xb825; &rarr; &#xcde8;&#xc57d;&#xc810; &#xbc1c;&#xacac;</div>
+            <div class="cell now-cell">Mythos&#xac00; &#xc218;&#xcc9c; &#xac1c; &#xc81c;&#xb85c;&#xb370;&#xc774;&#xb97c; <span class="hl">&#xba70;&#xce60; &#xb9cc;&#xc5d0;</span> &#xbc1c;&#xacac;</div>
+
+            <div class="cell past-cell">&#xd2b8;&#xb808;&#xc774;&#xb354; 10&#xb144; &#xac10;&#xac01; &rarr; &#xc2dc;&#xc7a5; &#xd310;&#xb2e8;</div>
+            <div class="cell now-cell">AI&#xac00; &#xc218;&#xc2ed; &#xb144; &#xb370;&#xc774;&#xd130;&#xb97c; <span class="hl">&#xcd08; &#xb2e8;&#xc704;&#xb85c;</span> &#xbd84;&#xc11d;</div>
+
+            <div class="cell past-cell">&#xd504;&#xb85c;&#xadf8;&#xb798;&#xba38; 10&#xb144; &#xcf54;&#xb529; &rarr; &#xc219;&#xb828;</div>
+            <div class="cell now-cell">AI&#xac00; &#xc218;&#xc2ed;&#xc5b5; &#xc904; &#xcf54;&#xb4dc;&#xb97c; &#xd559;&#xc2b5;&#xd558;&#xace0; <span class="hl">&#xc989;&#xc2dc; &#xc0dd;&#xc131;</span></div>
+        </div>
+    </div>
+    <span class="slide-num">10</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 11: THE QUESTION
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <p class="reveal" style="font-size: var(--h2-size); font-weight: 700; line-height: 1.5; max-width: 900px;">
+            &#xacbd;&#xd5d8;&#xc774; &#xb354; &#xc774;&#xc0c1; &#xbb34;&#xae30;&#xac00; &#xc544;&#xb2cc; &#xc138;&#xc0c1;&#xc5d0;&#xc11c;,<br>
+            <span class="accent">&#xc778;&#xac04;&#xc758; &#xac00;&#xce58;&#xb294; &#xc5b4;&#xb514;&#xc5d0; &#xc788;&#xb294;&#xac00;?</span>
+        </p>
+    </div>
+    <span class="slide-num">11</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 12: THE ANSWER
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <h2 class="section-title reveal">
+            &#xc778;&#xac04;&#xc758; &#xac00;&#xce58;&#xb294;<br><span class="accent">AI&#xb97c; &#xc4f0;&#xb294; &#xb2a5;&#xb825;</span>&#xc5d0; &#xc788;&#xb2e4;
+        </h2>
+        <div class="step-list" style="margin-top: var(--content-gap);">
+            <div class="step-card reveal d1">
+                <span style="font-size: clamp(1.3rem, 2.5vw, 1.8rem);">&#x1f3af;</span>
+                <div>
+                    <p class="step-title"><span class="accent">&#xbb38;&#xc81c;&#xb97c; &#xc815;&#xc758;</span>&#xd558;&#xb294; &#xac83;&#xc740; &#xc5ec;&#xc804;&#xd788; &#xc778;&#xac04;&#xc758; &#xbaab;</p>
+                </div>
+            </div>
+            <div class="step-card reveal d2">
+                <span style="font-size: clamp(1.3rem, 2.5vw, 1.8rem);">&#x1f91d;</span>
+                <div>
+                    <p class="step-title">AI&#xc640; <span class="gold">&#xd611;&#xc5c5;&#xd558;&#xb294; &#xbc29;&#xbc95;</span>&#xc744; &#xc544;&#xb294; &#xc0ac;&#xb78c;&#xc774; &#xc774;&#xae34;&#xb2e4;</p>
+                </div>
+            </div>
+            <div class="step-card reveal d3">
+                <span style="font-size: clamp(1.3rem, 2.5vw, 1.8rem);">&#x26a1;</span>
+                <div>
+                    <p class="step-title">&#xacbd;&#xd5d8; 10&#xb144; vs <span class="accent">AI + &#xc2e4;&#xd589;&#xb825;</span> &mdash; &#xd6c4;&#xc790;&#xac00; &#xbe60;&#xb974;&#xb2e4;</p>
+                </div>
+            </div>
+        </div>
+        <p class="foot-note reveal d4">
+            AI &#xc2dc;&#xb300;&#xc758; &#xacbd;&#xc7c1;&#xb825;&#xc740; <span class="hl">&#xb3c4;&#xad6c;&#xb97c; &#xc4f0;&#xb294; &#xc778;&#xac04;</span>&#xc5d0;&#xac8c; &#xc788;&#xb2e4;
+        </p>
+    </div>
+    <span class="slide-num">12</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 13: AI IS INCOMPLETE
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <span class="tag tag-muted reveal">2026 &mdash; NOW</span>
+        <h2 class="section-title reveal d1" style="margin-top: var(--element-gap);">
+            &#xd558;&#xc9c0;&#xb9cc;, AI&#xb294; &#xc544;&#xc9c1;<br><span class="accent">&#xbbf8;&#xc644;&#xc131;</span>&#xc774;&#xb2e4;
+        </h2>
+        <div class="reveal d2" style="max-width: 700px; margin-top: var(--content-gap);">
+            <p style="font-size: var(--body-size); color: var(--ink-light); line-height: 2;">
+                &#xd658;&#xac01;(Hallucination)&#xc740; &#xc5ec;&#xc804;&#xd558;&#xace0;<br>
+                &#xd310;&#xb2e8;&#xc758; &#xcc45;&#xc784;&#xc740; &#xc778;&#xac04;&#xc5d0;&#xac8c; &#xc788;&#xc73c;&#xba70;<br>
+                AI&#xb294; &#xc544;&#xc9c1; <span class="accent" style="font-weight: 600;">&#xc778;&#xac04;&#xc758; &#xb3c4;&#xad6c;</span>&#xb85c; &#xc791;&#xb3d9;&#xd55c;&#xb2e4;
+            </p>
+        </div>
+    </div>
+    <span class="slide-num">13</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 14: ECOSYSTEM TRANSITION
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <h2 class="section-title reveal">
+            &#xc9c0;&#xae08;&#xc740; <span class="accent">&#xc0dd;&#xd0dc;&#xacc4;&#xac00; &#xc804;&#xd658;</span>&#xb418;&#xb294; &#xc21c;&#xac04;
+        </h2>
+        <div class="epoch-row">
+            <div class="epoch-col reveal d1">
+                <div class="epoch-icon">&#x1f30a;</div>
+                <p class="epoch-label">&#xacfc;&#xac70;</p>
+                <p class="epoch-text">&#xacbd;&#xd5d8; = &#xacbd;&#xc7c1;&#xb825;</p>
+            </div>
+            <div class="epoch-col reveal d2">
+                <div class="epoch-icon">&#x26a1;</div>
+                <p class="epoch-label now-label">&#xd604;&#xc7ac;</p>
+                <p class="epoch-text">AI + &#xc778;&#xac04; = &#xae30;&#xd68c;</p>
+            </div>
+            <div class="epoch-col reveal d3">
+                <div class="epoch-icon">&#x1f52e;</div>
+                <p class="epoch-label future-label">&#xbbf8;&#xb798;</p>
+                <p class="epoch-text">AI = &#xc790;&#xc728; &#xc5d0;&#xc774;&#xc804;&#xd2b8;</p>
+            </div>
+        </div>
+        <p class="foot-note reveal d4">
+            &#xb3c4;&#xad6c;&#xb85c;&#xc11c;&#xc758; AI&#xb97c; &#xd65c;&#xc6a9;&#xd560; &#xc218; &#xc788;&#xb294; <span class="hl">&#xc9c0;&#xae08;&#xc774; &#xae30;&#xd68c;</span>&#xb2e4;
+        </p>
+    </div>
+    <span class="slide-num">14</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 15: 1ST HACKATHON
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <span class="tag tag-red reveal">PHASE 1</span>
+        <h2 class="section-title reveal d1" style="margin-top: var(--element-gap);">
+            1&#xcc28; AI Hackathon
+        </h2>
+        <p class="reveal d1" style="font-size: var(--body-size); color: var(--ink-muted); margin-top: 0.3rem;">
+            AI&#xb97c; &#xb3c4;&#xad6c;&#xb85c; &#xd65c;&#xc6a9;&#xd558;&#xc5ec; &#xc2e4;&#xbb34;&#xc5d0; &#xc989;&#xc2dc; &#xc801;&#xc6a9; &#xac00;&#xb2a5;&#xd55c; &#xc544;&#xc774;&#xd15c; &#xbc1c;&#xad74;
+        </p>
+        <div class="step-list" style="max-width: 600px;">
+            <div class="step-card reveal d2">
+                <span style="font-size: clamp(1.1rem, 2vw, 1.4rem);">&#x1f4bc;</span>
+                <div>
+                    <p class="step-title">&#xd604;&#xc7ac; &#xc5c5;&#xbb34; &#xad00;&#xb828; &#xc544;&#xc774;&#xd15c;</p>
+                    <p class="step-desc">&#xae30;&#xc874; &#xc6cc;&#xd06c;&#xd50c;&#xb85c;&#xc6b0;&#xb97c; AI&#xb85c; &#xd601;&#xc2e0;</p>
+                </div>
+            </div>
+            <div class="step-card reveal d3">
+                <span style="font-size: clamp(1.1rem, 2vw, 1.4rem);">&#x1f527;</span>
+                <div>
+                    <p class="step-title">&#xc194;&#xb8e8;&#xc158; &#xc5f0;&#xad00; &#xc544;&#xc774;&#xd15c;</p>
+                    <p class="step-desc">&#xc790;&#xc0ac; &#xc194;&#xb8e8;&#xc158;&#xacfc; AI&#xc758; &#xacb0;&#xd569;</p>
+                </div>
+            </div>
+            <div class="step-card reveal d4">
+                <span style="font-size: clamp(1.1rem, 2vw, 1.4rem);">&#x1f4fa;</span>
+                <div>
+                    <p class="step-title">IPTV &#xd65c;&#xc6a9; &#xc544;&#xc774;&#xd15c;</p>
+                    <p class="step-desc">IPTV &#xc11c;&#xbe44;&#xc2a4;&#xc5d0; AI&#xb97c; &#xc811;&#xbaa9;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="slide-num">15</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 16: 2ND HACKATHON
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <span class="tag tag-gold reveal">PHASE 2</span>
+        <h2 class="section-title reveal d1" style="margin-top: var(--element-gap);">
+            2&#xcc28; AI Hackathon
+        </h2>
+        <p class="reveal d1" style="font-size: var(--body-size); color: var(--ink-muted); margin-top: 0.3rem;">
+            1&#xcc28;&#xc758; &#xc131;&#xacfc;&#xb97c; &#xbc14;&#xd0d5;&#xc73c;&#xb85c;, &#xb354; &#xbc1c;&#xc804;&#xb41c; AI&#xc640; &#xd568;&#xaed8;
+        </p>
+        <div class="reveal d2" style="margin-top: var(--content-gap); max-width: 800px; width: 90%;">
+            <div class="card card-accent-left-gold" style="display: flex; align-items: center; gap: clamp(0.5rem, 1.5vw, 1rem); padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);">
+                <span style="font-size: clamp(1.3rem, 2.5vw, 1.8rem);">&#x1f680;</span>
+                <div>
+                    <p style="font-size: var(--body-size); font-weight: 700; color: var(--gold); margin: 0;">&#xc2e0;&#xaddc; &#xc0ac;&#xc5c5; &#xc544;&#xc774;&#xd15c; &#xbc1c;&#xad74;</p>
+                    <p style="font-size: var(--small-size); color: var(--ink-muted); margin: 0.3rem 0 0; line-height: 1.6;">
+                        AI&#xc758; &#xc9c4;&#xd654;&#xc5d0; &#xb9de;&#xcdb0; &#xae30;&#xc874; &#xacbd;&#xacc4;&#xb97c; &#xb118;&#xb294; &#xc0c8;&#xb85c;&#xc6b4; &#xbe44;&#xc988;&#xb2c8;&#xc2a4; &#xbaa8;&#xb378; &#xcc3d;&#xcd9c;
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="reveal d3" style="display: flex; gap: clamp(1rem, 3vw, 2rem); margin-top: var(--content-gap); align-items: center;">
+            <div style="text-align: center;">
+                <p style="font-size: var(--micro-size); color: var(--ink-faint); margin: 0;">1&#xcc28;</p>
+                <p style="font-size: var(--body-size); color: var(--red); margin: 0.2rem 0 0; font-weight: 600;">&#xc2e4;&#xbb34; &#xc801;&#xc6a9;</p>
+            </div>
+            <span style="color: var(--ink-faint); font-size: var(--body-size);">&rarr;</span>
+            <div style="text-align: center;">
+                <p style="font-size: var(--micro-size); color: var(--ink-faint); margin: 0;">2&#xcc28;</p>
+                <p style="font-size: var(--body-size); color: var(--gold); margin: 0.2rem 0 0; font-weight: 600;">&#xc0ac;&#xc5c5; &#xd655;&#xc7a5;</p>
+            </div>
+        </div>
+    </div>
+    <span class="slide-num">16</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 17: EVOLUTION OF AI USAGE
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <h2 class="section-title reveal">
+            AI&#xb97c; &#xc798; &#xc4f0;&#xb294; &#xbc29;&#xbc95;, <span class="accent">&#xbcc0;&#xcc9c;&#xc0ac;</span>
+        </h2>
+        <div class="era-stack">
+            <div class="era-card reveal d1">
+                <span class="era-year">2023</span>
+                <div>
+                    <p class="era-name" style="color: var(--ink-muted);">Prompt Engineering</p>
+                    <p class="era-sub">&#xc9c8;&#xbb38;&#xc744; &#xc798;&#xd558;&#xb294; &#xae30;&#xc220; &mdash; "&#xc5b4;&#xb5bb;&#xac8c; &#xbb3c;&#xc5b4;&#xbcfc;&#xae4c;?"</p>
+                </div>
+            </div>
+            <div class="era-card reveal d2">
+                <span class="era-year" style="color: var(--gold);">2024&ndash;25</span>
+                <div>
+                    <p class="era-name" style="color: var(--gold);">Context Engineering</p>
+                    <p class="era-sub">&#xb9e5;&#xb77d;&#xc744; &#xc124;&#xacc4;&#xd558;&#xb294; &#xae30;&#xc220; &mdash; "&#xbb34;&#xc5c7;&#xc744; &#xc54c;&#xb824;&#xc904;&#xae4c;?"</p>
+                </div>
+            </div>
+            <div class="era-card current reveal d3">
+                <span class="era-year">2026</span>
+                <div>
+                    <p class="era-name">Harness Engineering</p>
+                    <p class="era-sub">AI&#xb97c; &#xc2dc;&#xc2a4;&#xd15c;&#xc73c;&#xb85c; &#xc6b4;&#xc6a9;&#xd558;&#xb294; &#xae30;&#xc220; &mdash; "&#xc5b4;&#xb5bb;&#xac8c; &#xad74;&#xb9b4;&#xae4c;?"</p>
+                </div>
+            </div>
+        </div>
+        <p class="foot-note reveal d4">
+            &#xc9c8;&#xbb38;&#xc5d0;&#xc11c; &#xb9e5;&#xb77d;&#xc73c;&#xb85c;, &#xb9e5;&#xb77d;&#xc5d0;&#xc11c; <span class="hl">&#xc2dc;&#xc2a4;&#xd15c;</span>&#xc73c;&#xb85c; &#xc9c4;&#xd654;
+        </p>
+    </div>
+    <span class="slide-num">17</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 18: HARNESS ENGINEERING
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <span class="tag tag-red reveal">HARNESS ENGINEERING</span>
+        <h2 class="section-title reveal d1" style="margin-top: var(--element-gap);">
+            <span class="accent">Claude Code</span>&#xb85c; &#xc2dc;&#xc791;&#xd558;&#xb294; &#xd558;&#xb124;&#xc2a4;
+        </h2>
+        <div class="step-list" style="max-width: 900px;">
+            <div class="step-card reveal d2">
+                <span class="step-num">01</span>
+                <div>
+                    <p class="step-title" style="color: var(--red);">CLAUDE.md &mdash; &#xd504;&#xb85c;&#xc81d;&#xd2b8;&#xc758; &#xb1cc;</p>
+                    <p class="step-desc">&#xaddc;&#xce59;, &#xcee8;&#xbca4;&#xc158;, &#xc544;&#xd0a4;&#xd14d;&#xcc98;&#xb97c; &#xbb38;&#xc11c;&#xb85c; &#xc815;&#xc758; &rarr; AI&#xac00; &#xb9e5;&#xb77d;&#xc744; &#xc774;&#xd574;</p>
+                </div>
+            </div>
+            <div class="step-card reveal d3">
+                <span class="step-num gold-num">02</span>
+                <div>
+                    <p class="step-title" style="color: var(--gold);">Hooks &mdash; &#xc790;&#xb3d9;&#xd654;&#xb41c; &#xd488;&#xc9c8; &#xad00;&#xb9ac;</p>
+                    <p class="step-desc">&#xcf54;&#xb4dc; &#xc791;&#xc131; &#xd6c4; &#xc790;&#xb3d9; &#xb9b0;&#xd2b8;, &#xd3ec;&#xb9f7;, &#xd14c;&#xc2a4;&#xd2b8; &rarr; &#xc0ac;&#xb78c; &#xac1c;&#xc785; &#xc5c6;&#xc774; &#xd488;&#xc9c8; &#xc720;&#xc9c0;</p>
+                </div>
+            </div>
+            <div class="step-card reveal d4">
+                <span class="step-num">03</span>
+                <div>
+                    <p class="step-title" style="color: var(--red);">Agents &mdash; &#xbcd1;&#xb82c;&#xb85c; &#xc77c;&#xd558;&#xb294; AI &#xd300;</p>
+                    <p class="step-desc">&#xcf54;&#xb4dc;&#xb9ac;&#xbdf0;, &#xbcf4;&#xc548;&#xc810;&#xac80;, &#xd14c;&#xc2a4;&#xd2b8;&#xb97c; &#xb3d9;&#xc2dc;&#xc5d0; &#xc2e4;&#xd589;&#xd558;&#xb294; &#xc11c;&#xbe0c;&#xc5d0;&#xc774;&#xc804;&#xd2b8;</p>
+                </div>
+            </div>
+            <div class="step-card reveal d5">
+                <span class="step-num gold-num">04</span>
+                <div>
+                    <p class="step-title" style="color: var(--gold);">Memory &mdash; &#xb300;&#xd654;&#xb97c; &#xb118;&#xc5b4; &#xcd95;&#xc801;&#xb418;&#xb294; &#xc9c0;&#xc2dd;</p>
+                    <p class="step-desc">&#xd53c;&#xb4dc;&#xbc31;, &#xd504;&#xb85c;&#xc81d;&#xd2b8; &#xceee;&#xd14d;&#xc2a4;&#xd2b8;&#xac00; &#xc138;&#xc158;&#xc744; &#xb118;&#xc5b4; &#xc720;&#xc9c0; &rarr; &#xc810;&#xc810; &#xb611;&#xb611;&#xd574;&#xc9d0;</p>
+                </div>
+            </div>
+        </div>
+        <p class="foot-note reveal d6">
+            &#xd504;&#xb86c;&#xd504;&#xd2b8; &#xd55c; &#xc904;&#xc774; &#xc544;&#xb2cc;, <span class="hl">&#xc2dc;&#xc2a4;&#xd15c; &#xc804;&#xccb4;</span>&#xb97c; &#xc124;&#xacc4;&#xd558;&#xb294; &#xac83;
+        </p>
+    </div>
+    <span class="slide-num">18</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 19: SETUP EXAMPLE
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <span class="tag tag-muted reveal">SETUP EXAMPLE</span>
+        <h2 class="section-title reveal d1" style="margin-top: var(--element-gap);">
+            &#xc2e4;&#xc81c; &#xc14b;&#xd305;&#xc740; &#xc774;&#xb807;&#xac8c;
+        </h2>
+        <div class="grid-2x2">
+            <div class="card reveal d2" style="overflow: hidden;">
+                <p style="margin: 0 0 0.3rem; font-weight: 700; font-size: var(--small-size); color: var(--red);">CLAUDE.md</p>
+                <pre class="code-block"><code># &#xd504;&#xb85c;&#xc81d;&#xd2b8; &#xaddc;&#xce59;
+- &#xc5b8;&#xc5b4;: TypeScript
+- &#xd14c;&#xc2a4;&#xd2b8;: 80% &#xcee4;&#xbc84;&#xb9ac;&#xc9c0; &#xd544;&#xc218;
+- &#xcee4;&#xbc0b;: conventional commits
+- &#xbcf4;&#xc548;: API&#xd0a4; &#xd558;&#xb4dc;&#xcf54;&#xb529; &#xae08;&#xc9c0;</code></pre>
+            </div>
+            <div class="card reveal d3" style="overflow: hidden;">
+                <p style="margin: 0 0 0.3rem; font-weight: 700; font-size: var(--small-size); color: var(--gold);">Hooks (settings.json)</p>
+                <pre class="code-block"><code>"PostToolUse": [{
+  "matcher": "Write|Edit",
+  "command": "eslint --fix $FILE"
+}]
+&rarr; &#xcf54;&#xb4dc; &#xc218;&#xc815;&#xb9c8;&#xb2e4; &#xc790;&#xb3d9; &#xb9b0;&#xd2b8;</code></pre>
+            </div>
+            <div class="card reveal d4" style="overflow: hidden;">
+                <p style="margin: 0 0 0.3rem; font-weight: 700; font-size: var(--small-size); color: var(--red);">Agents (&#xbcd1;&#xb82c; &#xc2e4;&#xd589;)</p>
+                <pre class="code-block"><code>Agent 1: code-reviewer
+Agent 2: security-reviewer
+Agent 3: tdd-guide
+&rarr; 3&#xac1c;&#xac00; &#xb3d9;&#xc2dc;&#xc5d0; &#xcf54;&#xb4dc; &#xac80;&#xc99d;</code></pre>
+            </div>
+            <div class="card reveal d5" style="overflow: hidden;">
+                <p style="margin: 0 0 0.3rem; font-weight: 700; font-size: var(--small-size); color: var(--gold);">Memory</p>
+                <pre class="code-block"><code>memory/
+&#x251c;&#x2500;&#x2500; user_role.md
+&#x251c;&#x2500;&#x2500; feedback_testing.md
+&#x2514;&#x2500;&#x2500; project_goals.md
+&rarr; &#xc138;&#xc158;&#xc774; &#xbc14;&#xb00c;&#xc5b4;&#xb3c4; &#xae30;&#xc5b5; &#xc720;&#xc9c0;</code></pre>
+            </div>
+        </div>
+        <p class="foot-note reveal d6">
+            &#xc774; 4&#xac00;&#xc9c0;&#xb9cc; &#xc14b;&#xd305;&#xd558;&#xba74;, AI&#xac00; <span class="hl">&#xd300;&#xc6d0;&#xcc98;&#xb7fc;</span> &#xc77c;&#xd55c;&#xb2e4;
+        </p>
+    </div>
+    <span class="slide-num">19</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 20: NATURAL LANGUAGE OPERATION
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <span class="tag tag-red reveal">HOW TO USE</span>
+        <h2 class="section-title reveal d1" style="margin-top: var(--element-gap);">
+            &#xcf54;&#xb4dc; &#xc5c6;&#xc774;, <span class="accent">&#xb9d0;</span>&#xb85c; &#xc6b4;&#xc6a9;&#xd55c;&#xb2e4;
+        </h2>
+        <div style="display: flex; flex-direction: column; gap: clamp(0.4rem, 1vw, 0.6rem); width: min(95vw, 900px); margin-top: var(--content-gap);">
+            <div class="prompt-card reveal d2">
+                <p class="prompt-label red-label">&#xb9ac;&#xc11c;&#xce58; &#xc694;&#xccad;</p>
+                <p class="prompt-input">"&#xc774;&#xac70; &#xc5d0;&#xc774;&#xc804;&#xd2b8; &#xc18c;&#xd658;&#xd574;&#xc11c; &#xb9ac;&#xc11c;&#xce58;&#xd574;&#xc918;"</p>
+                <p class="prompt-result">&rarr; AI&#xac00; &#xc54c;&#xc544;&#xc11c; &#xd0d0;&#xc0c9; &#xc5d0;&#xc774;&#xc804;&#xd2b8;&#xb97c; &#xb744;&#xc6cc; &#xc870;&#xc0ac; &#xd6c4; &#xacb0;&#xacfc; &#xbcf4;&#xace0;</p>
+            </div>
+            <div class="prompt-card reveal d3">
+                <p class="prompt-label gold-label">&#xbcd1;&#xb82c; &#xac80;&#xc99d;</p>
+                <p class="prompt-input">"&#xbcf4;&#xc548; &#xac80;&#xd1a0;&#xb791; &#xcf54;&#xb4dc; &#xb9ac;&#xbdf0; &#xb3d9;&#xc2dc;&#xc5d0; &#xd574;&#xc918;"</p>
+                <p class="prompt-result">&rarr; security-reviewer + code-reviewer 2&#xac1c; &#xc5d0;&#xc774;&#xc804;&#xd2b8; &#xbcd1;&#xb82c; &#xc2e4;&#xd589;</p>
+            </div>
+            <div class="prompt-card reveal d4">
+                <p class="prompt-label red-label">&#xc790;&#xb3d9; &#xbc30;&#xd3ec;</p>
+                <p class="prompt-input">"GitHub Pages&#xb85c; &#xbc30;&#xd3ec;&#xd574;&#xc918;"</p>
+                <p class="prompt-result">&rarr; &#xb808;&#xd3ec; &#xc0dd;&#xc131;, &#xd30c;&#xc77c; push, Pages &#xd65c;&#xc131;&#xd654;&#xae4c;&#xc9c0; &#xc790;&#xb3d9; &#xc644;&#xb8cc;</p>
+            </div>
+            <div class="prompt-card reveal d5">
+                <p class="prompt-label gold-label">&#xc774; &#xd504;&#xb808;&#xc824;&#xd14c;&#xc774;&#xc158;</p>
+                <p class="prompt-input">"&#xd574;&#xcee4;&#xd1a4; &#xbc1c;&#xd45c;&#xc790;&#xb8cc; &#xb9cc;&#xb4e4;&#xc5b4;&#xc918;"</p>
+                <p class="prompt-result">&rarr; &#xc774; &#xd504;&#xb808;&#xc824;&#xd14c;&#xc774;&#xc158; &#xc804;&#xccb4;&#xac00; &#xc790;&#xc5f0;&#xc5b4; &#xba85;&#xb839;&#xc73c;&#xb85c; &#xb9cc;&#xb4e4;&#xc5b4;&#xc84c;&#xc2b5;&#xb2c8;&#xb2e4;</p>
+            </div>
+        </div>
+        <p class="foot-note reveal d6">
+            &#xd504;&#xb85c;&#xadf8;&#xb798;&#xbc0d; &#xc5b8;&#xc5b4;&#xac00; &#xc544;&#xb2cc;, <span class="hl">&#xc790;&#xc5f0;&#xc5b4;</span>&#xac00; &#xc0c8;&#xb85c;&#xc6b4; &#xc778;&#xd130;&#xd398;&#xc774;&#xc2a4;
+        </p>
+    </div>
+    <span class="slide-num">20</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 21: ECC
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <span class="tag tag-gold reveal">OPEN SOURCE</span>
+        <h2 class="section-title reveal d1" style="margin-top: var(--element-gap);">
+            <span class="gold">Everything Claude Code</span>
+        </h2>
+        <p class="reveal d1" style="font-size: var(--body-size); color: var(--ink-muted); margin-top: 0.3rem;">
+            Anthropic &#xd574;&#xcee4;&#xd1a4; &#xc6b0;&#xc2b9;&#xc790;&#xac00; &#xc624;&#xd508;&#xc18c;&#xc2a4;&#xb85c; &#xacf5;&#xac1c;&#xd55c; &#xd558;&#xb124;&#xc2a4; &#xc2dc;&#xc2a4;&#xd15c;
+        </p>
+        <div class="grid-3col">
+            <div class="stat-card reveal d2">
+                <p class="stat-num">47</p>
+                <p class="stat-label">Agents</p>
+                <p class="stat-sub">&#xcf54;&#xb4dc;&#xb9ac;&#xbdf0;, &#xbcf4;&#xc548;, &#xbe4c;&#xb4dc;, GAN</p>
+            </div>
+            <div class="stat-card reveal d3">
+                <p class="stat-num gold-stat">170+</p>
+                <p class="stat-label">Skills</p>
+                <p class="stat-sub">TDD, &#xb9ac;&#xc11c;&#xce58;, &#xd1a0;&#xd070;&#xcd5c;&#xc801;&#xd654;</p>
+            </div>
+            <div class="stat-card reveal d4">
+                <p class="stat-num">79</p>
+                <p class="stat-label">Commands</p>
+                <p class="stat-sub">/plan /tdd /deep-research</p>
+            </div>
+        </div>
+        <div class="card reveal d5" style="margin-top: var(--content-gap); width: min(95vw, 900px);">
+            <p style="margin: 0 0 0.3rem; font-size: var(--small-size); color: var(--red); font-weight: 700;">&#xc124;&#xce58; (3&#xc904;&#xc774;&#xba74; &#xb05d;)</p>
+            <pre class="code-block"><code><span class="cmd">$</span> git clone https://github.com/affaan-m/everything-claude-code
+<span class="cmd">$</span> cd everything-claude-code
+<span class="cmd">$</span> ./install.sh python   <span class="hl"># &#xc5b8;&#xc5b4;&#xbcc4; &#xaddc;&#xce59; &#xc790;&#xb3d9; &#xc124;&#xce58;</span></code></pre>
+        </div>
+        <p class="reveal d6" style="font-size: var(--micro-size); color: var(--ink-muted); margin-top: 0.5rem;">
+            github.com/affaan-m/everything-claude-code
+        </p>
+    </div>
+    <span class="slide-num">21</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 22: ECC LIVE EXAMPLES
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <span class="tag tag-muted reveal">LIVE DEMO</span>
+        <h2 class="section-title reveal d1" style="margin-top: var(--element-gap);">
+            ECC &#xc2e4;&#xc81c; &#xc0ac;&#xc6a9; &#xc608;&#xc2dc;
+        </h2>
+        <div style="display: flex; flex-direction: column; gap: clamp(0.35rem, 0.8vw, 0.5rem); width: min(95vw, 900px); margin-top: var(--content-gap);">
+            <div class="cmd-card reveal d2">
+                <div class="cmd-head">
+                    <span class="cmd-name red-cmd">/plan</span>
+                    <span class="cmd-tag">&#xae30;&#xb2a5; &#xad6c;&#xd604; &#xc804; &#xc124;&#xacc4;</span>
+                </div>
+                <pre class="code-block"><code><span class="cmd">you:</span> /plan &#xb85c;&#xadf8;&#xc778; &#xae30;&#xb2a5;&#xc5d0; OAuth &#xc18c;&#xc15c; &#xb85c;&#xadf8;&#xc778; &#xcd94;&#xac00;
+<span class="hl">AI:</span>  &rarr; PRD &#xc791;&#xc131; &rarr; &#xc544;&#xd0a4;&#xd14d;&#xcc98; &#xc124;&#xacc4; &rarr; &#xd0dc;&#xc2a4;&#xd06c; &#xbd84;&#xd574; &rarr; &#xad6c;&#xd604; &#xc21c;&#xc11c; &#xc81c;&#xc548;</code></pre>
+            </div>
+            <div class="cmd-card reveal d3">
+                <div class="cmd-head">
+                    <span class="cmd-name gold-cmd">/tdd</span>
+                    <span class="cmd-tag">&#xd14c;&#xc2a4;&#xd2b8; &#xba3c;&#xc800; &#xc791;&#xc131;</span>
+                </div>
+                <pre class="code-block"><code><span class="cmd">you:</span> /tdd &#xacb0;&#xc81c; &#xae08;&#xc561; &#xacc4;&#xc0b0; &#xd568;&#xc218;
+<span class="gold-hl">AI:</span>  &rarr; &#xd14c;&#xc2a4;&#xd2b8; &#xc791;&#xc131;(RED) &rarr; &#xad6c;&#xd604;(GREEN) &rarr; &#xb9ac;&#xd329;&#xd1a0;&#xb9c1; &rarr; &#xcee4;&#xbc84;&#xb9ac;&#xc9c0; 80%+ &#xd655;&#xc778;</code></pre>
+            </div>
+            <div class="cmd-card reveal d4">
+                <div class="cmd-head">
+                    <span class="cmd-name red-cmd">/security-scan</span>
+                    <span class="cmd-tag">&#xbcf4;&#xc548; &#xcde8;&#xc57d;&#xc810; &#xc810;&#xac80;</span>
+                </div>
+                <pre class="code-block"><code><span class="cmd">you:</span> /security-scan
+<span class="hl">AI:</span>  &rarr; OWASP Top 10 &#xc810;&#xac80; &rarr; SQL &#xc778;&#xc81d;&#xc158; &#xd0d0;&#xc9c0; &rarr; API&#xd0a4; &#xb178;&#xcd9c; &#xd655;&#xc778; &rarr; &#xb9ac;&#xd3ec;&#xd2b8;</code></pre>
+            </div>
+            <div class="cmd-card reveal d5">
+                <div class="cmd-head">
+                    <span class="cmd-name gold-cmd">/review-pr</span>
+                    <span class="cmd-tag">PR &#xcf54;&#xb4dc; &#xb9ac;&#xbdf0;</span>
+                </div>
+                <pre class="code-block"><code><span class="cmd">you:</span> /review-pr 42
+<span class="gold-hl">AI:</span>  &rarr; diff &#xbd84;&#xc11d; &rarr; &#xbc84;&#xadf8; &#xd0d0;&#xc9c0; &rarr; &#xc131;&#xb2a5; &#xc774;&#xc288; &rarr; &#xac1c;&#xc120;&#xc548; &#xc81c;&#xc2dc; &rarr; &#xc2b9;&#xc778;/&#xbc18;&#xb824;</code></pre>
+            </div>
+        </div>
+        <p class="foot-note reveal d6">
+            &#xc2ac;&#xb798;&#xc2dc; &#xba85;&#xb839; &#xd558;&#xb098;&#xb85c;, <span class="hl">&#xc2dc;&#xb2c8;&#xc5b4; &#xac1c;&#xbc1c;&#xc790; &#xc218;&#xc900;</span>&#xc758; &#xc6cc;&#xd06c;&#xd50c;&#xb85c;&#xc6b0; &#xc2e4;&#xd589;
+        </p>
+    </div>
+    <span class="slide-num">22</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 23: WINNER'S WORKFLOW
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <span class="tag tag-gold reveal">WINNER'S PLAYBOOK</span>
+        <h2 class="section-title reveal d1" style="margin-top: var(--element-gap);">
+            &#xc6b0;&#xc2b9;&#xc790;&#xc758; <span class="accent">&#xc2e4;&#xc804; &#xc6cc;&#xd06c;&#xd50c;&#xb85c;&#xc6b0;</span>
+        </h2>
+        <p class="reveal d1" style="font-size: var(--micro-size); color: var(--ink-muted); margin-top: 0.2rem;">
+            79 Commands &middot; 47 Agents &middot; 170+ Skills &mdash; &#xb9ac;&#xc11c;&#xce58;&#xbd80;&#xd130; &#xac1c;&#xbc1c;&#xae4c;&#xc9c0; &#xc804; &#xb2e8;&#xacc4; &#xbcd1;&#xb82c; &#xc2e4;&#xd589;
+        </p>
+        <div class="grid-3col" style="max-width: 1000px;">
+            <div class="wf-card reveal d2">
+                <p class="wf-title gold-wf"><span class="num">&oplus;</span> &#xbcd1;&#xb82c; &#xb9ac;&#xc11c;&#xce58;</p>
+                <div class="wf-body">
+                    <span class="gold-hl">/deep-research</span> &#xc2ec;&#xce35; &#xc870;&#xc0ac;<br>
+                    <span class="gold-hl">/exa-search</span> &#xc6f9; &#xac80;&#xc0c9;<br>
+                    <span class="gold-hl">/search-first</span> &#xae30;&#xc874; &#xcf54;&#xb4dc; &#xd0d0;&#xc0c9;<br>
+                    <span class="gold-hl">/multi-execute</span> &#xb3d9;&#xc2dc; &#xbcd1;&#xb82c; &#xd0d0;&#xc0c9;
+                </div>
+            </div>
+            <div class="wf-card reveal d2">
+                <p class="wf-title red-wf"><span class="num">&oplus;</span> &#xc124;&#xacc4;</p>
+                <div class="wf-body">
+                    <span class="hl">/plan</span> &#xad6c;&#xd604; &#xc124;&#xacc4;<br>
+                    <span class="hl">/multi-plan</span> &#xba40;&#xd2f0; &#xc5d0;&#xc774;&#xc804;&#xd2b8; &#xbd84;&#xd574;<br>
+                    <span class="hl">/prp-prd</span> PRD &#xc790;&#xb3d9; &#xc0dd;&#xc131;<br>
+                    <span class="hl">/feature-dev</span> &#xae30;&#xb2a5; &#xac1c;&#xbc1c; &#xd50c;&#xb85c;&#xc6b0;
+                </div>
+            </div>
+            <div class="wf-card reveal d3">
+                <p class="wf-title gold-wf"><span class="num">&oplus;</span> &#xbcd1;&#xb82c; &#xac1c;&#xbc1c;</p>
+                <div class="wf-body">
+                    <span class="gold-hl">/orchestrate</span> &#xba40;&#xd2f0; &#xc5d0;&#xc774;&#xc804;&#xd2b8;<br>
+                    <span class="gold-hl">/devfleet</span> &#xc5d0;&#xc774;&#xc804;&#xd2b8; &#xd568;&#xb300;<br>
+                    <span class="gold-hl">/tdd</span> &#xd14c;&#xc2a4;&#xd2b8; &#xc8fc;&#xb3c4; &#xac1c;&#xbc1c;<br>
+                    <span class="gold-hl">/build-fix</span> &#xbe4c;&#xb4dc; &#xc5d0;&#xb7ec; &#xd574;&#xacb0;
+                </div>
+            </div>
+        </div>
+        <div class="grid-2col" style="max-width: 680px;">
+            <div class="wf-card reveal d4">
+                <p class="wf-title red-wf"><span class="num">&oplus;</span> &#xd488;&#xc9c8;</p>
+                <div class="wf-body">
+                    <span class="hl">/code-review</span> &#xcf54;&#xb4dc; &#xb9ac;&#xbdf0;<br>
+                    <span class="hl">/verify</span> &#xac80;&#xc99d; &#xb8e8;&#xd504;<br>
+                    <span class="hl">/quality-gate</span> &#xd488;&#xc9c8; &#xac8c;&#xc774;&#xd2b8;<br>
+                    <span class="hl">/refactor-clean</span> &#xb370;&#xb4dc;&#xcf54;&#xb4dc; &#xc81c;&#xac70;
+                </div>
+            </div>
+            <div class="wf-card reveal d5">
+                <p class="wf-title gold-wf"><span class="num">&oplus;</span> &#xbc30;&#xd3ec; & &#xd559;&#xc2b5;</p>
+                <div class="wf-body">
+                    <span class="gold-hl">/prp-commit</span> &#xcee4;&#xbc0b;<br>
+                    <span class="gold-hl">/review-pr</span> PR &#xb9ac;&#xbdf0;<br>
+                    <span class="gold-hl">/learn</span> &#xd328;&#xd134; &#xcd94;&#xcd9c;<br>
+                    <span class="gold-hl">/evolve</span> &#xc2a4;&#xd0ac;&#xb85c; &#xc9c4;&#xd654;
+                </div>
+            </div>
+        </div>
+        <div class="card reveal d6" style="margin-top: clamp(0.3rem, 0.7vw, 0.5rem); width: min(95vw, 1000px); text-align: center; padding: clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.6rem, 1.2vw, 1rem);">
+            <p style="margin: 0; font-size: var(--micro-size); color: var(--ink-muted); line-height: 1.5;">
+                <span style="color: var(--gold); font-weight: 600;">47 Agents</span> code-reviewer &middot; security-reviewer &middot; architect &middot; planner &middot; tdd-guide &middot; e2e-runner &middot; gan-planner &middot; gan-generator &middot; gan-evaluator &middot; performance-optimizer &middot; 10&#xac1c; &#xc5b8;&#xc5b4;&#xbcc4; &#xb9ac;&#xbdf0;&#xc5b4; ...
+            </p>
+        </div>
+    </div>
+    <span class="slide-num">23</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 24: PARALLEL CLAUDE CODE
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <span class="tag tag-gold reveal">WINNING STRATEGY</span>
+        <h2 class="section-title reveal d1" style="margin-top: var(--element-gap);">
+            &#xd574;&#xcee4;&#xd1a4; &#xc6b0;&#xc2b9; &#xbe44;&#xbc95;: <span class="accent">&#xbcd1;&#xb82c; Claude Code</span>
+        </h2>
+        <p class="reveal d1" style="font-size: var(--micro-size); color: var(--ink-muted); margin-top: 0.2rem;">
+            Anthropic &#xd574;&#xcee4;&#xd1a4; &#xc6b0;&#xc2b9;&#xc790; Affaan Mustafa&#xc758; &#xd575;&#xc2ec; &#xc804;&#xb7b5;
+        </p>
+        <div class="evo-row">
+            <div class="evo-card reveal d2">
+                <p class="evo-gen">1&#xc138;&#xb300; &middot; 2025</p>
+                <p class="evo-name">&#xc218;&#xb3d9; &#xbcd1;&#xb82c;</p>
+                <p class="evo-sub">Worktree + tmux</p>
+            </div>
+            <span class="evo-arrow">&rarr;</span>
+            <div class="evo-card reveal d3">
+                <p class="evo-gen" style="color: var(--gold);">2&#xc138;&#xb300; &middot; 2026.02</p>
+                <p class="evo-name" style="color: var(--gold);">claude-swarm</p>
+                <p class="evo-sub">&#xc790;&#xb3d9; &#xc624;&#xcf00;&#xc2a4;&#xd2b8;&#xb808;&#xc774;&#xc158;</p>
+            </div>
+            <span class="evo-arrow">&rarr;</span>
+            <div class="evo-card evo-current reveal d4">
+                <p class="evo-gen" style="color: var(--red);">3&#xc138;&#xb300; &middot; 2026.02</p>
+                <p class="evo-name">Agent Teams</p>
+                <p class="evo-sub">Anthropic &#xacf5;&#xc2dd; &#xae30;&#xb2a5;</p>
+            </div>
+        </div>
+        <div class="grid-2col" style="max-width: 1000px; width: min(95vw, 1000px); margin-top: clamp(0.4rem, 1vw, 0.7rem);">
+            <div class="card reveal d5" style="overflow: hidden;">
+                <p style="margin: 0 0 0.3rem; font-size: var(--small-size); color: var(--red); font-weight: 700;">&#xd575;&#xc2ec; &#xc6d0;&#xb9ac;</p>
+                <pre class="code-block"><code><span class="cmd">PC 1&#xb300;</span> &rarr; Claude Code <span class="hl">3~4&#xac1c;</span> &#xb3d9;&#xc2dc; &#xc2e4;&#xd589;
+<span class="cmd">&#xac01;&#xac01;</span> &rarr; &#xb3c5;&#xb9bd; <span class="gold-hl">Git Worktree</span> (&#xd30c;&#xc77c; &#xcda9;&#xb3cc; X)
+<span class="cmd">&#xad00;&#xb9ac;</span> &rarr; <span class="hl">tmux</span> &#xc138;&#xc158;&#xc73c;&#xb85c; &#xd654;&#xba74; &#xbd84;&#xd560;</code></pre>
+            </div>
+            <div class="card reveal d5">
+                <p style="margin: 0 0 0.3rem; font-size: var(--small-size); color: var(--gold); font-weight: 700;">&#xc65c; &#xac15;&#xb825;&#xd55c;&#xac00;?</p>
+                <div style="font-size: var(--micro-size); color: var(--ink-light); line-height: 1.7;">
+                    4&#xac1c; &#xc791;&#xc5c5;&#xc774; <span class="accent" style="font-weight: 600;">&#xd569;&#xc0b0;&#xc774; &#xc544;&#xb2cc; &#xcd5c;&#xb300; 1&#xac1c;</span> &#xc2dc;&#xac04;&#xc73c;&#xb85c; &#xc644;&#xb8cc;<br>
+                    &#xc131;&#xacf5;&#xb960; 25% &times; 4&#xbcd1;&#xb82c; = <span class="accent" style="font-weight: 600;">68%</span> &#xd655;&#xb960; &#xb204;&#xc801;<br>
+                    &#xac01; &#xc778;&#xc2a4;&#xd134;&#xc2a4; &#xb3c5;&#xb9bd; &#xceee;&#xd14d;&#xc2a4;&#xd2b8; &rarr; &#xc131;&#xb2a5; &#xc800;&#xd558; &#xc5c6;&#xc74c;<br>
+                    &#xbe44;&#xc6a9; $0.40 vs &#xc2dc;&#xac04; 20&#xbd84;+ &#xc808;&#xc57d;
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="slide-num">24</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 25: AGENT TEAMS
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <span class="tag tag-red reveal">3RD GENERATION</span>
+        <h2 class="section-title reveal d1" style="margin-top: var(--element-gap);">
+            <span class="accent">Agent Teams</span> &#xc2e4;&#xc804; &#xc0ac;&#xc6a9;&#xbc95;
+        </h2>
+        <p class="reveal d1" style="font-size: var(--micro-size); color: var(--ink-muted); margin-top: 0.2rem;">
+            Anthropic &#xacf5;&#xc2dd; &#xae30;&#xb2a5; &middot; Opus 4.6&#xbd80;&#xd130; &#xc9c0;&#xc6d0;
+        </p>
+        <div class="card reveal d2" style="margin-top: var(--content-gap); width: min(95vw, 1000px);">
+            <p style="margin: 0 0 0.3rem; font-size: var(--small-size); color: var(--red); font-weight: 700;">&#xd65c;&#xc131;&#xd654; (settings.json&#xc5d0; &#xd55c; &#xc904; &#xcd94;&#xac00;)</p>
+            <pre class="code-block"><code>"env": { "<span class="hl">CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS</span>": "1" }</code></pre>
+        </div>
+        <div class="grid-3col" style="max-width: 1000px; margin-top: clamp(0.3rem, 0.8vw, 0.5rem);">
+            <div class="key-card reveal d3">
+                <p class="key-name">Shift+Tab</p>
+                <p class="key-desc">&#xd300;&#xc6d0;&#xc5d0;&#xac8c; &#xc791;&#xc5c5; &#xc704;&#xc784;</p>
+            </div>
+            <div class="key-card reveal d3">
+                <p class="key-name" style="color: var(--gold);">Ctrl+T</p>
+                <p class="key-desc">&#xd0dc;&#xc2a4;&#xd06c; &#xbaa9;&#xb85d; &#xbcf4;&#xae30;</p>
+            </div>
+            <div class="key-card reveal d3">
+                <p class="key-name">Shift+&uarr;&darr;</p>
+                <p class="key-desc">&#xd300;&#xc6d0;&#xc5d0;&#xac8c; &#xba54;&#xc2dc;&#xc9c0;</p>
+            </div>
+        </div>
+        <div class="card reveal d4" style="margin-top: clamp(0.3rem, 0.8vw, 0.5rem); width: min(95vw, 1000px);">
+            <p style="margin: 0 0 0.3rem; font-size: var(--small-size); color: var(--gold); font-weight: 700;">&#xd574;&#xcee4;&#xd1a4; &#xc2e4;&#xc804; &#xc2dc;&#xb098;&#xb9ac;&#xc624;</p>
+            <pre class="code-block"><code><span class="cmd">you:</span> &#xc1fc;&#xd551;&#xbaac; MVP &#xb9cc;&#xb4e4;&#xc5b4;&#xc918;
+
+<span class="hl">[Lead]</span>  &#xc124;&#xacc4; &#xc644;&#xb8cc;. &#xd300;&#xc6d0; &#xbc30;&#xc815;&#xd569;&#xb2c8;&#xb2e4;.
+   <span class="gold-hl">Shift+Tab &rarr;</span> &#xd300;&#xc6d0;A "&#xbc31;&#xc5d4;&#xb4dc; API + DB &#xc124;&#xacc4;"
+   <span class="gold-hl">Shift+Tab &rarr;</span> &#xd300;&#xc6d0;B "&#xd504;&#xb860;&#xd2b8; UI &#xad6c;&#xd604;"
+   <span class="gold-hl">Shift+Tab &rarr;</span> &#xd300;&#xc6d0;C "&#xd14c;&#xc2a4;&#xd2b8; + &#xbc30;&#xd3ec; &#xc900;&#xbe44;"
+
+<span class="cmd">&rarr; 3&#xba85;&#xc774; &#xb3d9;&#xc2dc; &#xc791;&#xc5c5; &rarr; &#xc644;&#xb8cc; &#xd6c4; &#xc790;&#xb3d9; &#xbcd1;&#xd569;</span></code></pre>
+        </div>
+        <p class="reveal d5" style="font-size: var(--small-size); color: var(--ink-muted); margin-top: clamp(0.3rem, 0.7vw, 0.4rem);">
+            &#xd63c;&#xc790;&#xc11c; <span class="hl">&#xc2dc;&#xb2c8;&#xc5b4; 3~4&#xba85; &#xaddc;&#xbaa8;&#xc758; &#xd300;</span>&#xc744; &#xc6b4;&#xc601;&#xd558;&#xb294; &#xd6a8;&#xacfc;
+        </p>
+    </div>
+    <span class="slide-num">25</span>
+</section>
+
+
+<!-- ============================
+     SLIDE 26: CLOSING
+     ============================ -->
+<section class="slide">
+    <div class="slide-inner">
+        <div class="rule reveal" style="width: 40px;"></div>
+        <h1 class="hero-title reveal d1">
+            &#xc774;&#xc81c;&#xb294;<br><span class="accent">&#xb2f9;&#xc2e0;&#xc758; &#xcc28;&#xb840;</span>
+        </h1>
+        <div class="rule reveal d2" style="width: 40px;"></div>
+        <p class="reveal d3" style="font-size: var(--body-size); color: var(--ink-light); line-height: 1.8; max-width: 700px; margin-top: var(--content-gap);">
+            AI&#xb294; &#xb3c4;&#xad6c;&#xc785;&#xb2c8;&#xb2e4;.<br>
+            &#xadf8; &#xb3c4;&#xad6c;&#xb97c; <strong style="color: var(--ink);">&#xc5b4;&#xb5bb;&#xac8c; &#xc4f8;&#xc9c0;</strong> &#xacb0;&#xc815;&#xd558;&#xb294; &#xac74; &#xc0ac;&#xb78c;&#xc785;&#xb2c8;&#xb2e4;.
+        </p>
+        <p class="reveal d4" style="font-size: clamp(1.3rem, 3.5vw, 2rem); color: var(--red); font-weight: 700; margin-top: var(--content-gap); letter-spacing: -0.02em;">
+            "&#xacbd;&#xd5d8; &times; AI = &#xb2f9;&#xc2e0;&#xb9cc;&#xc758; &#xbb34;&#xae30;"
+        </p>
+        <div class="rule reveal d5" style="width: 30px;"></div>
+        <p class="reveal d5" style="font-size: var(--small-size); color: var(--ink-muted); letter-spacing: 0.05em;">
+            Thank you.
+        </p>
+        <p class="reveal d6" style="position: absolute; bottom: clamp(2rem, 5vh, 4rem); font-size: clamp(0.85rem, 1.4vw, 1.1rem); font-weight: 500; color: var(--ink-faint); letter-spacing: 0.12em; text-transform: uppercase;">April 2026 &middot; Inhwan Lee</p>
+    </div>
+    <span class="slide-num">26</span>
+</section>
+
+
+<!-- Keyboard Hint -->
+<div class="keyboard-hint">&#x2191;&#x2193; / scroll / swipe to navigate</div>
+
+<script>
+/* ============================================
+   PRESENTATION CONTROLLER
+   ============================================ */
+class PresentationController {
+    constructor() {
+        this.slides = document.querySelectorAll('.slide');
+        this.currentSlide = 0;
+        this.touchStartY = 0;
+
+        this.buildNavDots();
+        this.setupObservers();
+        this.setupKeyboard();
+        this.setupWheel();
+        this.setupTouch();
+        this.updateProgress();
+    }
+
+    buildNavDots() {
+        const nav = document.getElementById('navDots');
+        this.slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'nav-dot';
+            dot.setAttribute('aria-label', `Slide ${i + 1}`);
+            dot.addEventListener('click', () => this.goTo(i));
+            nav.appendChild(dot);
+        });
+        this.dots = nav.querySelectorAll('.nav-dot');
+        if (this.dots[0]) this.dots[0].classList.add('active');
+    }
+
+    setupObservers() {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const idx = [...this.slides].indexOf(entry.target);
+                    this.currentSlide = idx;
+                    this.updateDots();
+                    this.updateProgress();
+                    entry.target.querySelectorAll('.reveal').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        this.slides.forEach(slide => revealObserver.observe(slide));
+    }
+
+    setupKeyboard() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+                e.preventDefault();
+                this.next();
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                e.preventDefault();
+                this.prev();
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                this.goTo(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                this.goTo(this.slides.length - 1);
+            }
+        });
+    }
+
+    setupWheel() {
+        let lastWheel = 0;
+        document.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const now = Date.now();
+            if (now - lastWheel < 800) return;
+            lastWheel = now;
+            if (e.deltaY > 0) this.next();
+            else this.prev();
+        }, { passive: false });
+    }
+
+    setupTouch() {
+        document.addEventListener('touchstart', (e) => {
+            this.touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (e) => {
+            const diff = this.touchStartY - e.changedTouches[0].clientY;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) this.next();
+                else this.prev();
+            }
+        }, { passive: true });
+    }
+
+    goTo(idx) {
+        if (idx >= 0 && idx < this.slides.length) {
+            this.slides[idx].scrollIntoView({ behavior: 'smooth' });
+            this.currentSlide = idx;
+            this.updateDots();
+            this.updateProgress();
+        }
+    }
+
+    next() { this.goTo(this.currentSlide + 1); }
+    prev() { this.goTo(this.currentSlide - 1); }
+
+    updateDots() {
+        this.dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === this.currentSlide);
+        });
+    }
+
+    updateProgress() {
+        const progress = ((this.currentSlide + 1) / this.slides.length) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new PresentationController();
+});
+</script>
+
+</body>
+</html>
