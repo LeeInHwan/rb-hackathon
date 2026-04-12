@@ -935,26 +935,27 @@ p, li {
     align-items: center;
     flex-wrap: nowrap;
   }
-  .bar-track { height: 26px; flex: 1; min-width: 0; overflow: visible !important; }
-  .bar-fill { padding-right: 0; overflow: visible !important; }
-  /* Short bars: value text in dark color, right of the bar */
+  .bar-track { height: 26px; flex: 1; min-width: 0; }
+  .bar-fill { padding-right: 0; }
+  /* Short bars: hide value inside bar — JS will add external label */
   .bar-fill.red .bar-value,
   .bar-fill.gold .bar-value,
   .bar-fill.green .bar-value {
-    color: var(--ink) !important;
+    display: none !important;
+  }
+  /* External label added by JS */
+  .bar-ext-value {
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.7rem;
     font-weight: 600;
+    color: var(--ink);
     white-space: nowrap;
     margin-left: 8px;
-  }
-  .bar-fill.red,
-  .bar-fill.gold,
-  .bar-fill.green {
-    justify-content: flex-start;
-    padding-right: 0;
+    flex-shrink: 0;
   }
   /* Wide bars (ink): value stays inside right-aligned */
   .bar-fill.ink .bar-value {
+    display: inline !important;
     color: #fff !important;
     padding-right: 8px;
   }
@@ -2535,6 +2536,20 @@ p, li {
 <script>
 (function() {
   'use strict';
+
+  // Mobile: move bar values outside short bars for visibility
+  if (window.innerWidth <= 768) {
+    document.querySelectorAll('.bar-row').forEach(function(row) {
+      var fill = row.querySelector('.bar-fill');
+      if (!fill || fill.classList.contains('ink')) return;
+      var bv = fill.querySelector('.bar-value');
+      if (!bv) return;
+      var ext = document.createElement('span');
+      ext.className = 'bar-ext-value';
+      ext.textContent = bv.textContent;
+      row.appendChild(ext);
+    });
+  }
 
   const slides = document.querySelectorAll('.slide');
   const totalSlides = slides.length;
