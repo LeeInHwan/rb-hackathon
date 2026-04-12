@@ -140,7 +140,7 @@ html {
         line-height: 1.4 !important;
     }
     .neon-cyber .tag {
-        font-size: 0.55rem !important;
+        font-size: 0.6rem !important;
         padding: 0.15rem 0.5rem !important;
     }
 
@@ -149,7 +149,7 @@ html {
         white-space: pre-wrap !important;
         word-break: break-all !important;
         overflow-x: auto !important;
-        font-size: clamp(0.5rem, 1.8vw, 0.7rem) !important;
+        font-size: clamp(0.57rem, 1.8vw, 0.7rem) !important;
         line-height: 1.5 !important;
     }
     .neon-cyber code {
@@ -198,7 +198,7 @@ html {
     }
     .comparison-table .row,
     .comparison-table .col-header {
-        font-size: clamp(0.55rem, 2.2vw, 0.75rem) !important;
+        font-size: clamp(0.6rem, 2.5vw, 0.75rem) !important;
         line-height: 1.3 !important;
         padding: 0.15rem 0.1rem !important;
         white-space: normal !important;
@@ -289,7 +289,7 @@ html {
         padding: 0.3rem 0.5rem !important;
     }
     .slide:nth-child(22) .slide-content > div > div p {
-        font-size: clamp(0.55rem, 2.2vw, 0.75rem) !important;
+        font-size: clamp(0.6rem, 2.5vw, 0.75rem) !important;
         margin: 0 !important;
         line-height: 1.3 !important;
     }
@@ -310,12 +310,12 @@ html {
         padding: 0.3rem 0.5rem !important;
     }
     .slide:nth-child(24) .slide-content > div > div p {
-        font-size: clamp(0.55rem, 2.2vw, 0.75rem) !important;
+        font-size: clamp(0.6rem, 2.5vw, 0.75rem) !important;
         margin: 0 !important;
         line-height: 1.3 !important;
     }
     .slide:nth-child(24) .slide-content > div > div pre {
-        font-size: clamp(0.5rem, 1.6vw, 0.65rem) !important;
+        font-size: clamp(0.56rem, 1.8vw, 0.65rem) !important;
         margin-top: 0.15rem !important;
     }
     .slide:nth-child(24) .slide-content > p:last-of-type {
@@ -357,7 +357,7 @@ html {
         padding: 0.4rem 0.3rem !important;
     }
     .slide:nth-child(23) [style*="repeat(3, 1fr)"] p {
-        font-size: clamp(0.55rem, 2vw, 0.7rem) !important;
+        font-size: clamp(0.6rem, 2.2vw, 0.7rem) !important;
     }
     .slide:nth-child(23) [style*="repeat(3, 1fr)"] p:first-child {
         font-size: clamp(1.2rem, 5vw, 1.8rem) !important;
@@ -390,7 +390,7 @@ html {
         margin-bottom: 0.15rem !important;
     }
     .slide:nth-child(25) [style*="repeat"] > div div {
-        font-size: clamp(0.52rem, 2vw, 0.68rem) !important;
+        font-size: clamp(0.57rem, 2.2vw, 0.68rem) !important;
         line-height: 1.5 !important;
     }
     /* bottom agents bar */
@@ -398,7 +398,7 @@ html {
         padding: 0.35rem 0.5rem !important;
     }
     .slide:nth-child(25) .slide-content > div[style*="background"]:last-of-type p {
-        font-size: clamp(0.5rem, 1.8vw, 0.65rem) !important;
+        font-size: clamp(0.56rem, 2vw, 0.65rem) !important;
     }
 
     /* --- Slide 24 (child 26): 병렬 Claude Code --- */
@@ -421,6 +421,34 @@ html {
         padding: 0.35rem 0.5rem !important;
     }
 
+    /* --- Slide 22 (child 24): pre/code/span size fix --- */
+    .slide:nth-child(24) pre,
+    .slide:nth-child(24) pre code,
+    .slide:nth-child(24) pre span {
+        font-size: clamp(0.57rem, 2vw, 0.75rem) !important;
+    }
+
+    /* --- Slide 23 (child 25): bottom agents bar span fix --- */
+    .slide:nth-child(25) .slide-content span {
+        font-size: clamp(0.57rem, 2.2vw, 0.7rem) !important;
+    }
+    .slide:nth-child(25) [style*="repeat(3, 1fr)"] p:first-child span {
+        font-size: inherit !important;
+    }
+
+    /* --- Slide 24 (child 26): inline pre/code/span size fix --- */
+    .slide:nth-child(26) pre,
+    .slide:nth-child(26) pre code,
+    .slide:nth-child(26) pre span {
+        font-size: clamp(0.57rem, 2vw, 0.75rem) !important;
+    }
+    .slide:nth-child(26) div[style*="font-size"] {
+        font-size: clamp(0.57rem, 2vw, 0.75rem) !important;
+    }
+    .slide:nth-child(26) div[style*="font-size"] span {
+        font-size: inherit !important;
+    }
+
     /* --- Slide 25 (child 27): Agent Teams --- */
     .slide:nth-child(27) [style*="repeat(3, 1fr)"] {
         grid-template-columns: repeat(3, 1fr) !important;
@@ -430,7 +458,7 @@ html {
         padding: 0.3rem 0.3rem !important;
     }
     .slide:nth-child(27) [style*="repeat(3, 1fr)"] p {
-        font-size: clamp(0.55rem, 2vw, 0.7rem) !important;
+        font-size: clamp(0.6rem, 2.2vw, 0.7rem) !important;
     }
     .slide:nth-child(27) .slide-content > div[style*="background"] {
         padding: 0.35rem 0.5rem !important;
@@ -445,6 +473,22 @@ html {
     .slide:nth-child(n+19):nth-child(-n+27) .slide-content h2 {
         font-size: clamp(0.85rem, 3.8vw, 1.2rem) !important;
         margin-top: 0.1rem !important;
+    }
+
+    /* --- Slide 14 (child 16): S-curve chart container overflow fix --- */
+    .slide:nth-child(16) .slide-content > div[style*="max-width: 700px"] {
+        max-width: 90vw !important;
+        width: 88vw !important;
+        padding: 0.5rem !important;
+    }
+
+    /* --- Slide 15 (child 17): 1차 해커톤 카드 overflow fix --- */
+    .slide:nth-child(17) .slide-content > div[style*="max-width: 650px"] {
+        max-width: 92vw !important;
+        width: 92vw !important;
+    }
+    .slide:nth-child(17) .slide-content > div > div {
+        padding: 0.5rem 0.8rem !important;
     }
 
     /* ----- 해커톤 슬라이드: 2컬럼 → 1컬럼 ----- */
