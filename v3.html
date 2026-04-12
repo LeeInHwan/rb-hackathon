@@ -1042,6 +1042,94 @@ p, li {
   .donut { width: 100px; height: 100px; }
   .donut::after { inset: 16px; }
   .donut .donut-number { font-size: 1.2rem; }
+
+  /* ── Per-slide overflow fixes ── */
+
+  /* Slide 2: 경험의 시대 (858px → 812px) */
+  #slide-2 .grid-2 { gap: 0.8rem; }
+  #slide-2 .card { padding: 1rem; }
+  #slide-2 .card h3 { font-size: 0.9rem; margin-bottom: 0.5rem; }
+  #slide-2 .card ul { line-height: 1.6; font-size: 0.8rem; }
+  #slide-2 .kpi-card { padding: 0.8rem; }
+  #slide-2 .kpi-value { font-size: 1.4rem !important; }
+  #slide-2 .kpi-sub { font-size: 0.65rem; }
+  #slide-2 .mt-2 { margin-top: 0.8rem !important; }
+
+  /* Slide 12: 성과 기대치 (832px → 812px) */
+  #slide-12 .kpi-card { padding: 0.8rem; margin-bottom: 0; }
+  #slide-12 .kpi-value { font-size: 1.3rem !important; }
+  #slide-12 .kpi-sub { font-size: 0.6rem; }
+  #slide-12 .mt-3 { margin-top: 1rem !important; padding: 1rem !important; }
+  #slide-12 .mt-3 h3 { font-size: 0.75rem; margin-bottom: 0.5rem; }
+  #slide-12 .bar-row { margin-bottom: 0.3rem; }
+
+  /* Slide 13: AI 활용 전략 진화 (892px → 812px) */
+  #slide-13 .maturity-dot { width: 28px; height: 28px; font-size: 0.75rem; }
+  #slide-13 .maturity-title { font-size: 0.7rem; }
+  #slide-13 .maturity-desc { font-size: 0.58rem; line-height: 1.3; }
+  #slide-13 .maturity-desc br { display: none; }
+  #slide-13 .maturity-desc .tag { font-size: 0.55rem; padding: 0.1rem 0.4rem; }
+  #slide-13 .maturity-stage { padding-bottom: 0.3rem; }
+  #slide-13 .mt-3 { margin-top: 0.8rem !important; }
+  #slide-13 .grid-3 { gap: 0.5rem; }
+  #slide-13 .grid-3 .card { padding: 0.6rem !important; }
+  #slide-13 .grid-3 .card p { font-size: 0.65rem; line-height: 1.3; }
+
+  /* Slide 14: 4가지 축 (864px → 812px) */
+  #slide-14 .card { padding: 0.7rem !important; }
+  #slide-14 .card h3 { font-size: 0.8rem; margin-bottom: 0.2rem; }
+  #slide-14 .card p { font-size: 0.65rem; line-height: 1.3; }
+  #slide-14 .card .mt-1 { margin-top: 0.3rem !important; }
+  #slide-14 [style*="gap:1.5rem"] { gap: 0.5rem !important; }
+  #slide-14 [style*="width:40px"] { width: 30px !important; height: 30px !important; font-size: 0.9rem !important; }
+  #slide-14 [style*="gap:0.8rem"] { gap: 0.4rem !important; }
+  #slide-14 [style*="margin-bottom:0.8rem"] { margin-bottom: 0.3rem !important; }
+
+  /* Slide 15: 자연어 운용 (837px → 812px) */
+  #slide-15 .card { padding: 1rem; }
+  #slide-15 .card h3 { font-size: 0.85rem; margin-bottom: 0.3rem; }
+  #slide-15 .card p { font-size: 0.7rem; line-height: 1.3; }
+  #slide-15 .tag { font-size: 0.6rem; padding: 0.2rem 0.5rem; }
+
+  /* Slide 16: 검증된 하네스 (870px → 812px) */
+  #slide-16 .stat-card { padding: 0.6rem; }
+  #slide-16 .stat-value { font-size: 1.4rem !important; }
+  #slide-16 .stat-label { font-size: 0.6rem; }
+  #slide-16 .stat-bar { height: 6px; margin-top: 0.3rem; }
+  #slide-16 .stat-row { gap: 0.5rem; }
+  #slide-16 .mt-2 { margin-top: 0.8rem !important; }
+  #slide-16 .grid-2 { gap: 0.5rem; }
+  #slide-16 .card { padding: 0.7rem !important; }
+  #slide-16 .tag { font-size: 0.6rem; padding: 0.15rem 0.4rem; }
+
+  /* Slide 18: 병렬 실행 (815px → 812px) */
+  #slide-18 .card { padding: 1rem; }
+  #slide-18 [style*="padding:1.5rem"] { padding: 1rem !important; }
+
+  /* Slide 19: AI 팀 빌딩 (988px → 812px) — major compaction */
+  #slide-19 .grid-3 { gap: 0.5rem; }
+  #slide-19 .card { padding: 0.7rem !important; }
+  #slide-19 .card h3 { font-size: 0.75rem; margin-bottom: 0.1rem; }
+  #slide-19 .card p { font-size: 0.6rem; line-height: 1.2; }
+  #slide-19 .card p br { display: none; }
+  #slide-19 .divider { margin: 0.3rem auto !important; }
+  #slide-19 .tag { font-size: 0.55rem; padding: 0.1rem 0.3rem; }
+  #slide-19 .mt-1 { margin-top: 0.3rem !important; }
+  #slide-19 [style*="width:60px"] { width: 36px !important; height: 36px !important; font-size: 1rem !important; margin-bottom: 0.4rem !important; }
+  #slide-19 .mt-2 { margin-top: 0.5rem !important; }
+
+  /* Slide 22: 기대 효과 & ROI (900px → 812px) */
+  #slide-22 h2 { margin-bottom: 0.3rem !important; }
+  #slide-22 h3 { font-size: 0.8rem; margin-bottom: 0.4rem !important; }
+  #slide-22 .grid-2 { gap: 0.8rem; }
+  #slide-22 .bar-row { margin-bottom: 0.2rem; }
+  #slide-22 .bar-track { height: 18px !important; }
+  #slide-22 .bar-label { min-width: 60px !important; font-size: 0.65rem; }
+  #slide-22 .card { padding: 0.6rem !important; margin-bottom: 0.4rem !important; }
+  #slide-22 .card [style*="font-size:var(--h3)"] { font-size: 1rem !important; margin: 0.1rem 0 !important; }
+  #slide-22 .card p { font-size: 0.6rem; line-height: 1.3; }
+  #slide-22 .mt-2 { margin-top: 0.5rem !important; padding: 0.8rem !important; }
+  #slide-22 .mt-2 [style*="font-size:var(--h3)"] { font-size: 1rem !important; }
 }
 
 @media (max-width: 480px) {
