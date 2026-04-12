@@ -911,8 +911,8 @@ p, li {
    MOBILE RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
-  .slide { padding: 2.5rem 5vw; }
-  .slide.slide-compact { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+  .slide { padding: 1.5rem 5vw 1rem; }
+  .slide.slide-compact { padding-top: 1rem; padding-bottom: 0.8rem; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 1.2rem; }
   .stat-row { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .nav-dots { display: none; }
@@ -1046,23 +1046,34 @@ p, li {
 
   /* ── Per-slide overflow fixes ── */
 
-  /* Slide 2: 경험의 시대 (858px → 812px) */
-  #slide-2 .grid-2 { gap: 0.8rem; }
-  #slide-2 .card { padding: 1rem; }
-  #slide-2 .card h3 { font-size: 0.9rem; margin-bottom: 0.5rem; }
-  #slide-2 .card ul { line-height: 1.6; font-size: 0.8rem; }
-  #slide-2 .kpi-card { padding: 0.8rem; }
-  #slide-2 .kpi-value { font-size: 1.4rem !important; }
-  #slide-2 .kpi-sub { font-size: 0.65rem; }
-  #slide-2 .mt-2 { margin-top: 0.8rem !important; }
+  /* Slide 2: 경험의 시대 */
+  #slide-2 h2 { font-size: 1.1rem; margin-bottom: 0.1rem !important; }
+  #slide-2 > .slide-inner > .reveal > p { font-size: 0.7rem; margin-bottom: 0.5rem !important; }
+  #slide-2 .grid-2 { gap: 0.4rem; }
+  #slide-2 .card { padding: 0.6rem; }
+  #slide-2 .card h3 { font-size: 0.75rem; margin-bottom: 0.2rem; }
+  #slide-2 .card ul { line-height: 1.3; font-size: 0.68rem; }
+  #slide-2 .kpi-card { padding: 0.35rem; margin-bottom: 0.2rem !important; }
+  #slide-2 .kpi-value { font-size: 1rem !important; }
+  #slide-2 .kpi-sub { font-size: 0.52rem; }
+  #slide-2 .kpi-label { font-size: 0.52rem; }
+  #slide-2 .mt-2 { margin-top: 0.2rem !important; font-size: 0.68rem; }
 
-  /* Slide 12: 성과 기대치 (832px → 812px) */
-  #slide-12 .kpi-card { padding: 0.8rem; margin-bottom: 0; }
-  #slide-12 .kpi-value { font-size: 1.3rem !important; }
-  #slide-12 .kpi-sub { font-size: 0.6rem; }
-  #slide-12 .mt-3 { margin-top: 1rem !important; padding: 1rem !important; }
-  #slide-12 .mt-3 h3 { font-size: 0.75rem; margin-bottom: 0.5rem; }
-  #slide-12 .bar-row { margin-bottom: 0.3rem; }
+  /* Slide 11: S커브 차트 */
+  #slide-11 .s-curve-container { height: 160px !important; }
+  #slide-11 .grid-2 { gap: 0.3rem; }
+  #slide-11 .card { padding: 0.7rem !important; }
+  #slide-11 .card p { font-size: 0.65rem; }
+
+  /* Slide 12: 성과 기대치 */
+  #slide-12 .kpi-card { padding: 0.5rem; margin-bottom: 0; }
+  #slide-12 .kpi-value { font-size: 1.1rem !important; }
+  #slide-12 .kpi-sub { font-size: 0.55rem; }
+  #slide-12 .kpi-label { font-size: 0.55rem; }
+  #slide-12 .stat-row { gap: 0.4rem; }
+  #slide-12 .mt-3 { margin-top: 0.5rem !important; padding: 0.7rem !important; }
+  #slide-12 .mt-3 h3 { font-size: 0.7rem; margin-bottom: 0.3rem; }
+  #slide-12 .bar-row { margin-bottom: 0.2rem; }
 
   /* Slide 13: AI 활용 전략 진화 (892px → 812px) */
   #slide-13 .maturity-dot { width: 28px; height: 28px; font-size: 0.75rem; }
@@ -1086,11 +1097,15 @@ p, li {
   #slide-14 [style*="gap:0.8rem"] { gap: 0.4rem !important; }
   #slide-14 [style*="margin-bottom:0.8rem"] { margin-bottom: 0.3rem !important; }
 
-  /* Slide 15: 자연어 운용 (837px → 812px) */
-  #slide-15 .card { padding: 1rem; }
-  #slide-15 .card h3 { font-size: 0.85rem; margin-bottom: 0.3rem; }
-  #slide-15 .card p { font-size: 0.7rem; line-height: 1.3; }
-  #slide-15 .tag { font-size: 0.6rem; padding: 0.2rem 0.5rem; }
+  /* Slide 15: 자연어 운용 */
+  #slide-15 .grid-3 { gap: 0.5rem; }
+  #slide-15 .card { padding: 0.7rem !important; }
+  #slide-15 .card [style*="font-size:2rem"] { font-size: 1.2rem !important; margin-bottom: 0.2rem !important; }
+  #slide-15 .card h3 { font-size: 0.75rem; margin-bottom: 0.2rem; }
+  #slide-15 .card p { font-size: 0.65rem; line-height: 1.2; }
+  #slide-15 .card [style*="margin-bottom:1rem"] { margin-bottom: 0.3rem !important; }
+  #slide-15 .tag { font-size: 0.55rem; padding: 0.15rem 0.4rem; }
+  #slide-15 [style*="padding:1.5rem"] { padding: 0.8rem !important; }
 
   /* Slide 16: 검증된 하네스 (870px → 812px) */
   #slide-16 .stat-card { padding: 0.6rem; }
@@ -1103,9 +1118,16 @@ p, li {
   #slide-16 .card { padding: 0.7rem !important; }
   #slide-16 .tag { font-size: 0.6rem; padding: 0.15rem 0.4rem; }
 
-  /* Slide 18: 병렬 실행 (815px → 812px) */
-  #slide-18 .card { padding: 1rem; }
-  #slide-18 [style*="padding:1.5rem"] { padding: 1rem !important; }
+  /* Slide 18: 병렬 실행 */
+  #slide-18 h2 { font-size: 1.1rem; margin-bottom: 0.2rem !important; }
+  #slide-18 .card { padding: 0.5rem !important; }
+  #slide-18 [style*="padding:1.5rem"] { padding: 0.5rem !important; }
+  #slide-18 [style*="gap:1.2rem"] { gap: 0.3rem !important; }
+  #slide-18 [style*="font-size:2.5rem"] { font-size: 1.2rem !important; }
+  #slide-18 [style*="font-size:1.5rem"] { font-size: 0.9rem !important; }
+  #slide-18 .big-number { font-size: 1.2rem !important; }
+  #slide-18 .mb-2 { margin-bottom: 0.3rem !important; }
+  #slide-18 .mt-2 { margin-top: 0.3rem !important; }
 
   /* Slide 19: AI 팀 빌딩 (988px → 812px) — major compaction */
   #slide-19 .grid-3 { gap: 0.5rem; }
@@ -1118,6 +1140,17 @@ p, li {
   #slide-19 .mt-1 { margin-top: 0.3rem !important; }
   #slide-19 [style*="width:60px"] { width: 36px !important; height: 36px !important; font-size: 1rem !important; margin-bottom: 0.4rem !important; }
   #slide-19 .mt-2 { margin-top: 0.5rem !important; }
+
+  /* Slide 21: 해커톤 일정 */
+  #slide-21 .grid-2 { gap: 0.5rem; }
+  #slide-21 h3 { font-size: 0.8rem; margin-bottom: 0.4rem !important; }
+  #slide-21 .card { padding: 0.6rem !important; gap: 0.5rem !important; }
+  #slide-21 [style*="width:50px"] { width: 36px !important; height: 36px !important; font-size: 0.65rem !important; }
+  #slide-21 [style*="gap:0.8rem"] { gap: 0.4rem !important; }
+  #slide-21 .bar-row { margin-bottom: 0.2rem; }
+  #slide-21 .bar-track.thin { height: 14px !important; }
+  #slide-21 .bar-label { font-size: 0.6rem; }
+  #slide-21 [style*="padding:1.5rem"] { padding: 0.6rem !important; }
 
   /* Slide 22: 기대 효과 & ROI (900px → 812px) */
   #slide-22 h2 { margin-bottom: 0.3rem !important; }
@@ -1715,7 +1748,7 @@ p, li {
 <!-- ============================================
      SLIDE 10: 해커톤 로드맵
      ============================================ -->
-<section class="slide" id="slide-11">
+<section class="slide slide-compact" id="slide-11">
   <div class="slide-inner">
     <div class="reveal">
       <p class="act-label">Act 3 &mdash; RB Cloud's Response</p>
